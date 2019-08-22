@@ -20,9 +20,9 @@ MonoBehaviour:
   grabInput: GrabOrThrow
   health: 100
   lives: 3
-  speed: 16
-  jumpVelocity: 15
-  dashSpeed: 40
+  speed: 8
+  jumpVelocity: 7
+  dashSpeed: 16
   slideSpeed: 1
   wallJumpLerp: 5
   fallMultiplier: 11
