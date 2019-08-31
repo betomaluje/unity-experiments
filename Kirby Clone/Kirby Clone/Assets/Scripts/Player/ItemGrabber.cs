@@ -113,10 +113,7 @@ public class ItemGrabber : MonoBehaviour
 
             itemObject.transform.localScale = new Vector3(1, 1, 1);
 
-            Movement movement = GetComponent<Movement>();
-            int d = movement.IsFacingRight() ? 1 : -1;
-
-            Vector2 direction = transform.rotation * transform.right * d;
+            Vector2 direction = transform.rotation * transform.right;
             direction.Normalize();
 
             itemObject.transform.parent = null;

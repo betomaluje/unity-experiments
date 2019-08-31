@@ -13,17 +13,9 @@ MonoBehaviour:
   m_Name: Kirby
   m_EditorClassIdentifier: 
   name: Kirby
-  horizontalInput: Horizontal
-  verticalInput: Vertical
-  jumpInput: Jump
-  fireInput: Fire
-  grabInput: GrabOrThrow
   health: 100
   lives: 3
-  speed: 8
-  jumpVelocity: 7
-  dashSpeed: 16
-  slideSpeed: 1
-  wallJumpLerp: 5
+  speed: 20
+  jumpVelocity: 400
   fallMultiplier: 11
   lowJumpMultiplier: 2

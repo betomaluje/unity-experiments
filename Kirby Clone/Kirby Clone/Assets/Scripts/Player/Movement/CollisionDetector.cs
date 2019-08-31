@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Collision : MonoBehaviour
+public class CollisionDetector : MonoBehaviour
 {
     [Header("Layers")]
     public LayerMask groundLayer;
