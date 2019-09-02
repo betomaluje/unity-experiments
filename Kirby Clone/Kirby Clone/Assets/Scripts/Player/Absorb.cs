@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Absorb : MonoBehaviour
 {
@@ -10,26 +11,54 @@ public class Absorb : MonoBehaviour
     [Space]
     [Header("Collision")]
     public float absorbRadius = 0.25f;
-    public Vector2 rightOffset, leftOffset;
-    
-    private bool onGrabRight;
-    private bool onGrabLeft;
+    public Vector2 rightOffset;
+
+    [Space]
+    [Header("Colors")]
+    public Color targetColor;
+
+    [Space]
+    [Header("Settings")]
+    // the players item grab position
+    public Transform itemGameObjectPosition;
+    public float throwForce = 250f;
+
+    private Collider2D onGrabRight;
 
     private bool canAbsorb = false;
     private bool objectAbsorbed = false;
     private PlayerStats playerStats;
 
     private GameObject absorbObject;
+    private Color originalTargetColor;
+    private PlayerMovement playerMovement;
+    private int direction = 1;
 
     private void Awake()
     {
         playerStats = GetComponent<PlayerStats>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     void Update()
     {
-        onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, absorbRadius, absorbableLayer);
-        onGrabLeft = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, absorbRadius, absorbableLayer);
+        bool isFacingRight = playerMovement.isFacingRight();
+        direction = isFacingRight ? 1 : -1;
+        
+        onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset * direction, absorbRadius, absorbableLayer);
+
+        if (onGrabRight)
+        {
+            absorbObject = onGrabRight.gameObject;
+            canAbsorb = true;
+            ChangeTargetColor(absorbObject);
+        } else
+        {
+            ChangeTargetColorOriginal(absorbObject);
+            absorbObject = null;
+            originalTargetColor = Color.white;
+            canAbsorb = false;
+        }        
     }
 
     private void FixedUpdate()
@@ -47,34 +76,118 @@ public class Absorb : MonoBehaviour
     {
         Gizmos.color = Color.green;
 
-        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, absorbRadius);
-        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, absorbRadius);
-    }
+        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset * direction, absorbRadius);
+    }    
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void ChangeTargetColor(GameObject target)
     {
-        if (!canAbsorb && playerStats.isPlayerActive() && CheckLayerMask(other.gameObject))
+        SpriteRenderer spriteRenderer = target.GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer == null)
         {
-            absorbObject = other.gameObject;
-            canAbsorb = true;
+            return;
         }
-    }
 
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (canAbsorb && playerStats.isPlayerActive() && CheckLayerMask(other.gameObject))
+        if (originalTargetColor == null)
         {
-            canAbsorb = false;
-        }
+            originalTargetColor = spriteRenderer.color;
+        }        
+
+        spriteRenderer.color = targetColor;
     }
 
-    private bool CheckLayerMask(GameObject target)
+    private void ChangeTargetColorOriginal(GameObject target)
     {
-        return (absorbableLayer & 1 << target.layer) == 1 << target.layer;
+        if (target == null)
+        {
+            return;
+        }
+
+        SpriteRenderer spriteRenderer = target.GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer == null | originalTargetColor == null)
+        {
+            return;
+        }        
+
+        spriteRenderer.color = originalTargetColor;
+    }
+
+    public void DoAbsorbOrThrow()
+    {
+        if (objectAbsorbed)
+        {
+            // we need to throw it
+            DoThrow();
+        } else
+        {
+            // we need to absorb
+            DoAbsorb();
+        }
     }
 
     private void DoAbsorb()
     {
-        Debug.Log("Absorbing");
+        if (!objectAbsorbed && canAbsorb && absorbObject != null)
+        {
+            Debug.Log("We absorb the item: " + absorbObject.name);
+
+            objectAbsorbed = true;
+
+            Rigidbody2D rb = absorbObject.GetComponent<Rigidbody2D>();
+
+            if (rb != null)
+            {
+                rb.simulated = false;
+            }
+
+            GameObject item = absorbObject;
+            absorbObject.transform.DOMove(itemGameObjectPosition.position, 0.25f, false).OnComplete(() => PutItemAsChild(item));                        
+        }
+    }
+
+    private void DoThrow()
+    {
+        if (absorbObject != null && objectAbsorbed)
+        {
+            absorbObject.transform.localScale = new Vector3(1, 1, 1);
+
+            Vector2 direction = transform.rotation * transform.right;
+            direction.Normalize();
+
+            objectAbsorbed = false;
+
+            absorbObject.transform.parent = null;
+
+            Rigidbody2D rb = absorbObject.GetComponent<Rigidbody2D>();
+
+            if (rb != null)
+            {
+                rb.simulated = true;
+                rb.AddForce(direction * throwForce, ForceMode2D.Impulse);
+            }
+
+            RemoveItems();
+        }
+    }    
+
+    private void PutItemAsChild(GameObject item)
+    {
+        item.transform.parent = null;
+        item.transform.parent = itemGameObjectPosition;
+        item.transform.localPosition = Vector3.zero;
+
+        Quaternion rotation = Quaternion.Euler(0, itemGameObjectPosition.rotation.y, 0);
+        item.transform.rotation = rotation;
+    }
+
+    private void RemoveItems()
+    {
+        absorbObject = null;
+
+        foreach (Transform child in itemGameObjectPosition)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }

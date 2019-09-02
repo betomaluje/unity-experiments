@@ -13,7 +13,10 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
 
     #region Public Variables
     [Header("Stats")]    
-    public int maxJumps = 2;    
+    public int maxJumps = 2;
+
+    [Header("Events")]
+    public GameEvent absorbEvent;
     #endregion
 
     #region Private Variables
@@ -39,7 +42,9 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     private void Awake()
     {
         mainInputActions = new MainInputActions();      
-        mainInputActions.Player.SetCallbacks(this);        
+        mainInputActions.Player.SetCallbacks(this);
+
+        mainInputActions.Player.Absorb.started -= OnAbsorb;
     }
 
     private void OnEnable()
@@ -98,11 +103,11 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
 
     public void OnAbsorb(InputAction.CallbackContext context)
     {
-        float absorb = (float)context.ReadValueAsObject();
+        float absorb = (float)context.ReadValueAsObject();        
 
         if (absorb == 1)
         {
-            Debug.Log("absorb");
+            absorbEvent.Raise();
         }
     }
 
@@ -118,5 +123,10 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
         canMove = false;
         yield return new WaitForSeconds(time);
         canMove = true;
+    }
+
+    public bool isFacingRight()
+    {
+        return controller.isFacingRight();
     }
 }

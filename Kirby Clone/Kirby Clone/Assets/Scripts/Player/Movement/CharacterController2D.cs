@@ -113,7 +113,6 @@ public class CharacterController2D : MonoBehaviour
         // If the player should jump...
         if (m_Grounded && jump)
         {
-            Debug.Log("isJumping: " + m_JumpForce);
             // Add a vertical force to the player.
             m_Grounded = false;
             m_Rigidbody2D.AddForce(new Vector2(0f, m_JumpForce));
@@ -128,5 +127,10 @@ public class CharacterController2D : MonoBehaviour
 
         // Multiply the player's x local scale by -1.
         transform.Rotate(0f, 180f, 0f);
+    }
+
+    public bool isFacingRight()
+    {
+        return m_FacingRight;
     }
 }
