@@ -11,7 +11,7 @@ public class Absorb : MonoBehaviour
     [Space]
     [Header("Collision")]
     public float absorbRadius = 0.25f;
-    public Vector2 rightOffset;
+    public Vector2 grabOffset;
 
     [Space]
     [Header("Colors")]
@@ -42,10 +42,9 @@ public class Absorb : MonoBehaviour
 
     void Update()
     {
-        bool isFacingRight = playerMovement.isFacingRight();
-        direction = isFacingRight ? 1 : -1;
-        
-        onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset * direction, absorbRadius, absorbableLayer);
+		direction = playerMovement.getDirection();
+
+		onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + grabOffset * direction, absorbRadius, absorbableLayer);
 
         if (onGrabRight)
         {
@@ -76,7 +75,7 @@ public class Absorb : MonoBehaviour
     {
         Gizmos.color = Color.green;
 
-        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset * direction, absorbRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + grabOffset * direction, absorbRadius);
     }    
 
     private void ChangeTargetColor(GameObject target)

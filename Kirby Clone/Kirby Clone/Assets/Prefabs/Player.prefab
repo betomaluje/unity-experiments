@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4387318279323264409}
   - component: {fileID: 8012845928873163817}
   - component: {fileID: 3494302513661398575}
+  - component: {fileID: 3418535469488039716}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -186,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxJumps: 2
-  absorbEvent: {fileID: 0}
+  absorbEvent: {fileID: 11400000, guid: 2620808c733edd3428632dca4f450dc6, type: 2}
 --- !u!114 &4387318279323264409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,15 +203,15 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 512
   onGround: 1
   onWall: 0
-  onRightWall: 0
-  onLeftWall: 0
   wallSide: 0
   collisionRadius: 0.2
   bottomOffset: {x: 0, y: 0}
-  rightOffset: {x: 0.45, y: 0}
-  leftOffset: {x: -0.45, y: 0}
+  wallOffset: {x: 0.4, y: 0}
 --- !u!114 &8012845928873163817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,10 +227,10 @@ MonoBehaviour:
   absorbableLayer:
     serializedVersion: 2
     m_Bits: 512
-  absorbRadius: 1
-  rightOffset: {x: 0.5, y: 0}
-  targetColor: {r: 0, g: 0, b: 0, a: 0}
-  itemGameObjectPosition: {fileID: 0}
+  absorbRadius: 0.5
+  grabOffset: {x: 0.5, y: 0}
+  targetColor: {r: 0, g: 0.7010541, b: 1, a: 1}
+  itemGameObjectPosition: {fileID: 1736247262270115576}
   throwForce: 250
 --- !u!114 &3494302513661398575
 MonoBehaviour:
@@ -258,6 +259,72 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: CharacterController2D+BoolEvent, Assembly-CSharp, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3418535469488039716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238098225927881839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa20a44e3f3fe4a80b9655e35ebcc15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: Absorb Event
+    gameEvent: {fileID: 11400000, guid: 2620808c733edd3428632dca4f450dc6, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8012845928873163817}
+          m_MethodName: DoAbsorbOrThrow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!1 &2238098226708556287
 GameObject:
   m_ObjectHideFlags: 0

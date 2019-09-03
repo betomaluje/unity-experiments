@@ -129,4 +129,9 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     {
         return controller.isFacingRight();
     }
+
+    public int getDirection()
+	{
+        return isFacingRight() ? 1 : -1;
+	}
 }
