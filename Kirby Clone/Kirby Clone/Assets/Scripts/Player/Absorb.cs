@@ -21,6 +21,8 @@ public class Absorb : MonoBehaviour
     public Transform itemGameObjectPosition;
     public float throwForce = 250f;
 
+    public ParticleSystem absorbParticles;
+
     private SkillsManager skillsManager;
 
     private Collider2D onGrabRight;
@@ -58,17 +60,6 @@ public class Absorb : MonoBehaviour
             ChangeTargetColorOriginal(absorbObject);
             originalTargetColor = Color.white;
             canAbsorb = false;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (absorbObject != null)
-        {
-            if (objectAbsorbed)
-            {
-                DoAbsorb();
-            }
         }
     }
 
@@ -138,7 +129,7 @@ public class Absorb : MonoBehaviour
     {
         if (!objectAbsorbed && canAbsorb && absorbObject != null)
         {
-            Debug.Log("We absorb the item: " + absorbObject.name);
+            Debug.Log("We absorb the item: " + absorbObject.name);            
 
             objectAbsorbed = true;
 
@@ -158,6 +149,7 @@ public class Absorb : MonoBehaviour
                 {
                     PutItemAsChild(item);
                     GrabSkill(item);
+                    absorbParticles.Play();
                 });
         }
     }
@@ -168,8 +160,9 @@ public class Absorb : MonoBehaviour
         {
             absorbObject.transform.localScale = new Vector3(1, 1, 1);
 
+            absorbObject.SetActive(true);
+
             Vector2 dir = transform.rotation * transform.right * direction;
-            //direction.Normalize();
 
             objectAbsorbed = false;
 
@@ -195,6 +188,8 @@ public class Absorb : MonoBehaviour
         {
             skillsManager.AddSkill(container.getSkill());
         }
+
+        item.SetActive(false);        
     }
 
     private void PutItemAsChild(GameObject item)

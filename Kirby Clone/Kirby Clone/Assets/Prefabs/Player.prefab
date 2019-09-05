@@ -249,7 +249,7 @@ MonoBehaviour:
   grabOffset: {x: 0.5, y: 0}
   targetColor: {r: 0, g: 0.7010541, b: 1, a: 1}
   itemGameObjectPosition: {fileID: 1736247262270115576}
-  throwForce: 250
+  throwForce: 5
 --- !u!114 &3494302513661398575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,7 +296,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 8012845928873163817}
-          m_MethodName: DoAbsorbOrThrow
+          m_MethodName: DoAbsorb
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

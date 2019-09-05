@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿/**
+ * Common interface for every skill
+ */ 
 public interface SkillBehaviour
 {
     void performSkill();

@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/**
+ * Class in charge of adding, removing, checking and call the perform method of each skill
+ */ 
 public class SkillsManager : MonoBehaviour
 {
     private Skill skill;
