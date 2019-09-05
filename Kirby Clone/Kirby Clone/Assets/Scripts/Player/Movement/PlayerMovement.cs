@@ -2,22 +2,13 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
+public class PlayerMovement : MonoBehaviour
 {
-    private MainInputActions mainInputActions;
-
-    private Vector2 movement;
-
     private CharacterController2D controller;
 
     #region Public Variables
     [Header("Stats")]
-    public int maxJumps = 2;
-
-    [Header("Events")]
-    public GameEvent absorbEvent;
-    public GameEvent skillsEvent;
-    public GameEvent removeSkill;
+    public int maxJumps = 2;   
     #endregion
 
     #region Private Variables
@@ -37,26 +28,12 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     private SpriteRenderer sr;
     private Camera cam;
     private RippleEffect rippleObject;
+
+    private float moveX;
+
     #endregion
 
-    #region Lifecycle methods
-    private void Awake()
-    {
-        mainInputActions = new MainInputActions();
-        mainInputActions.Player.SetCallbacks(this);
-
-        mainInputActions.Player.Absorb.started -= OnAbsorb;
-    }
-
-    private void OnEnable()
-    {
-        mainInputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        mainInputActions.Disable();
-    }
+    #region Lifecycle methods    
 
     private void Start()
     {
@@ -84,41 +61,25 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
 
     private void FixedUpdate()
     {
-        // Move our character
-        controller.Move(movement.x * player.speed * Time.fixedDeltaTime, crouch, isJumping);
+        controller.Move(moveX * player.speed * Time.fixedDeltaTime, crouch, isJumping);
         isJumping = false;
     }
     #endregion
 
-    #region Input callbacks
+    #region Event Listener
 
-    public void OnMovement(InputAction.CallbackContext context)
+    public void OnHorizontalMove(float horizontalMove)
     {
-        movement = context.ReadValue<Vector2>();
+        moveX = horizontalMove;
     }
 
-    public void OnJump(InputAction.CallbackContext context)
-    {
-        float jump = (float)context.ReadValueAsObject();
+    public void OnVerticalMove(float verticalMove) {
 
-        isJumping = jump == 1;
     }
 
-    public void OnAbsorb(InputAction.CallbackContext context)
+    public void OnJump()
     {
-        float absorb = (float)context.ReadValueAsObject();
-
-        if (absorb == 1)
-        {
-            if (movement.y == -1)
-            {
-                removeSkill.Raise();
-            }
-            else
-            {
-                absorbEvent.Raise();
-            }
-        }
+        isJumping = true;
     }
 
     #endregion

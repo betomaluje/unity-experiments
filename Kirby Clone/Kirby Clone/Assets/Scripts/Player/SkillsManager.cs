@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class SkillsManager : MonoBehaviour, SkillBehaviour
+public class SkillsManager : MonoBehaviour
 {
     private Skill skill;
 
@@ -21,11 +21,11 @@ public class SkillsManager : MonoBehaviour, SkillBehaviour
         }
     }
 
-    public void performSkill()
+    public void DoSkill()
     {
         if (skill != null)
         {
-            skill.perform();
+            skill.performSkill();
         }
     }
 

@@ -13,12 +13,14 @@ GameObject:
   - component: {fileID: 5812534552286389254}
   - component: {fileID: 2238098225927881836}
   - component: {fileID: 3494302512829859384}
+  - component: {fileID: 1453202539748331960}
   - component: {fileID: 7514671764700412713}
   - component: {fileID: 5209775327932575301}
   - component: {fileID: 4387318279323264409}
   - component: {fileID: 8012845928873163817}
   - component: {fileID: 3494302513661398575}
   - component: {fileID: 3418535469488039716}
+  - component: {fileID: 1392765971}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -157,6 +159,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1453202539748331960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238098225927881839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d97c87cfb749d647b409dc759c3d06f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalEvent: {fileID: 11400000, guid: 13024cde2e0064e45a89c28f7cf5dbf8, type: 2}
+  verticalEvent: {fileID: 11400000, guid: 0fb1fd20af6733242adb761a542b1637, type: 2}
+  jumpEvent: {fileID: 11400000, guid: 5b408ab2da1986d4e96edc244f34a57c, type: 2}
+  absorbEvent: {fileID: 11400000, guid: 2620808c733edd3428632dca4f450dc6, type: 2}
+  removeSkillEvent: {fileID: 11400000, guid: 6bfb042674f87354f9747fc73765867d, type: 2}
 --- !u!114 &7514671764700412713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,7 +206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxJumps: 2
-  absorbEvent: {fileID: 11400000, guid: 2620808c733edd3428632dca4f450dc6, type: 2}
 --- !u!114 &4387318279323264409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +343,241 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+  - name: Remove Skill
+    gameEvent: {fileID: 11400000, guid: 6bfb042674f87354f9747fc73765867d, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1392765971}
+          m_MethodName: RemoveSkill
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 8012845928873163817}
+          m_MethodName: DoThrow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - name: Horizontal Move
+    gameEvent: {fileID: 11400000, guid: 13024cde2e0064e45a89c28f7cf5dbf8, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5209775327932575301}
+          m_MethodName: OnHorizontalMove
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - name: Vertical Move
+    gameEvent: {fileID: 11400000, guid: 0fb1fd20af6733242adb761a542b1637, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5209775327932575301}
+          m_MethodName: OnVerticalMove
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - name: Jump
+    gameEvent: {fileID: 11400000, guid: 5b408ab2da1986d4e96edc244f34a57c, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5209775327932575301}
+          m_MethodName: OnJump
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+--- !u!114 &1392765971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238098225927881839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d96a232bd7d404da8c8753ada7ca51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2238098226708556287
 GameObject:
   m_ObjectHideFlags: 0

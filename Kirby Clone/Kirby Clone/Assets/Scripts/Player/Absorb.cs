@@ -56,7 +56,6 @@ public class Absorb : MonoBehaviour
         else
         {
             ChangeTargetColorOriginal(absorbObject);
-            absorbObject = null;
             originalTargetColor = Color.white;
             canAbsorb = false;
         }
@@ -118,7 +117,7 @@ public class Absorb : MonoBehaviour
     {
         if (skillsManager.hasSkill())
         {
-            skillsManager.performSkill();
+            skillsManager.DoSkill();
         }
         else
         {
@@ -169,8 +168,8 @@ public class Absorb : MonoBehaviour
         {
             absorbObject.transform.localScale = new Vector3(1, 1, 1);
 
-            Vector2 direction = transform.rotation * transform.right;
-            direction.Normalize();
+            Vector2 dir = transform.rotation * transform.right * direction;
+            //direction.Normalize();
 
             objectAbsorbed = false;
 
@@ -181,7 +180,7 @@ public class Absorb : MonoBehaviour
             if (rb != null)
             {
                 rb.simulated = true;
-                rb.AddForce(direction * throwForce, ForceMode2D.Impulse);
+                rb.AddForce(dir * throwForce, ForceMode2D.Impulse);
             }
 
             RemoveItems();
