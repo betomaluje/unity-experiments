@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using DG.Tweening;
 
 public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
 {
@@ -12,11 +11,13 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     private CharacterController2D controller;
 
     #region Public Variables
-    [Header("Stats")]    
+    [Header("Stats")]
     public int maxJumps = 2;
 
     [Header("Events")]
     public GameEvent absorbEvent;
+    public GameEvent skillsEvent;
+    public GameEvent removeSkill;
     #endregion
 
     #region Private Variables
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     private bool crouch = false;
 
     private bool groundTouch;
-   
+
     private int numofJumps = 0;
 
     private Rigidbody2D rb;
@@ -35,13 +36,13 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     private Animator animator;
     private SpriteRenderer sr;
     private Camera cam;
-    private RippleEffect rippleObject;    
+    private RippleEffect rippleObject;
     #endregion
 
     #region Lifecycle methods
     private void Awake()
     {
-        mainInputActions = new MainInputActions();      
+        mainInputActions = new MainInputActions();
         mainInputActions.Player.SetCallbacks(this);
 
         mainInputActions.Player.Absorb.started -= OnAbsorb;
@@ -74,9 +75,11 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     private void Update()
     {
         grounded = IsGrounded();
-        
+
         if (animator != null)
-            animator.SetBool("isJumping", !grounded);        
+        {
+            animator.SetBool("isJumping", !grounded);
+        }
     }
 
     private void FixedUpdate()
@@ -91,8 +94,8 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        movement = context.ReadValue<Vector2>();        
-    }    
+        movement = context.ReadValue<Vector2>();
+    }
 
     public void OnJump(InputAction.CallbackContext context)
     {
@@ -103,11 +106,18 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
 
     public void OnAbsorb(InputAction.CallbackContext context)
     {
-        float absorb = (float)context.ReadValueAsObject();        
+        float absorb = (float)context.ReadValueAsObject();
 
         if (absorb == 1)
         {
-            absorbEvent.Raise();
+            if (movement.y == -1)
+            {
+                removeSkill.Raise();
+            }
+            else
+            {
+                absorbEvent.Raise();
+            }
         }
     }
 
@@ -116,7 +126,7 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     bool IsGrounded()
     {
         return coll.onGround;
-    }   
+    }
 
     IEnumerator DisableMovement(float time)
     {
@@ -131,7 +141,7 @@ public class PlayerMovement : MonoBehaviour, MainInputActions.IPlayerActions
     }
 
     public int getDirection()
-	{
+    {
         return isFacingRight() ? 1 : -1;
-	}
+    }
 }

@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using DG.Tweening;
 using UnityEngine;
-using DG.Tweening;
 
 public class Absorb : MonoBehaviour
 {
@@ -23,6 +21,8 @@ public class Absorb : MonoBehaviour
     public Transform itemGameObjectPosition;
     public float throwForce = 250f;
 
+    private SkillsManager skillsManager;
+
     private Collider2D onGrabRight;
 
     private bool canAbsorb = false;
@@ -38,26 +38,28 @@ public class Absorb : MonoBehaviour
     {
         playerStats = GetComponent<PlayerStats>();
         playerMovement = GetComponent<PlayerMovement>();
+        skillsManager = GetComponent<SkillsManager>();
     }
 
     void Update()
     {
-		direction = playerMovement.getDirection();
+        direction = playerMovement.getDirection();
 
-		onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + grabOffset * direction, absorbRadius, absorbableLayer);
+        onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + grabOffset * direction, absorbRadius, absorbableLayer);
 
         if (onGrabRight)
         {
             absorbObject = onGrabRight.gameObject;
             canAbsorb = true;
             ChangeTargetColor(absorbObject);
-        } else
+        }
+        else
         {
             ChangeTargetColorOriginal(absorbObject);
             absorbObject = null;
             originalTargetColor = Color.white;
             canAbsorb = false;
-        }        
+        }
     }
 
     private void FixedUpdate()
@@ -67,7 +69,7 @@ public class Absorb : MonoBehaviour
             if (objectAbsorbed)
             {
                 DoAbsorb();
-            }            
+            }
         }
     }
 
@@ -76,7 +78,7 @@ public class Absorb : MonoBehaviour
         Gizmos.color = Color.green;
 
         Gizmos.DrawWireSphere((Vector2)transform.position + grabOffset * direction, absorbRadius);
-    }    
+    }
 
     private void ChangeTargetColor(GameObject target)
     {
@@ -90,7 +92,7 @@ public class Absorb : MonoBehaviour
         if (originalTargetColor == null)
         {
             originalTargetColor = spriteRenderer.color;
-        }        
+        }
 
         spriteRenderer.color = targetColor;
     }
@@ -107,25 +109,33 @@ public class Absorb : MonoBehaviour
         if (spriteRenderer == null | originalTargetColor == null)
         {
             return;
-        }        
+        }
 
         spriteRenderer.color = originalTargetColor;
     }
 
     public void DoAbsorbOrThrow()
     {
-        if (objectAbsorbed)
+        if (skillsManager.hasSkill())
         {
-            // we need to throw it
-            DoThrow();
-        } else
-        {
-            // we need to absorb
-            DoAbsorb();
+            skillsManager.performSkill();
         }
+        else
+        {
+            if (objectAbsorbed)
+            {
+                // we need to throw it
+                DoThrow();
+            }
+            else
+            {
+                // we need to absorb
+                DoAbsorb();
+            }
+        }    
     }
 
-    private void DoAbsorb()
+    public void DoAbsorb()
     {
         if (!objectAbsorbed && canAbsorb && absorbObject != null)
         {
@@ -141,11 +151,19 @@ public class Absorb : MonoBehaviour
             }
 
             GameObject item = absorbObject;
-            absorbObject.transform.DOMove(itemGameObjectPosition.position, 0.25f, false).OnComplete(() => PutItemAsChild(item));                        
+
+            DOTween.Sequence()
+                .Append(absorbObject.transform.DOShakePosition(0.4f, 0.5f, 5, 90, false))
+                .Append(absorbObject.transform.DOMove(itemGameObjectPosition.position, 0.25f, false))
+                .OnComplete(() =>
+                {
+                    PutItemAsChild(item);
+                    GrabSkill(item);
+                });
         }
     }
 
-    private void DoThrow()
+    public void DoThrow()
     {
         if (absorbObject != null && objectAbsorbed)
         {
@@ -168,7 +186,17 @@ public class Absorb : MonoBehaviour
 
             RemoveItems();
         }
-    }    
+    }
+
+    private void GrabSkill(GameObject item)
+    {
+        SkillContainer container = item.GetComponent<SkillContainer>();
+
+        if (container != null)
+        {
+            skillsManager.AddSkill(container.getSkill());
+        }
+    }
 
     private void PutItemAsChild(GameObject item)
     {
