@@ -21,8 +21,6 @@ public class Absorb : MonoBehaviour
     public Transform itemGameObjectPosition;
     public float throwForce = 250f;
 
-    public ParticleSystem absorbParticles;
-
     private SkillsManager skillsManager;
 
     private Collider2D onGrabRight;
@@ -32,6 +30,7 @@ public class Absorb : MonoBehaviour
     private PlayerStats playerStats;
 
     private GameObject absorbObject;
+    private GameObject targetObject;
     private Color originalTargetColor;
     private PlayerMovement playerMovement;
     private int direction = 1;
@@ -51,13 +50,14 @@ public class Absorb : MonoBehaviour
 
         if (onGrabRight)
         {
-            absorbObject = onGrabRight.gameObject;
+            targetObject = onGrabRight.gameObject;
             canAbsorb = true;
-            ChangeTargetColor(absorbObject);
+            ChangeTargetColor(targetObject);
         }
         else
         {
-            ChangeTargetColorOriginal(absorbObject);
+            ChangeTargetColorOriginal(targetObject);
+            targetObject = null;
             originalTargetColor = Color.white;
             canAbsorb = false;
         }
@@ -79,7 +79,7 @@ public class Absorb : MonoBehaviour
             return;
         }
 
-        if (originalTargetColor == null)
+        if (originalTargetColor == null || originalTargetColor == Color.white)
         {
             originalTargetColor = spriteRenderer.color;
         }
@@ -102,13 +102,14 @@ public class Absorb : MonoBehaviour
         }
 
         spriteRenderer.color = originalTargetColor;
+        originalTargetColor = Color.white;
     }
 
     public void DoAbsorbOrThrow()
     {
         if (skillsManager.hasSkill())
         {
-            skillsManager.DoSkill();
+            skillsManager.DoSkill(direction);
         }
         else
         {
@@ -122,23 +123,18 @@ public class Absorb : MonoBehaviour
                 // we need to absorb
                 DoAbsorb();
             }
-        }    
+        }
     }
 
     public void DoAbsorb()
     {
-        if (!objectAbsorbed && canAbsorb && absorbObject != null)
+        if (!objectAbsorbed && canAbsorb)
         {
-            Debug.Log("We absorb the item: " + absorbObject.name);            
+            absorbObject = onGrabRight.gameObject;
 
-            objectAbsorbed = true;
+            Debug.Log("We absorb the item: " + absorbObject.name);
 
-            Rigidbody2D rb = absorbObject.GetComponent<Rigidbody2D>();
-
-            if (rb != null)
-            {
-                rb.simulated = false;
-            }
+            objectAbsorbed = true;            
 
             GameObject item = absorbObject;
 
@@ -149,7 +145,6 @@ public class Absorb : MonoBehaviour
                 {
                     PutItemAsChild(item);
                     GrabSkill(item);
-                    absorbParticles.Play();
                 });
         }
     }
@@ -160,9 +155,7 @@ public class Absorb : MonoBehaviour
         {
             absorbObject.transform.localScale = new Vector3(1, 1, 1);
 
-            absorbObject.SetActive(true);
-
-            Vector2 dir = transform.rotation * transform.right * direction;
+            absorbObject.SetActive(true);            
 
             objectAbsorbed = false;
 
@@ -172,8 +165,7 @@ public class Absorb : MonoBehaviour
 
             if (rb != null)
             {
-                rb.simulated = true;
-                rb.AddForce(dir * throwForce, ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(throwForce * direction, 0), ForceMode2D.Impulse);                
             }
 
             RemoveItems();
@@ -186,10 +178,10 @@ public class Absorb : MonoBehaviour
 
         if (container != null)
         {
-            skillsManager.AddSkill(container.getSkill());
+            skillsManager.AddSkill(container.getSkill(), gameObject);
         }
 
-        item.SetActive(false);        
+        item.SetActive(false);
     }
 
     private void PutItemAsChild(GameObject item)

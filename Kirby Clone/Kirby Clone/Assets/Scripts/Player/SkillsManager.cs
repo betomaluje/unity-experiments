@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /**
  * Class in charge of adding, removing, checking and call the perform method of each skill
@@ -9,10 +10,17 @@ public class SkillsManager : MonoBehaviour
 
     public void AddSkill(Skill newSkill)
     {
+        AddSkill(newSkill, gameObject);
+    }
+
+    public void AddSkill(Skill newSkill, GameObject targetObject)
+    {
         skill = newSkill;
         Debug.Log(skill + " added");
 
-        // now we need to setup the new skill        
+        // now we need to setup the new skill
+        skill.initSkill(targetObject);
+        skill.PlayParticles(targetObject.transform);
     }
 
     public void RemoveSkill()
@@ -24,11 +32,14 @@ public class SkillsManager : MonoBehaviour
         }
     }
 
-    public void DoSkill()
+    public void DoSkill(int direction)
     {
         if (skill != null)
         {
-            skill.performSkill();
+            Vector3 shootingPosition = transform.Find("Hands").gameObject.transform.position;
+            skill.setPosition(shootingPosition);
+            skill.performSkill(direction);
+            StartCoroutine(skill.performCorroutineSkill(direction));
         }
     }
 
