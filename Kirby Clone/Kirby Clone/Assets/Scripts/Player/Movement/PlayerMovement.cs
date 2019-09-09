@@ -71,6 +71,10 @@ public class PlayerMovement : MonoBehaviour
     public void OnHorizontalMove(float horizontalMove)
     {
         moveX = horizontalMove;
+        if (animator != null)
+        {
+            animator.SetBool("isRunning", moveX != 0);
+        }
     }
 
     public void OnVerticalMove(float verticalMove) {
