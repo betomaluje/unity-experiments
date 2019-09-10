@@ -153,11 +153,11 @@ public class Absorb : MonoBehaviour
     {
         if (absorbObject != null && objectAbsorbed)
         {
-            absorbObject.transform.localScale = new Vector3(1, 1, 1);
-
             absorbObject.SetActive(true);            
 
             objectAbsorbed = false;
+
+            skillsManager.RemoveSkill();
 
             absorbObject.transform.parent = null;
 
@@ -168,7 +168,7 @@ public class Absorb : MonoBehaviour
                 rb.AddForce(new Vector2(throwForce * direction, 0), ForceMode2D.Impulse);                
             }
 
-            RemoveItems();
+            RemoveItems();            
         }
     }
 

@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Kirby
   health: 100
   lives: 3
-  speed: 20
-  jumpVelocity: 400
+  speed: 40
+  jumpVelocity: 650
   fallMultiplier: 11
   lowJumpMultiplier: 2

@@ -5,11 +5,12 @@ using DG.Tweening;
 [CreateAssetMenu(fileName = "New Skill", menuName = "Skill/Body Changer Skill")]
 public class BodyChangerSkill : Skill
 {
-    public float scaleFactor;
+    public float finalScale;
+    public float originalScale;
     public float timeForPower;
 
     private GameObject targetObject;
-    private float originalMass;
+    private float originalMass;    
 
     public override void initSkill(GameObject skillObject)
     {
@@ -19,7 +20,7 @@ public class BodyChangerSkill : Skill
         if (rb != null)
         {
             originalMass = rb.mass;
-        }
+        }        
     }
 
     public override void performSkill(int direction)
@@ -28,11 +29,11 @@ public class BodyChangerSkill : Skill
 
     public override IEnumerator performCorroutineSkill(int direction)
     {
-        ChangeMass(scaleFactor);
-        targetObject.transform.DOScale(scaleFactor, 0.5f);
+        ChangeMass(finalScale);
+        targetObject.transform.DOScale(finalScale, 0.5f);
         yield return new WaitForSeconds(timeForPower);
         ChangeMass(originalMass);
-        targetObject.transform.DOScale(1, 0.5f);
+        targetObject.transform.DOScale(originalScale, 0.5f);
     }    
 
     public override void setPosition(Vector3 position)
