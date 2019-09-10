@@ -441,7 +441,7 @@ Transform:
   m_GameObject: {fileID: 2238098225927881839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.6445485, y: 0.055434693, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_Children:
   - {fileID: 2238098226708556286}
   - {fileID: 1736247262270115576}
@@ -515,7 +515,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04167813, y: -0.15788889}
+  m_Offset: {x: 0.04167813, y: -0.15022409}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -526,7 +526,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.50031555, y: 1.1695619}
+  m_Size: {x: 0.50031555, y: 1.1542323}
   m_EdgeRadius: 0
 --- !u!50 &2238098225927881836
 Rigidbody2D:
@@ -632,7 +632,7 @@ MonoBehaviour:
     m_Bits: 256
   onGround: 1
   collisionRadius: 0.2
-  bottomOffset: {x: 0, y: -0.54}
+  bottomOffset: {x: 0, y: -0.95}
   wallOffset: {x: 0.2, y: 0}
 --- !u!114 &8012845928873163817
 MonoBehaviour:
@@ -649,8 +649,8 @@ MonoBehaviour:
   absorbableLayer:
     serializedVersion: 2
     m_Bits: 512
-  absorbRadius: 0.5
-  grabOffset: {x: 0.5, y: 0}
+  absorbRadius: 1
+  grabOffset: {x: 0.6, y: -0.2}
   targetColor: {r: 0, g: 0.7010541, b: 1, a: 1}
   itemGameObjectPosition: {fileID: 1736247262270115576}
   throwForce: 5
