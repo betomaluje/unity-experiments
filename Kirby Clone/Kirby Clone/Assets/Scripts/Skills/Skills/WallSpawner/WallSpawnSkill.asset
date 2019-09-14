@@ -18,7 +18,8 @@ MonoBehaviour:
     type: 3}
   distanceToTeleport: 3
   isInmediate: 0
-  targetObject: {fileID: 5518247185290371996, guid: 3da10b5084bf03642b779119fa37d360,
-    type: 3}
+  targetObjects:
+  - {fileID: 4014208909774118778, guid: bc0bbfaf2fb19be499b995469feffdfe, type: 3}
+  - {fileID: 5518247185290371996, guid: 3da10b5084bf03642b779119fa37d360, type: 3}
   targetParticles: {fileID: 4433603656239082633, guid: 13ed3ce17493b4448bb412d61b42ccf3,
     type: 3}

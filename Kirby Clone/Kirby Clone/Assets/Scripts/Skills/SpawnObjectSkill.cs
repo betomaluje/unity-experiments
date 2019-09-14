@@ -7,7 +7,7 @@ public class SpawnObjectSkill : Skill, ImplosionListener
     public float distanceToTeleport;
     public bool isInmediate = false;
 
-    public GameObject targetObject;
+    public GameObject[] targetObjects;
     public GameObject targetParticles;
 
     private Vector3 parentObjectPosition;
@@ -47,6 +47,9 @@ public class SpawnObjectSkill : Skill, ImplosionListener
 
     public void onFinishImplosion()
     {
-        Instantiate(targetObject, targetPosition, Quaternion.identity);
+        foreach (var targetObject in targetObjects)
+        {
+            Instantiate(targetObject, targetPosition, Quaternion.identity);
+        }        
     }
 }
