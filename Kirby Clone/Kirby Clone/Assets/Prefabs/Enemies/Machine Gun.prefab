@@ -300,7 +300,7 @@ MonoBehaviour:
   shootingPoint: {fileID: 3123985113187881651}
   shootingObject: {fileID: 3454747716415271606, guid: 4bd9db56fc727804da4b880d077d7cfe,
     type: 3}
-  timeBetweenBullets: 1
+  timeBetweenBullets: 1.5
   collisionRadius: 7
   radius: {x: 0, y: 0}
 --- !u!1 &3123985114409641313

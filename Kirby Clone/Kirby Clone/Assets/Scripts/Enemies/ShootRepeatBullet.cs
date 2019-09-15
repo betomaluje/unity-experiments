@@ -7,7 +7,7 @@ public class ShootRepeatBullet : MonoBehaviour
     public Transform shootingPoint;
     public GameObject shootingObject;
     public float timeBetweenBullets = 1f;    
-    public float collisionRadius = 0.25f;
+    public float detectRadius = 0.25f;
     public Vector2 radius;
 
     private float shootForce;
@@ -26,7 +26,7 @@ public class ShootRepeatBullet : MonoBehaviour
 
     private void Update()
     {
-        onTarget = Physics2D.OverlapCircle((Vector2)transform.position + radius, collisionRadius, targetLayerMask);
+        onTarget = Physics2D.OverlapCircle((Vector2)transform.position + radius, detectRadius, targetLayerMask);
 
         if (onTarget && !isOnTarget)
         {
@@ -51,6 +51,6 @@ public class ShootRepeatBullet : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere((Vector2)transform.position + radius, collisionRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + radius, detectRadius);
     }
 }

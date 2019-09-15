@@ -558,7 +558,10 @@ MonoBehaviour:
   player: {fileID: 11400000, guid: ee7a177a2d1844ca59f4f33c7a795e32, type: 2}
   damageColor: {r: 0.6132076, g: 0, b: 0, a: 1}
   updateLives: {fileID: 11400000, guid: 8ca6c36a38a3b42b5ada8c0d9fd9dd2e, type: 2}
-  gameOverEvent: {fileID: 11400000, guid: b6a6d4e9e8d7b41d8aa0fecdce9a9c16, type: 2}
+  gameOverEvent: {fileID: 11400000, guid: 647ee6b7e855055438c1bba3c606840a, type: 2}
+  playerDeathEvent: {fileID: 11400000, guid: b6a6d4e9e8d7b41d8aa0fecdce9a9c16, type: 2}
+  playerDamageParticles: {fileID: 521060649499949037, guid: f2ed8aea1b02e94469647d553c2d94a7,
+    type: 3}
 --- !u!114 &5209775327932575301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,6 +1014,64 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - name: Player Death
+    gameEvent: {fileID: 11400000, guid: b6a6d4e9e8d7b41d8aa0fecdce9a9c16, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8012845928873163817}
+          m_MethodName: DoThrow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
       m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
 --- !u!1 &2238098226708556287

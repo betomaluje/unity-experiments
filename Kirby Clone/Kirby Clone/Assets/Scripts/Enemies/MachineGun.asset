@@ -18,7 +18,7 @@ MonoBehaviour:
     m_Bits: 1024
   attack: 10
   forceImpulse: 5
-  shootForce: 20
+  shootForce: 15
   health: 50
   level: 1
   groundLayerMask:

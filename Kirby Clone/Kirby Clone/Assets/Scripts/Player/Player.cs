@@ -10,6 +10,7 @@ public class Player : ScriptableObject
     [Header("Health Stats")]
     public int health;
     public int lives;
+    public GameObject deathParticles;
 
     [Space]
     [Header("Movement Stats")]

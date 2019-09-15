@@ -9,6 +9,9 @@ public class PlayerStats : MonoBehaviour
     
     public GameEvent updateLives;
     public GameEvent gameOverEvent;
+    public GameEvent playerDeathEvent;
+
+    public GameObject playerDamageParticles;
 
     private float maxHealth;
     private float currentHealth;
@@ -59,6 +62,8 @@ public class PlayerStats : MonoBehaviour
             return;
         }
 
+        Instantiate(player.deathParticles, transform.position, Quaternion.identity);
+
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         //int damage = player.health;
 
@@ -66,6 +71,8 @@ public class PlayerStats : MonoBehaviour
 
         // we make the player inmune
         isInmune = true;
+
+        playerDeathEvent.Raise();
 
         StartCoroutine(RespawnPlayer());
     }
@@ -79,6 +86,8 @@ public class PlayerStats : MonoBehaviour
 
         isInmune = true;
         SoundManager.instance.Play("Hit");
+
+        Instantiate(playerDamageParticles, transform.position, Quaternion.identity);
 
         currentHealth -= attackEvent.damage;
 
