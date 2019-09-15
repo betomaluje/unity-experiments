@@ -229,18 +229,7 @@ MonoBehaviour:
         PublicKeyToken=null
     responseForSentFloat:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7296589619378446437}
-          m_MethodName: ApplyDamage
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     responseForSentBool:
@@ -262,6 +251,22 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7296589619378446437}
+          m_MethodName: ApplyDamage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
 --- !u!1 &7202187262220624900
 GameObject:

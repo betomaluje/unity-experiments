@@ -22,9 +22,7 @@ public class EnemyController : MonoBehaviour
 		currentHealth = maxHealth;
 
 		rb = GetComponent<Rigidbody2D>();
-        healthBar = transform.Find("HealthBar").GetComponent<HealthBar>();
-
-        //healthBar.gameObject.SetActive(false);
+        healthBar = transform.Find("HealthBar").GetComponent<HealthBar>();        
     }
 
     void OnDrawGizmos()
@@ -80,8 +78,10 @@ public class EnemyController : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
 		{
 			StartCoroutine(PushPlayer(other.gameObject));
-			hitPlayerEvent.sentInt = enemy.attack;
-			hitPlayerEvent.Raise();
+
+            float damage = Random.Range(1, 10);
+            hitPlayerEvent.sentAttackEvent = new AttackEvent(other.gameObject, enemy.attack);
+            hitPlayerEvent.Raise();
 		}        
 		else if (other.gameObject.CompareTag("Bullet"))
 		{
@@ -109,10 +109,15 @@ public class EnemyController : MonoBehaviour
 		yield return new WaitForSeconds(0.2f);
 	}
 
-	public void ApplyDamage(float damage)
+	public void ApplyDamage(AttackEvent attackEvent)
 	{
+        if (attackEvent.target != gameObject)
+        {
+            return;
+        }        
+
 		//healthBar.gameObject.SetActive(true);
-		currentHealth -= damage;
+		currentHealth -= attackEvent.damage;
 
 		if (currentHealth <= 0)
 		{

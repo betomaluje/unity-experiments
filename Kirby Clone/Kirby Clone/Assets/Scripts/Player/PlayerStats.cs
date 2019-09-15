@@ -1,39 +1,41 @@
-﻿using UnityEngine;
+﻿using DG.Tweening;
 using System.Collections;
-using DG.Tweening;
+using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
     public Player player;   
     public Color damageColor = Color.red;
     
-    public GameEvent updateHealth;
     public GameEvent updateLives;
     public GameEvent gameOverEvent;
 
-    private int currentHealth;
+    private float maxHealth;
+    private float currentHealth;
     private int currentLives;
 
     private Vector3 initialPosition;
 
     private bool isInmune = false;
 
-    private Rigidbody2D rb;   
+    private Rigidbody2D rb;
+    private HealthBar healthBar;
 
     private void Start()
     {
-        currentLives = player.lives;
+        currentLives = player.lives;        
+        
+        healthBar = transform.Find("HealthBar").GetComponent<HealthBar>();
+        rb = GetComponent<Rigidbody2D>();
 
         ResetHealth();
-
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void ResetHealth()
     {
+        maxHealth = player.health;
         currentHealth = player.health;
-        updateHealth.sentInt = currentHealth;
-        updateHealth.Raise();
+        healthBar.setHealth(currentHealth / maxHealth);
     }
 
     private void Update()
@@ -58,9 +60,9 @@ public class PlayerStats : MonoBehaviour
         }
 
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        int damage = player.health;
+        //int damage = player.health;
 
-        applyDamage(damage);
+        //applyDamage(player.health);
 
         // we make the player inmune
         isInmune = true;
@@ -68,9 +70,9 @@ public class PlayerStats : MonoBehaviour
         StartCoroutine(RespawnPlayer());
     }
 
-    public void applyDamage(int damage)
+    public void ApplyDamage(AttackEvent attackEvent)
     {
-        if (isInmune)
+        if (isInmune || attackEvent.target != gameObject)
         {
             return;
         }
@@ -78,10 +80,10 @@ public class PlayerStats : MonoBehaviour
         isInmune = true;
         SoundManager.instance.Play("Hit");
 
-        currentHealth -= damage;
+        currentHealth -= attackEvent.damage;
 
-        updateHealth.sentInt = currentHealth;
-        updateHealth.Raise();        
+        healthBar.setHealth(currentHealth / maxHealth);
+        isInmune = false;
     }
 
     public void applyHealth(int health)
@@ -91,7 +93,7 @@ public class PlayerStats : MonoBehaviour
             return;
         }
 
-        int tempHealth = currentHealth + health;
+        float tempHealth = currentHealth + health;
 
         if (tempHealth > player.health)
         {
@@ -100,8 +102,7 @@ public class PlayerStats : MonoBehaviour
 
         currentHealth = tempHealth;
 
-        updateHealth.sentInt = currentHealth;
-        updateHealth.Raise();
+        healthBar.setHealth(currentHealth / maxHealth);
     }
 
     private IEnumerator RespawnPlayer()

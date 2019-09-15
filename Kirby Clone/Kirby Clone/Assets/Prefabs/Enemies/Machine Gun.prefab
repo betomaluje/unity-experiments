@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3123985113187881652}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.25, y: 0, z: 0}
+  m_LocalPosition: {x: 0.381, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3123985114099236408}
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 3123985113187881651}
-  shootingObject: {fileID: 3454747716415271606, guid: ccd2b5771fb8e4f4f8ade1bc69827480,
+  shootingObject: {fileID: 3454747716415271606, guid: 4bd9db56fc727804da4b880d077d7cfe,
     type: 3}
   timeBetweenBullets: 1
   collisionRadius: 7
@@ -437,18 +437,7 @@ MonoBehaviour:
         PublicKeyToken=null
     responseForSentFloat:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3123985114409641327}
-          m_MethodName: ApplyDamage
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     responseForSentBool:
@@ -470,6 +459,22 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3123985114409641327}
+          m_MethodName: ApplyDamage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
 --- !u!1001 &708868622270441576
 PrefabInstance:

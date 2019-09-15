@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 2238098225927881837}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &97891367
 SpriteRenderer:
@@ -110,7 +110,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 2238098225927881837}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &420692922
 SpriteRenderer:
@@ -191,7 +191,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 2238098225927881837}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &495476686
 SpriteRenderer:
@@ -271,7 +271,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 2238098225927881837}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &534142152
 SpriteRenderer:
@@ -352,7 +352,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 2238098225927881837}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &639962404
 SpriteRenderer:
@@ -414,16 +414,17 @@ GameObject:
   m_Component:
   - component: {fileID: 2238098225927881837}
   - component: {fileID: 4516464492753421148}
+  - component: {fileID: 8229555263504848347}
   - component: {fileID: 2238098225927881836}
   - component: {fileID: 3494302512829859384}
   - component: {fileID: 1453202539748331960}
   - component: {fileID: 7514671764700412713}
   - component: {fileID: 5209775327932575301}
+  - component: {fileID: 3494302513661398575}
   - component: {fileID: 4387318279323264409}
   - component: {fileID: 8012845928873163817}
-  - component: {fileID: 3494302513661398575}
-  - component: {fileID: 3418535469488039716}
   - component: {fileID: 1392765971}
+  - component: {fileID: 3418535469488039716}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -442,6 +443,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 0}
   m_Children:
+  - {fileID: 3470589026081259812}
   - {fileID: 2238098226708556286}
   - {fileID: 1736247262270115576}
   - {fileID: 420692921}
@@ -463,6 +465,22 @@ CapsuleCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.12}
+  m_Size: {x: 0.35, y: 1.25}
+  m_Direction: 0
+--- !u!70 &8229555263504848347
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238098225927881839}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.12}
@@ -539,7 +557,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 11400000, guid: ee7a177a2d1844ca59f4f33c7a795e32, type: 2}
   damageColor: {r: 0.6132076, g: 0, b: 0, a: 1}
-  updateHealth: {fileID: 11400000, guid: 3d8247cebb1da4d78adb4a1618b0d417, type: 2}
   updateLives: {fileID: 11400000, guid: 8ca6c36a38a3b42b5ada8c0d9fd9dd2e, type: 2}
   gameOverEvent: {fileID: 11400000, guid: b6a6d4e9e8d7b41d8aa0fecdce9a9c16, type: 2}
 --- !u!114 &5209775327932575301
@@ -555,6 +572,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxJumps: 2
+--- !u!114 &3494302513661398575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238098225927881839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361c28782fd3c0444823dfed288ae855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_JumpForce: 20
+  m_CrouchSpeed: 0.36
+  m_MovementSmoothing: 0.05
+  m_AirControl: 1
+  m_CrouchDisableCollider: {fileID: 0}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnCrouchEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: CharacterController2D+BoolEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  doNotFlipThis:
+  - {fileID: 3470589026081259835}
 --- !u!114 &4387318279323264409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -594,7 +640,7 @@ MonoBehaviour:
   targetColor: {r: 0, g: 0.7010541, b: 1, a: 1}
   itemGameObjectPosition: {fileID: 1736247262270115576}
   throwForce: 5
---- !u!114 &3494302513661398575
+--- !u!114 &1392765971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -603,24 +649,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2238098225927881839}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 361c28782fd3c0444823dfed288ae855, type: 3}
+  m_Script: {fileID: 11500000, guid: 55d96a232bd7d404da8c8753ada7ca51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_JumpForce: 20
-  m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
-  m_AirControl: 1
-  m_CrouchDisableCollider: {fileID: 0}
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnCrouchEvent:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: CharacterController2D+BoolEvent, Assembly-CSharp, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &3418535469488039716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +718,11 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   - name: Remove Skill
     gameEvent: {fileID: 11400000, guid: 6bfb042674f87354f9747fc73765867d, type: 2}
     response:
@@ -739,6 +775,11 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   - name: Horizontal Move
     gameEvent: {fileID: 11400000, guid: 13024cde2e0064e45a89c28f7cf5dbf8, type: 2}
@@ -793,6 +834,11 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   - name: Vertical Move
     gameEvent: {fileID: 11400000, guid: 0fb1fd20af6733242adb761a542b1637, type: 2}
     response:
@@ -845,6 +891,11 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   - name: Jump
     gameEvent: {fileID: 11400000, guid: 5b408ab2da1986d4e96edc244f34a57c, type: 2}
@@ -899,18 +950,69 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
---- !u!114 &1392765971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2238098225927881839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55d96a232bd7d404da8c8753ada7ca51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - name: Recieve Damage
+    gameEvent: {fileID: 11400000, guid: 647388f749b9b704cadd883998ca467a, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7514671764700412713}
+          m_MethodName: ApplyDamage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!1 &2238098226708556287
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,7 +1041,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2238098225927881837}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8844538876871103101
 GameObject:
@@ -969,5 +1071,101 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2238098225927881837}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &9165086745775008464
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2238098225927881837}
+    m_Modifications:
+    - target: {fileID: 5700131623865822187, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6666667
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc32bd9bf1ff7014d878a85ae3a2482c, type: 3}
+--- !u!4 &3470589026081259812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9165086745775008464}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3470589026081259835 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5700131623865822187, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9165086745775008464}
+  m_PrefabAsset: {fileID: 0}

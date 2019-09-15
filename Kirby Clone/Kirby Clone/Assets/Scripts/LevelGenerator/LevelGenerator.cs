@@ -40,14 +40,17 @@ public class LevelGenerator : MonoBehaviour
             if (colorMapping.color.Equals(pixelColor))
             {
                 Vector2 position = new Vector2(x, y);
-                GameObject theNewObject = colorMapping.prefab;
+                GameObject prefabObject = colorMapping.prefab;
 
-                if (theNewObject == null)
+                if (prefabObject == null)
                 {
                     break;
                 }
 
-                SpriteRenderer sr = Instantiate(theNewObject, position, Quaternion.identity, transform).GetComponent<SpriteRenderer>();
+                GameObject theNewObject = Instantiate(prefabObject, position, Quaternion.identity, transform);
+
+                SpriteRenderer sr = theNewObject.GetComponent<SpriteRenderer>();
+
                 if (sr != null)
                 {
                     sr.sortingOrder = colorMapping.orderInLayer;
@@ -56,7 +59,10 @@ public class LevelGenerator : MonoBehaviour
                 if (theNewObject.CompareTag("Player"))
                 {
                     // need to move the proper gameobjects already instantiated instead of instantiate them again                    
-                    vcam.Follow = sr.gameObject.transform;
+                    vcam.Follow = theNewObject.gameObject.transform;
+
+                    PlayerStats ps = theNewObject.GetComponent<PlayerStats>();
+                    ps.SetPlayersPosition(position);
                 }
 
                 break;

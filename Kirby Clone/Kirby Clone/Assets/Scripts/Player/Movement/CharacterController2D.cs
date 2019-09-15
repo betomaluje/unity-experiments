@@ -31,6 +31,8 @@ public class CharacterController2D : MonoBehaviour
 
     private CollisionDetector collision;
 
+    public GameObject[] doNotFlipThis;
+
     private void Awake()
     {
         m_Rigidbody2D = GetComponent<Rigidbody2D>();
@@ -119,13 +121,17 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-
     private void Flip()
     {
         // Switch the way the player is labelled as facing.
         m_FacingRight = !m_FacingRight;
         
         transform.Rotate(0f, 180f, 0f);
+
+        foreach (var ob in doNotFlipThis)
+        {
+            ob.transform.Rotate(0f, 180f, 0f);
+        }
     }
 
     public bool isFacingRight()

@@ -143,7 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15a317b878672454a93c7dc1b256e1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTag: Enemy
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
   hitEvent: {fileID: 11400000, guid: 38f72ecd810908a4694e0b9d200f59f2, type: 2}
 --- !u!61 &455003112954324680
 BoxCollider2D:
