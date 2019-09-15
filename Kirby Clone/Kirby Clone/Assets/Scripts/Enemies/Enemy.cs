@@ -12,6 +12,8 @@ public class Enemy : ScriptableObject
     public int attack = 10;
     [Range(1, 10)]
     public float forceImpulse = 5;
+    [Range(1, 50)]
+    public float shootForce = 5;
 
     [Space]
     [Header("Health Stats")]

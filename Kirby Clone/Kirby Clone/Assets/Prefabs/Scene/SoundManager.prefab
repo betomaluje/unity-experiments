@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8206034160212740438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8206034160212740436}
+  - component: {fileID: 8206034160212740439}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8206034160212740436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206034160212740438}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -38.569935, y: 14.68971, z: -7700.964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8206034160212740439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8206034160212740438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed8d3b93c67aea3408ba392961f61756, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: BazookaShoot
+    clip: {fileID: 8300000, guid: 9952b9202ba4c8540b308db4b888bccf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BazookaExplosion
+    clip: {fileID: 8300000, guid: 7e4cd3270581e574d8fe585485b00fd6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GunShoot
+    clip: {fileID: 8300000, guid: 9f9cf93845abcb249affbe20cb2ff233, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GunExplosion
+    clip: {fileID: 8300000, guid: 7e4cd3270581e574d8fe585485b00fd6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GrenadeExplosion
+    clip: {fileID: 8300000, guid: 7e4cd3270581e574d8fe585485b00fd6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GrenadeShoot
+    clip: {fileID: 8300000, guid: 9952b9202ba4c8540b308db4b888bccf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MineShoot
+    clip: {fileID: 8300000, guid: bcab845210aa0a84c9624ca309beaa66, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: MineExplosion
+    clip: {fileID: 8300000, guid: 7e4cd3270581e574d8fe585485b00fd6, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: 971b9852f9a25f84ba5ae1a33cfac86f, type: 3}
+    volume: 0.3
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Dash
+    clip: {fileID: 8300000, guid: 7e9b2ff455449184e8a8f105063b2e90, type: 3}
+    volume: 1
+    pitch: 0.5
+    loop: 0
+    source: {fileID: 0}
+  - name: BoxExplosion
+    clip: {fileID: 8300000, guid: 983508b05fd71e646b7a189b2bc2d1af, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BoxPickup
+    clip: {fileID: 8300000, guid: 0ce79e298e2ff4049995ed8eb5db7e26, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: BoxThrow
+    clip: {fileID: 8300000, guid: 150dbfbaf75d2a045ba98432fe9f43b8, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Hit
+    clip: {fileID: 8300000, guid: cd56d1c7662579b46ab397c166626df4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: SuperSaiyan
+    clip: {fileID: 8300000, guid: 9e4ac6ffebdf4a24398ce88bdffb0dbc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WeaponPickup
+    clip: {fileID: 8300000, guid: fe0c1590096bf5548aa8e1dd357539eb, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: ItemDrop
+    clip: {fileID: 8300000, guid: cba96e9b6946d4383ab9d71626ee8b79, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}

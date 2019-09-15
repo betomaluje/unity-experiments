@@ -6,7 +6,7 @@ public class CollisionDetector : MonoBehaviour
     public LayerMask groundLayer;
 
 	//[HideInInspector]
-    public bool onGround;        
+    public bool onGround;
 
     [Space]
     [Header("Collision")]
