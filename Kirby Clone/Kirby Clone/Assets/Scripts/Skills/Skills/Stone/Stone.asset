@@ -18,4 +18,4 @@ MonoBehaviour:
     type: 3}
   throwableObject: {fileID: 3454747716415271606, guid: ccd2b5771fb8e4f4f8ade1bc69827480,
     type: 3}
-  speed: 8
+  speed: 20

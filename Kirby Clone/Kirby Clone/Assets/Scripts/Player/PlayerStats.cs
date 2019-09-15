@@ -18,18 +18,11 @@ public class PlayerStats : MonoBehaviour
 
     private bool isInmune = false;
 
-    private Rigidbody2D rb;
-
-    // changing colors
-    private Color originalColor;
-    private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb;   
 
     private void Start()
     {
         currentLives = player.lives;
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        originalColor = spriteRenderer.color;
 
         ResetHealth();
 
@@ -88,9 +81,7 @@ public class PlayerStats : MonoBehaviour
         currentHealth -= damage;
 
         updateHealth.sentInt = currentHealth;
-        updateHealth.Raise();
-
-        StartCoroutine(FlashSprite());
+        updateHealth.Raise();        
     }
 
     public void applyHealth(int health)
@@ -111,23 +102,6 @@ public class PlayerStats : MonoBehaviour
 
         updateHealth.sentInt = currentHealth;
         updateHealth.Raise();
-    }
-
-    private IEnumerator FlashSprite()
-    {
-        spriteRenderer.material.color = Color.white;
-        Color blinkColor = new Color(255, 255, 255, 0.5f); //set a translucent version of the sprite
-
-        for (int n = 0; n < 3; n++)
-        {
-            yield return new WaitForSeconds(0.1f);
-            spriteRenderer.color = damageColor;
-            yield return new WaitForSeconds(0.1f);
-            spriteRenderer.color = blinkColor;
-        }
-
-        spriteRenderer.color = originalColor;
-        isInmune = false;
     }
 
     private IEnumerator RespawnPlayer()

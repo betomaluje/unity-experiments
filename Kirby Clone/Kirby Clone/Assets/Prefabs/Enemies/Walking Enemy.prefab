@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2138181393448072260}
   - component: {fileID: 734618415704357120}
   - component: {fileID: 7296589619378446437}
+  - component: {fileID: 814248001}
   m_Layer: 13
   m_Name: Walking Enemy
   m_TagString: Enemy
@@ -34,6 +35,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4632083033942381278}
+  - {fileID: 5700131622835947422}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -195,6 +197,72 @@ MonoBehaviour:
   damageParticles: {fileID: 521060649499949032, guid: 1f091041655f9504c862c83151f10a51,
     type: 3}
   hitPlayerEvent: {fileID: 11400000, guid: 647388f749b9b704cadd883998ca467a, type: 2}
+--- !u!114 &814248001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4395569537703033183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa20a44e3f3fe4a80b9655e35ebcc15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: Damage Taken
+    gameEvent: {fileID: 11400000, guid: 38f72ecd810908a4694e0b9d200f59f2, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7296589619378446437}
+          m_MethodName: ApplyDamage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!1 &7202187262220624900
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,3 +293,78 @@ Transform:
   m_Father: {fileID: 4395569537703033155}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1298508906
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4395569537703033155}
+    m_Modifications:
+    - target: {fileID: 5700131623865822187, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc32bd9bf1ff7014d878a85ae3a2482c, type: 3}
+--- !u!4 &5700131622835947422 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1298508906}
+  m_PrefabAsset: {fileID: 0}
