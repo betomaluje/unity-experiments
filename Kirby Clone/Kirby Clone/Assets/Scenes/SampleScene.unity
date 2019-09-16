@@ -645,7 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f8431c76c744c739b0d56f7f103537, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  map: {fileID: 2800000, guid: 29a7b91eba3c3244d8ffcc30eece88e4, type: 3}
+  map: {fileID: 2800000, guid: ccc8d8ebab7ae4cd9aa886cf401b4be4, type: 3}
   vcam: {fileID: 750251408}
   colorMappings:
   - {fileID: 11400000, guid: 5170b6247e7a64ca89f3937e7a940098, type: 2}
