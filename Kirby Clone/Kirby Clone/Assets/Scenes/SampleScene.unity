@@ -468,6 +468,8 @@ GameObject:
   m_Component:
   - component: {fileID: 750251409}
   - component: {fileID: 750251408}
+  - component: {fileID: 750251411}
+  - component: {fileID: 750251410}
   m_Layer: 0
   m_Name: CM vcam1
   m_TagString: Untagged
@@ -527,6 +529,93 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &750251410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750251407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa20a44e3f3fe4a80b9655e35ebcc15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: Camera Shake
+    gameEvent: {fileID: 11400000, guid: 647388f749b9b704cadd883998ca467a, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 750251411}
+          m_MethodName: ShakeIt
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+--- !u!114 &750251411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750251407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb35a9711c1144d64b734441f7805594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.3
+  shakeAmplitude: 4
+  shakeFrequency: 2
+  virtualCamera: {fileID: 750251408}
 --- !u!1 &807759312
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,46 +648,16 @@ MonoBehaviour:
   map: {fileID: 2800000, guid: 29a7b91eba3c3244d8ffcc30eece88e4, type: 3}
   vcam: {fileID: 750251408}
   colorMappings:
-  - color: {r: 0, g: 0, b: 0, a: 1}
-    prefab: {fileID: 9020380262479714629, guid: bee2d62523bc00146b70d71e5c3a6ad8,
-      type: 3}
-    orderInLayer: 0
-  - color: {r: 0, g: 1, b: 0, a: 1}
-    prefab: {fileID: 8460516471880973217, guid: c73375d44745aa945a37e02459c50015,
-      type: 3}
-    orderInLayer: 0
-  - color: {r: 0, g: 0, b: 1, a: 1}
-    prefab: {fileID: 2238098225927881839, guid: 5a33a344988ee5b47afd139453af0512,
-      type: 3}
-    orderInLayer: 10
-  - color: {r: 0, g: 1, b: 0.9098039, a: 1}
-    prefab: {fileID: 4986480442839799539, guid: 0493e80be432eba49b8559bfeb10cdda,
-      type: 3}
-    orderInLayer: 0
-  - color: {r: 1, g: 0, b: 0, a: 1}
-    prefab: {fileID: 4017784532258250920, guid: bf19996467175364da2d792a2afeb73d,
-      type: 3}
-    orderInLayer: 0
-  - color: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 1}
-    prefab: {fileID: 2542836591563080992, guid: e0caef4af35c87840b28fd4d8ec83564,
-      type: 3}
-    orderInLayer: 1
-  - color: {r: 0, g: 1, b: 0.65882355, a: 1}
-    prefab: {fileID: 7211686627563588890, guid: 716b34c7763357e4eb0d0e15ee3adcab,
-      type: 3}
-    orderInLayer: 1
-  - color: {r: 0.02745098, g: 0.54901963, b: 0, a: 1}
-    prefab: {fileID: 4395569537703033183, guid: 3ffe5be58a19df844978b5e4cdce2bab,
-      type: 3}
-    orderInLayer: 1
-  - color: {r: 0.5803922, g: 0, b: 0.16470589, a: 1}
-    prefab: {fileID: 3123985114409641313, guid: 6eb76007680d2bb4aa705cc8219bd148,
-      type: 3}
-    orderInLayer: 1
-  - color: {r: 0.90588236, g: 0.39607844, b: 0.47058824, a: 1}
-    prefab: {fileID: 3824167616330406326, guid: 4e5d80fa173c7a741aa0e1e1da4ab0b0,
-      type: 3}
-    orderInLayer: 0
+  - {fileID: 11400000, guid: 5170b6247e7a64ca89f3937e7a940098, type: 2}
+  - {fileID: 11400000, guid: 498b47b88c9b94cbe94ddd6060d00af9, type: 2}
+  - {fileID: 11400000, guid: 9b1c77f701e004f76a4909ad446b5f25, type: 2}
+  - {fileID: 11400000, guid: b7fe3c7a7dcc24626851dcc129b6b9ab, type: 2}
+  - {fileID: 11400000, guid: 30de0598bf1954f599bc6c5753b8b929, type: 2}
+  - {fileID: 11400000, guid: 4db4c68b1c58b417b92df20d58aa15a3, type: 2}
+  - {fileID: 11400000, guid: 25fb7f457f55847da8b1b3bb71fe0d86, type: 2}
+  - {fileID: 11400000, guid: 4f9ea29cf600b4e8094eda2f33bda8c9, type: 2}
+  - {fileID: 11400000, guid: 6e33c4e350fc840c68c411ad12bf59ad, type: 2}
+  - {fileID: 11400000, guid: d4c2e028106954eec879ec6d05c3f6e8, type: 2}
 --- !u!4 &807759314
 Transform:
   m_ObjectHideFlags: 0
@@ -704,6 +763,7 @@ GameObject:
   - component: {fileID: 919967997}
   - component: {fileID: 919968000}
   - component: {fileID: 919967998}
+  - component: {fileID: 919967999}
   m_Layer: 0
   m_Name: cm
   m_TagString: Untagged
@@ -766,6 +826,22 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
+--- !u!114 &919967999
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919967996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bb026fafb42b14791938953eaace77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
+  m_AmplitudeGain: 1
+  m_FrequencyGain: 1
+  mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!114 &919968000
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -1187,6 +1263,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3454747716415271606, guid: 4bd9db56fc727804da4b880d077d7cfe,
         type: 3}
+    - target: {fileID: 3123985114099236389, guid: 6eb76007680d2bb4aa705cc8219bd148,
+        type: 3}
+      propertyPath: detectRadius
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 3123985113187881651, guid: 6eb76007680d2bb4aa705cc8219bd148,
         type: 3}
       propertyPath: m_LocalPosition.x

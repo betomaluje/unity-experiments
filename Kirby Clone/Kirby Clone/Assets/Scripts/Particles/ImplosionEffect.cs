@@ -8,16 +8,16 @@ public class ImplosionEffect : MonoBehaviour
 
     [HideInInspector] public ImplosionListener callback;
 
-    private ParticleSystem particleSystem;
+    private ParticleSystem implosionParticles;
     private ParticleSystem.Particle[] particles;
 
     // Start is called before the first frame update
     void Start()
     {
-        particleSystem = GetComponent<ParticleSystem>();
+        implosionParticles = GetComponent<ParticleSystem>();
 
-        if (particles == null || particles.Length < particleSystem.main.maxParticles)
-            particles = new ParticleSystem.Particle[particleSystem.main.maxParticles];
+        if (particles == null || particles.Length < implosionParticles.main.maxParticles)
+            particles = new ParticleSystem.Particle[implosionParticles.main.maxParticles];
 
         StartCoroutine(ReverseSpeed());
     }
@@ -32,7 +32,7 @@ public class ImplosionEffect : MonoBehaviour
         yield return new WaitForSeconds(timeToReverse);
 
         // GetParticles is allocation free because we reuse the m_Particles buffer between updates
-        int numParticlesAlive = particleSystem.GetParticles(particles);
+        int numParticlesAlive = implosionParticles.GetParticles(particles);
 
         // Change only the particles that are alive
         for (int i = 0; i < numParticlesAlive; i++)
@@ -41,10 +41,10 @@ public class ImplosionEffect : MonoBehaviour
         }
 
         // Apply the particle changes to the Particle System
-        particleSystem.SetParticles(particles, numParticlesAlive);
+        implosionParticles.SetParticles(particles, numParticlesAlive);
 
         yield return new WaitForSeconds(0.1f);
-        var main = particleSystem.main;
+        var main = implosionParticles.main;
         main.simulationSpeed = 0;
         Destroy(gameObject);
 
