@@ -30,7 +30,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
 
         Gizmos.DrawLine(groundDetection.position, groundDetection.position + groundDetection.transform.right * 0.8f);
-        Gizmos.DrawLine(groundDetection.position, groundDetection.position +  groundDetection.transform.up * -1 * 0.8f);        
+        Gizmos.DrawLine(groundDetection.position, groundDetection.position +  groundDetection.transform.up * -1 * 0.8f);
     }
 
     private void Update()

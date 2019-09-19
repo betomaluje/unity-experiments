@@ -11,16 +11,19 @@ public class CollisionDetector : MonoBehaviour
     [Space]
     [Header("Collision")]
     public float collisionRadius = 0.25f;
-    public Vector2 bottomOffset, wallOffset;
+    public Vector2 wallOffset;
 
-	void Update()
+    public Transform groundDetection;
+
+    void Update()
     {
-		onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);        
+        onGround = Physics2D.Raycast(groundDetection.position, Vector2.down, collisionRadius, groundLayer);
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere((Vector2)transform.position  + bottomOffset, collisionRadius);
+
+        Gizmos.DrawLine(groundDetection.position, groundDetection.position + groundDetection.transform.up * -1 * collisionRadius);
     }
 }

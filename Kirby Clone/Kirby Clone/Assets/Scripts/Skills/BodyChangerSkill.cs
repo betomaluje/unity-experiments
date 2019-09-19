@@ -6,6 +6,7 @@ using DG.Tweening;
 public class BodyChangerSkill : Skill
 {
     public float finalScale;
+    public float finalMass;
     public float originalScale;
     public float timeForPower;
 
@@ -29,10 +30,10 @@ public class BodyChangerSkill : Skill
 
     public override IEnumerator performCorroutineSkill(int direction)
     {
-        ChangeMass(finalScale);
+        ChangeMass(finalMass);
         targetObject.transform.DOScale(finalScale, 0.5f);
         yield return new WaitForSeconds(timeForPower);
-        ChangeMass(originalMass);
+        ChangeMass(originalMass);        
         targetObject.transform.DOScale(originalScale, 0.5f);
     }    
 
@@ -47,6 +48,6 @@ public class BodyChangerSkill : Skill
         if (rb != null)
         {
             rb.mass = mass;
-        }
+        }        
     }
 }
