@@ -18,6 +18,7 @@ public class Bullet : MonoBehaviour
 
         // we destroy this bullet
         Destroy(gameObject);
+        SoundManager.instance.Play("BulletExplosion");
     }
 
     private bool CheckLayerMask(GameObject target)

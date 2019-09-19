@@ -259,13 +259,9 @@ MonoBehaviour:
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Cinemachine.CinemachineBrain+BrainEvent, Cinemachine, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -544,8 +540,6 @@ MonoBehaviour:
     m_OnCameraLive:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: Cinemachine.CinemachineBrain+VcamActivatedEvent, Cinemachine, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 919967997}
 --- !u!4 &750251409
@@ -592,48 +586,30 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     responseForSentString:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentInt:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentFloat:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentBool:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentVector2:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentVector3:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseWithGameObject:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseWithAttackEvent:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
 --- !u!114 &750251411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -960,6 +936,121 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[8].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dfdedb5081b40aa4bae674948fd51aa4, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: Jump
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: dfdedb5081b40aa4bae674948fd51aa4, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: Absorb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 41137988cbc31184a90a5dda35367e12, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[2].name
+      value: Throw
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: aa41a3e11b891b442956842bd3af3662, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[3].name
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[3].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 32409b02390a7494b9c7e3dd37b9b3e8, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[4].name
+      value: StartAbsorb
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[4].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: d16208d98bdad0941916c2030dff2fd3, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[4].pitch
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[4].volume
+      value: 0.461
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[5].name
+      value: BulletExplosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: fcb80d5890a47d845910039f71d9caaa, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[5].volume
+      value: 0.461
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[5].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[6].name
+      value: Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[6].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f7a3c77787836a4098fb9c933c65498, type: 3}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[6].volume
+      value: 0.461
+      objectReference: {fileID: 0}
+    - target: {fileID: 8206034160212740439, guid: 9268d9bf29398f34589bb7771d5f355a,
+        type: 3}
+      propertyPath: sounds.Array.data[6].pitch
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9268d9bf29398f34589bb7771d5f355a, type: 3}

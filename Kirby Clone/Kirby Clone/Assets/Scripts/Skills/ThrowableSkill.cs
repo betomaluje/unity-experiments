@@ -27,6 +27,8 @@ public class ThrowableSkill : Skill
             rb.AddForce(new Vector2(speed * direction, 0), ForceMode2D.Impulse);
             Destroy(rb.gameObject, 1f);
         }
+
+        SoundManager.instance.Play("Shoot");
     }
 
     public override IEnumerator performCorroutineSkill(int direction)

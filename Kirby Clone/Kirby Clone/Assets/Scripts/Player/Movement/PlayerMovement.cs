@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnJump()
     {
         isJumping = true;
+        SoundManager.instance.Play("Jump");
     }
 
     #endregion

@@ -42,7 +42,7 @@ public class ShootRepeatBullet : MonoBehaviour
         if (rb != null)
         {
             rb.AddForce(transform.right * shootForce, ForceMode2D.Impulse);        
-        }
+        }        
 
         yield return new WaitForSeconds(timeBetweenBullets);
         isOnTarget = false;

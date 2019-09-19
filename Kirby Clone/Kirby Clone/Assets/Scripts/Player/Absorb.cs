@@ -133,8 +133,9 @@ public class Absorb : MonoBehaviour
             absorbObject = onGrabRight.gameObject;
 
             Debug.Log("We absorb the item: " + absorbObject.name);
+            SoundManager.instance.Play("StartAbsorb"); 
 
-            objectAbsorbed = true;            
+        objectAbsorbed = true;            
 
             GameObject item = absorbObject;
 
@@ -168,6 +169,8 @@ public class Absorb : MonoBehaviour
                 rb.AddForce(new Vector2(throwForce * direction, 0), ForceMode2D.Impulse);                
             }
 
+            SoundManager.instance.Play("Throw");
+
             RemoveItems();            
         }
     }
@@ -179,6 +182,7 @@ public class Absorb : MonoBehaviour
         if (container != null)
         {
             skillsManager.AddSkill(container.getSkill(), gameObject);
+            SoundManager.instance.Play("Absorb");
         }
 
         item.SetActive(false);
