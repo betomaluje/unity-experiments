@@ -4,7 +4,9 @@ using Cinemachine;
 public class LevelGenerator : MonoBehaviour
 {
     public Texture2D map;
-    public CinemachineVirtualCamera vcam;
+    //public CinemachineVirtualCamera vcam;
+
+    public float displacement = 3.5f;
 
     public ColorToPrefab[] colorMappings;    
 
@@ -39,7 +41,7 @@ public class LevelGenerator : MonoBehaviour
         {
             if (colorMapping.color.Equals(pixelColor))
             {
-                Vector2 position = new Vector2(x, y);
+                Vector2 position = new Vector2(x - displacement, y - displacement);
                 GameObject prefabObject = colorMapping.prefab;
 
                 if (prefabObject == null)
@@ -47,7 +49,8 @@ public class LevelGenerator : MonoBehaviour
                     break;
                 }
 
-                GameObject theNewObject = Instantiate(prefabObject, position, Quaternion.identity, transform);
+                GameObject theNewObject = Instantiate(prefabObject, transform.position, Quaternion.identity, transform);
+                theNewObject.transform.localPosition = position;
 
                 SpriteRenderer sr = theNewObject.GetComponent<SpriteRenderer>();
 
@@ -59,7 +62,7 @@ public class LevelGenerator : MonoBehaviour
                 if (theNewObject.CompareTag("Player"))
                 {
                     // need to move the proper gameobjects already instantiated instead of instantiate them again                    
-                    vcam.Follow = theNewObject.gameObject.transform;
+                    //vcam.Follow = theNewObject.gameObject.transform;
 
                     PlayerStats ps = theNewObject.GetComponent<PlayerStats>();
                     ps.SetPlayersPosition(position);

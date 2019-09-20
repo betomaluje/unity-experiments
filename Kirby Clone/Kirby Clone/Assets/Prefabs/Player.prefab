@@ -615,10 +615,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33024
   onGround: 1
   collisionRadius: 0.2
-  bottomOffset: {x: 0, y: -0.95}
   wallOffset: {x: 0.2, y: 0}
   groundDetection: {fileID: 3794234017871812231}
 --- !u!114 &8012845928873163817
