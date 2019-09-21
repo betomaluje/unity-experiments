@@ -386,9 +386,7 @@ public class RandomLevelGenerator : MonoBehaviour
                 Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
                 yield return new WaitForSeconds(timeBtwSpawn);
             }            
-        }
-
-        Debug.Log("=== 0000000000000000 ===");
+        }        
 
         CheckBorders();       
     }

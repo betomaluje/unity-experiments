@@ -59,15 +59,6 @@ public class LevelGenerator : MonoBehaviour
                     sr.sortingOrder = colorMapping.orderInLayer;
                 }
 
-                if (theNewObject.CompareTag("Player"))
-                {
-                    // need to move the proper gameobjects already instantiated instead of instantiate them again                    
-                    //vcam.Follow = theNewObject.gameObject.transform;
-
-                    PlayerStats ps = theNewObject.GetComponent<PlayerStats>();
-                    ps.SetPlayersPosition(position);
-                }
-
                 break;
             }
         }
