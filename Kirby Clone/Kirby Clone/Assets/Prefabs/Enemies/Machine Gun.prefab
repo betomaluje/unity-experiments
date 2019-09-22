@@ -202,6 +202,7 @@ GameObject:
   - component: {fileID: 3123985114099236391}
   - component: {fileID: 3123985114099236390}
   - component: {fileID: 3123985114099236389}
+  - component: {fileID: 3274748821707510546}
   m_Layer: 13
   m_Name: Movable
   m_TagString: Untagged
@@ -301,8 +302,61 @@ MonoBehaviour:
   shootingObject: {fileID: 3454747716415271606, guid: 4bd9db56fc727804da4b880d077d7cfe,
     type: 3}
   timeBetweenBullets: 1.5
-  detectRadius: 6
+  detectRadius: 5
   radius: {x: 0, y: 0}
+--- !u!114 &3274748821707510546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3123985114099236409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa20a44e3f3fe4a80b9655e35ebcc15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: First Room Created
+    gameEvent: {fileID: 11400000, guid: f30a309fd5b2d8546bc7fffd89058e13, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 3123985114099236390}
+          m_MethodName: SetObjectToLookUp
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &3123985114409641313
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,43 +477,27 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     responseForSentString:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentInt:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentFloat:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentBool:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentVector2:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentVector3:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseWithGameObject:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseWithAttackEvent:
       m_PersistentCalls:
         m_Calls:
@@ -474,8 +512,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
 --- !u!1001 &708868622270441576
 PrefabInstance:
   m_ObjectHideFlags: 0

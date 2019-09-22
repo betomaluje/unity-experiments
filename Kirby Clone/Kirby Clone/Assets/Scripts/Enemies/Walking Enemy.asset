@@ -18,12 +18,14 @@ MonoBehaviour:
     m_Bits: 1024
   attack: 10
   forceImpulse: 8.25
+  shootForce: 5
   health: 10
   level: 1
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 256
   speed: 5
-  jumpVelocity: 10
+  shouldJump: 1
+  jumpVelocity: 500
   deathParticles: {fileID: 521060649499949037, guid: 1f091041655f9504c862c83151f10a51,
     type: 3}

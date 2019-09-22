@@ -383,7 +383,7 @@ public class RandomLevelGenerator : MonoBehaviour
             {
                 // we need to spawn a random room here!
                 int randRoom = Random.Range(0, rooms.Length);
-                Instantiate(rooms[randRoom], transform.position, Quaternion.identity);
+                AddRoom(rooms[randRoom]);
                 yield return new WaitForSeconds(timeBtwSpawn);
             }            
         }        

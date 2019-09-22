@@ -48,7 +48,7 @@ public class LevelGenerator : MonoBehaviour
                 {
                     break;
                 }
-
+                
                 GameObject theNewObject = Instantiate(prefabObject, transform.position, Quaternion.identity, transform);
                 theNewObject.transform.localPosition = position;
 

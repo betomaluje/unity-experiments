@@ -24,6 +24,7 @@ public class Enemy : ScriptableObject
     [Header("Movement Stats")]
     public LayerMask groundLayerMask;
     public float speed = 2.0f;
+    public bool shouldJump = true;
     public float jumpVelocity;
 
     [Space]

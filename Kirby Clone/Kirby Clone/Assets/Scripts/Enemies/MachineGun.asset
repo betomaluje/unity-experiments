@@ -25,6 +25,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   speed: 0
+  shouldJump: 0
   jumpVelocity: 0
   deathParticles: {fileID: 521060649499949037, guid: 1f091041655f9504c862c83151f10a51,
     type: 3}

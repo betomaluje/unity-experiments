@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1203774542745419865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1203774542745419863}
+  - component: {fileID: 1203774542745419862}
+  - component: {fileID: 1203774542745419861}
+  - component: {fileID: 1203774542745419860}
+  m_Layer: 0
+  m_Name: Random Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1203774542745419863
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203774542745419865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1203774542745419862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203774542745419865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b051507c9cdf44d988895da232d07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  allPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  rooms:
+  - {fileID: 1140566991869820809, guid: 2e009e83b50e8ed41a98c06c17ce3a16, type: 3}
+  - {fileID: 5703953008359578435, guid: b114f001bbe027842bf60aaf218dd0c4, type: 3}
+  - {fileID: 5781634594749722614, guid: 5e852395500866d4bbf319f37874cc58, type: 3}
+  - {fileID: 4134169508914118864, guid: 6f7abe662106b62458ae4b66022f4695, type: 3}
+  - {fileID: 8104516327052041329, guid: ab9316b170421554ab1525a03653fb0c, type: 3}
+  edgeRooms:
+  - {fileID: 8654920969505984169, guid: baa4e353f79ab4c46a88dbb43d1cfb14, type: 3}
+  - {fileID: 7329732336387490956, guid: c792b769b0cb8c74f875f5b1b675ab92, type: 3}
+  - {fileID: 7648123485335069489, guid: 29538e405913e5d49927e3d33c34f241, type: 3}
+  - {fileID: 6400402790259860009, guid: 6cd287a4633afd64695c4a93c2bdb285, type: 3}
+  - {fileID: 4583964598942637492, guid: 69d91d8066034d0439a0e83946c19163, type: 3}
+  - {fileID: 7326900000721521483, guid: e61f14ecbd9a4264596636892ba8c757, type: 3}
+  - {fileID: 7000311399544986027, guid: f7e8dd6cf5bd57848b036fd98817bf6f, type: 3}
+  - {fileID: 7947093851876133395, guid: f345343af5ae40741b8a87cfd69c45a2, type: 3}
+  startTimeBtwSpawn: 0.1
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 32768
+  whatIsBorder:
+    serializedVersion: 2
+    m_Bits: 65536
+  collisionRadius: 6
+  firstRoomReady: {fileID: 11400000, guid: f30a309fd5b2d8546bc7fffd89058e13, type: 2}
+--- !u!114 &1203774542745419861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203774542745419865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b96e28d50a81a44896c5cef2e37ac48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2238098225927881839, guid: 5a33a344988ee5b47afd139453af0512, type: 3}
+  vcam: {fileID: 0}
+--- !u!114 &1203774542745419860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1203774542745419865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa20a44e3f3fe4a80b9655e35ebcc15a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  eventAndResponses:
+  - name: Initial Player position
+    gameEvent: {fileID: 11400000, guid: f30a309fd5b2d8546bc7fffd89058e13, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1203774542745419861}
+          m_MethodName: SetPlayerInitialPosition
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []

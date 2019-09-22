@@ -14,11 +14,11 @@ public class Bullet : MonoBehaviour
             float damage = Random.Range(1, 10);
             hitEvent.sentAttackEvent = new AttackEvent(hitInfo.gameObject, damage);
             hitEvent.Raise();
-        }
 
-        // we destroy this bullet
-        Destroy(gameObject);
-        SoundManager.instance.Play("BulletExplosion");
+            // we destroy this bullet
+            Destroy(gameObject);
+            SoundManager.instance.Play("BulletExplosion");
+        }       
     }
 
     private bool CheckLayerMask(GameObject target)

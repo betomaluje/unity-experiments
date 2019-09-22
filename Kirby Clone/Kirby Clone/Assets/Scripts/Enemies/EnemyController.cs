@@ -35,7 +35,13 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
 	{
-		RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 0.8f, enemy.groundLayerMask);
+        if (enemy.speed <= 0)
+        {
+            return;
+        }
+
+
+        RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 0.8f, enemy.groundLayerMask);
         RaycastHit2D wallInfo = Physics2D.Raycast(groundDetection.position, Vector2.right, 0.8f, enemy.groundLayerMask);
 
         if (groundInfo.collider == false)

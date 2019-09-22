@@ -197,6 +197,7 @@ MonoBehaviour:
   damageParticles: {fileID: 521060649499949032, guid: 1f091041655f9504c862c83151f10a51,
     type: 3}
   hitPlayerEvent: {fileID: 11400000, guid: 647388f749b9b704cadd883998ca467a, type: 2}
+  startTimeBtw: 5
 --- !u!114 &814248001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -215,43 +216,27 @@ MonoBehaviour:
     response:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
     responseForSentString:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithString, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentInt:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithInt, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentFloat:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithFloat, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentBool:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithBool, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentVector2:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithVector2, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseForSentVector3:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithVector3, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseWithGameObject:
       m_PersistentCalls:
         m_Calls: []
-      m_TypeName: ResponseWithGameObject, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
     responseWithAttackEvent:
       m_PersistentCalls:
         m_Calls:
@@ -266,8 +251,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-      m_TypeName: ResponseWithAttackEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
 --- !u!1 &7202187262220624900
 GameObject:
   m_ObjectHideFlags: 0
