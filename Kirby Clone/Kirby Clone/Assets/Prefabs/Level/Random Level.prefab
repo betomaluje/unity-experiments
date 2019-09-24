@@ -82,7 +82,7 @@ MonoBehaviour:
   - {fileID: 7326900000721521483, guid: e61f14ecbd9a4264596636892ba8c757, type: 3}
   - {fileID: 7000311399544986027, guid: f7e8dd6cf5bd57848b036fd98817bf6f, type: 3}
   - {fileID: 7947093851876133395, guid: f345343af5ae40741b8a87cfd69c45a2, type: 3}
-  startTimeBtwSpawn: 0.1
+  startTimeBtwSpawn: 0
   whatIsRoom:
     serializedVersion: 2
     m_Bits: 32768

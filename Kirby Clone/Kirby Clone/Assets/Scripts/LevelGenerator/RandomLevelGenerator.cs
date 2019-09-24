@@ -68,6 +68,8 @@ public class RandomLevelGenerator : MonoBehaviour
         transform.position = startingPositions[randStartingPos].position;
         Instantiate(rooms[1], transform.position, Quaternion.identity);
 
+        firstRoomPosition = transform.position;
+
         stopPathGeneration = true;
         moveIncrement = Mathf.Abs(startingPositions[0].position.x - startingPositions[1].position.x);        
 
@@ -75,11 +77,7 @@ public class RandomLevelGenerator : MonoBehaviour
         FindLowestY();
         FindLowestX();
 
-        firstRoomPosition = transform.position;
-
         direction = Random.Range(1, 6);
-
-        stopPathGeneration = false;
 
         playerPath = new Hashtable();
     }
@@ -124,6 +122,10 @@ public class RandomLevelGenerator : MonoBehaviour
                 minY = lowestFillingPosition;
             }
         }
+    }
+
+    public void StartGeneratingRoom() {
+        stopPathGeneration = false;
     }
 
     private void Update()
