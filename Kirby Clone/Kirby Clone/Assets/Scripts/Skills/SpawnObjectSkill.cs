@@ -28,6 +28,8 @@ public class SpawnObjectSkill : Skill, ImplosionListener
         {
             implosionEffect.callback = this;
         }
+
+        SoundManager.instance.Play("Wall_1");
     }
 
     public override IEnumerator performCorroutineSkill(int direction)
@@ -50,6 +52,7 @@ public class SpawnObjectSkill : Skill, ImplosionListener
         foreach (var targetObject in targetObjects)
         {
             Instantiate(targetObject, targetPosition, Quaternion.identity);
+            SoundManager.instance.Play("Wall_2");
         }        
     }
 }

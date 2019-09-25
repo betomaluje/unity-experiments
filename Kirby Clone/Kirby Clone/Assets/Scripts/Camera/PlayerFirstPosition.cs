@@ -3,12 +3,16 @@ using Cinemachine;
 
 public class PlayerFirstPosition : MonoBehaviour
 {
-    public GameObject player;
-    public CinemachineVirtualCamera vcam;
+    [SerializeField] private GameObject player;
+    [SerializeField] private CinemachineVirtualCamera vcam;
 
     public void SetPlayerInitialPosition(Vector3 position)
     {
-        GameObject p = Instantiate(player, position, Quaternion.identity);
-        vcam.Follow = p.gameObject.transform;
+        GameObject p = Instantiate(player, position, Quaternion.identity);    
+        SetFollowCamera(p.gameObject.transform);
+    }
+
+    public void SetFollowCamera(Transform t) {
+        vcam.Follow = t;
     }
 }

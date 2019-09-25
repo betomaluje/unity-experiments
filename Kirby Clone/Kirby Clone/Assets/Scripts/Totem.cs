@@ -7,7 +7,7 @@ public class Totem : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Player")) {
-            sceneLoader.LoadNextScene();
+            sceneLoader.LoadScene(sceneToLoad);
         }
     }
 }

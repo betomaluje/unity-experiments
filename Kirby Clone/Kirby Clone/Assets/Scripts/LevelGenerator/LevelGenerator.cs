@@ -3,12 +3,14 @@ using Cinemachine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public Texture2D map;
+    [SerializeField] private bool doesIncludePlayer;
+
+    [SerializeField] private Texture2D map;
     //public CinemachineVirtualCamera vcam;
 
-    public float displacement = 3.5f;
+    [SerializeField] private float displacement = 3.5f;
 
-    public ColorToPrefab[] colorMappings;    
+    [SerializeField] private ColorToPrefab[] colorMappings;
 
     // Use this for initialization
     void Start()
@@ -47,7 +49,7 @@ public class LevelGenerator : MonoBehaviour
                 if (prefabObject == null)
                 {
                     break;
-                }
+                } 
                 
                 GameObject theNewObject = Instantiate(prefabObject, transform.position, Quaternion.identity, transform);
                 theNewObject.transform.localPosition = position;
@@ -58,7 +60,12 @@ public class LevelGenerator : MonoBehaviour
                 {
                     sr.sortingOrder = colorMapping.orderInLayer;
                 }
-
+                
+                if (doesIncludePlayer && theNewObject.CompareTag("Player")) {
+                    PlayerFirstPosition script = GetComponent<PlayerFirstPosition>();
+                    script.SetFollowCamera(theNewObject.transform);
+                }
+                
                 break;
             }
         }

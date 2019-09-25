@@ -18,6 +18,6 @@ MonoBehaviour:
   deathParticles: {fileID: 521060649499949037, guid: 7080fe4a7e76cd047801e97e39940702,
     type: 3}
   speed: 40
-  jumpVelocity: 650
+  jumpVelocity: 750
   fallMultiplier: 11
   lowJumpMultiplier: 2

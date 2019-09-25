@@ -14,11 +14,20 @@ public class RandomLevelGenerator : MonoBehaviour
         Top = 1 << 3        // 001000   8
     }
 
-    public bool shouldBeginInmediatly = false;
+    [Header("General Settings")]
+    [SerializeField] private bool shouldBeginInmediatly = false;
 
-    public Transform[] startingPositions;
+    [SerializeField] private float startTimeBtwSpawn;
+    [SerializeField] private LayerMask whatIsRoom;
+    [SerializeField] private LayerMask whatIsBorder;
+    [SerializeField] private float collisionRadius;
+    [SerializeField] private GameEvent firstRoomReady;
 
-    public Transform[] allPositions;
+    [Space]
+    [Header("Positions")]
+    [SerializeField] private Transform[] startingPositions;
+
+    [SerializeField] private Transform[] allPositions;
 
     /**
      * Normal Rooms direction indexes
@@ -28,7 +37,9 @@ public class RandomLevelGenerator : MonoBehaviour
      * 3 -> LeftRightTop (LRT)
      * 4 -> LeftRightBottomTop (LRBT)
      */
-    public GameObject[] rooms;
+    [Space]
+    [Header("Rooms")]
+    [SerializeField] private GameObject[] rooms;
 
     /**
      * Edge Rooms indexes
@@ -41,7 +52,7 @@ public class RandomLevelGenerator : MonoBehaviour
      * 6 -> only Right, Bottom and Top (RBT)
      * 7 -> only Right and Top (RT)
      */
-    public GameObject[] edgeRooms;
+    [SerializeField] private GameObject[] edgeRooms;
 
     private int direction;
 
@@ -50,15 +61,8 @@ public class RandomLevelGenerator : MonoBehaviour
 
     private float moveIncrement;
     private float timeBtwSpawn;
-    public float startTimeBtwSpawn;
-
-    public LayerMask whatIsRoom;
-    public LayerMask whatIsBorder;
-
-    public float collisionRadius;
+    
     private float minX, maxX, minY;
-
-    public GameEvent firstRoomReady;
 
     private Vector3 firstRoomPosition;
 

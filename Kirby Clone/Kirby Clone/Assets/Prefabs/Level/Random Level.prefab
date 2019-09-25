@@ -45,6 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73b051507c9cdf44d988895da232d07f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldBeginInmediatly: 1
+  startTimeBtwSpawn: 0
+  whatIsRoom:
+    serializedVersion: 2
+    m_Bits: 32768
+  whatIsBorder:
+    serializedVersion: 2
+    m_Bits: 65536
+  collisionRadius: 6
+  firstRoomReady: {fileID: 11400000, guid: f30a309fd5b2d8546bc7fffd89058e13, type: 2}
   startingPositions:
   - {fileID: 0}
   - {fileID: 0}
@@ -82,15 +92,6 @@ MonoBehaviour:
   - {fileID: 7326900000721521483, guid: e61f14ecbd9a4264596636892ba8c757, type: 3}
   - {fileID: 7000311399544986027, guid: f7e8dd6cf5bd57848b036fd98817bf6f, type: 3}
   - {fileID: 7947093851876133395, guid: f345343af5ae40741b8a87cfd69c45a2, type: 3}
-  startTimeBtwSpawn: 0
-  whatIsRoom:
-    serializedVersion: 2
-    m_Bits: 32768
-  whatIsBorder:
-    serializedVersion: 2
-    m_Bits: 65536
-  collisionRadius: 6
-  firstRoomReady: {fileID: 11400000, guid: f30a309fd5b2d8546bc7fffd89058e13, type: 2}
 --- !u!114 &1203774542745419861
 MonoBehaviour:
   m_ObjectHideFlags: 0
