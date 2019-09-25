@@ -1266,6 +1266,11 @@ PrefabInstance:
       propertyPath: allPositions.Array.data[15]
       value: 
       objectReference: {fileID: 2071456488}
+    - target: {fileID: 1203774542745419862, guid: 3781d22532f0e9347b55d66347def5e8,
+        type: 3}
+      propertyPath: shouldBeginInmediatly
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1203774542745419861, guid: 3781d22532f0e9347b55d66347def5e8,
         type: 3}
       propertyPath: vcam

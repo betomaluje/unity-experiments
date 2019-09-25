@@ -39,7 +39,7 @@ public class LevelGenerator : MonoBehaviour
 
         foreach (ColorToPrefab colorMapping in colorMappings)
         {
-            if (colorMapping.color.Equals(pixelColor))
+            if (colorMapping != null && colorMapping.color.Equals(pixelColor))
             {
                 Vector2 position = new Vector2(x - displacement, y - displacement);
                 GameObject prefabObject = colorMapping.prefab;

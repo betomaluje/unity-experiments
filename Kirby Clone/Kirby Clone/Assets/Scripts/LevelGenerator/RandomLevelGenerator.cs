@@ -14,6 +14,8 @@ public class RandomLevelGenerator : MonoBehaviour
         Top = 1 << 3        // 001000   8
     }
 
+    public bool shouldBeginInmediatly = false;
+
     public Transform[] startingPositions;
 
     public Transform[] allPositions;
@@ -64,13 +66,15 @@ public class RandomLevelGenerator : MonoBehaviour
 
     private void Start()
     {
+        playerPath = new Hashtable();
+
         int randStartingPos = Random.Range(0, startingPositions.Length);
         transform.position = startingPositions[randStartingPos].position;
-        Instantiate(rooms[1], transform.position, Quaternion.identity);
+        AddRoom(rooms[1]);
 
         firstRoomPosition = transform.position;
 
-        stopPathGeneration = true;
+        stopPathGeneration = !shouldBeginInmediatly;
         moveIncrement = Mathf.Abs(startingPositions[0].position.x - startingPositions[1].position.x);        
 
         FindHighestX();
@@ -78,8 +82,6 @@ public class RandomLevelGenerator : MonoBehaviour
         FindLowestX();
 
         direction = Random.Range(1, 6);
-
-        playerPath = new Hashtable();
     }
 
     private void FindHighestX()
@@ -125,6 +127,44 @@ public class RandomLevelGenerator : MonoBehaviour
     }
 
     public void StartGeneratingRoom() {
+        stopPathGeneration = false;
+    }
+
+    public void Reset() {
+        StartCoroutine(ResetMap());    
+    }
+
+    private IEnumerator ResetMap() {
+        yield return new WaitForSeconds(1f);
+
+        GameObject[] rooms = GameObject.FindGameObjectsWithTag("Room");
+
+        foreach (var go in rooms)
+        {
+            Destroy(go);
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        foreach (var go in enemies)
+        {
+            Destroy(go);
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        if (player != null) {
+            Destroy(player);
+        }
+
+        int randStartingPos = Random.Range(0, startingPositions.Length);
+        transform.position = startingPositions[randStartingPos].position;
+        AddRoom(rooms[1]);
+
+        firstRoomPosition = transform.position;
         stopPathGeneration = false;
     }
 
@@ -324,27 +364,32 @@ public class RandomLevelGenerator : MonoBehaviour
                 // Now I must replace the room BEFORE going down with a room that has a DOWN opening, so type 3 or 5
                 Collider2D previousRoom = Physics2D.OverlapCircle(transform.position, collisionRadius, whatIsRoom);
 
-                if (previousRoom.GetComponentInParent<RoomType>().type != 4 && previousRoom.GetComponentInParent<RoomType>().type != 2)
+                if (previousRoom != null) 
                 {
-                    // My problem : if the level generation goes down TWICE in a row, there's a chance that the previous room is just 
-                    // a LRB, meaning there's no TOP opening for the other room !                     
-                    if (downCounter >= 2)
-                    {
-                        // if we move 2 or more times down, we need to spawn a room with all openings                        
-                        AddRoom(rooms[4]);
-                    }
-                    else
-                    {
-                        // if top room doesn't have bottom opening                        
-                        int randRoomDownOpening = Random.Range(2, 5);
-                        if (randRoomDownOpening == 3)
-                        {
-                            randRoomDownOpening = 2;
-                        }
+                    RoomType roomType = previousRoom.GetComponentInParent<RoomType>();
 
-                        Instantiate(rooms[randRoomDownOpening], previousRoom.transform.position, Quaternion.identity);                                            
+                    if (roomType.type != 4 && roomType.type != 2)
+                    {
+                        // My problem : if the level generation goes down TWICE in a row, there's a chance that the previous room is just 
+                        // a LRB, meaning there's no TOP opening for the other room !                     
+                        if (downCounter >= 2)
+                        {
+                            // if we move 2 or more times down, we need to spawn a room with all openings                        
+                            AddRoom(rooms[4]);
+                        }
+                        else
+                        {
+                            // if top room doesn't have bottom opening                        
+                            int randRoomDownOpening = Random.Range(2, 5);
+                            if (randRoomDownOpening == 3)
+                            {
+                                randRoomDownOpening = 2;
+                            }
+
+                            Instantiate(rooms[randRoomDownOpening], previousRoom.transform.position, Quaternion.identity);                                            
+                        }
+                        Destroy(previousRoom.gameObject);
                     }
-                    Destroy(previousRoom.gameObject);
                 }
 
                 Vector2 pos = new Vector2(transform.position.x, transform.position.y - moveIncrement);

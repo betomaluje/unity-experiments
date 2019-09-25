@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3481356638011004192}
   m_Layer: 15
   m_Name: RT
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,10 +85,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 2800000, guid: 411b6051de16e4040bb6ef8f1507aa5e, type: 3}
+  displacement: 3.5
   colorMappings:
   - {fileID: 11400000, guid: 5170b6247e7a64ca89f3937e7a940098, type: 2}
   - {fileID: 11400000, guid: 498b47b88c9b94cbe94ddd6060d00af9, type: 2}
   - {fileID: 11400000, guid: 9b1c77f701e004f76a4909ad446b5f25, type: 2}
   - {fileID: 11400000, guid: b7fe3c7a7dcc24626851dcc129b6b9ab, type: 2}
-  - {fileID: 11400000, guid: 30de0598bf1954f599bc6c5753b8b929, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 4db4c68b1c58b417b92df20d58aa15a3, type: 2}
