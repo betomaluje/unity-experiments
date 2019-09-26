@@ -126,7 +126,6 @@ public class MainInputActions : IInputActionCollection
     ""controlSchemes"": [
         {
             ""name"": ""Keyboard"",
-            ""basedOn"": """",
             ""bindingGroup"": ""Keyboard"",
             ""devices"": [
                 {
@@ -139,10 +138,10 @@ public class MainInputActions : IInputActionCollection
     ]
 }");
         // Player
-        m_Player = asset.GetActionMap("Player");
-        m_Player_Movement = m_Player.GetAction("Movement");
-        m_Player_Jump = m_Player.GetAction("Jump");
-        m_Player_Absorb = m_Player.GetAction("Absorb");
+        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
+        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
+        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_Absorb = m_Player.FindAction("Absorb", throwIfNotFound: true);
     }
 
     ~MainInputActions()
@@ -242,7 +241,7 @@ public class MainInputActions : IInputActionCollection
     {
         get
         {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.GetControlSchemeIndex("Keyboard");
+            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
             return asset.controlSchemes[m_KeyboardSchemeIndex];
         }
     }
