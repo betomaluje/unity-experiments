@@ -10549,11 +10549,6 @@ PrefabInstance:
       propertyPath: m_BoundingShape2D
       value: 
       objectReference: {fileID: 99996087}
-    - target: {fileID: 4895436086436907318, guid: 89b1d2644e31344ad9d38f0a65c13f41,
-        type: 3}
-      propertyPath: m_ConfineScreenEdges
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89b1d2644e31344ad9d38f0a65c13f41, type: 3}
 --- !u!1001 &6105123780681059838
