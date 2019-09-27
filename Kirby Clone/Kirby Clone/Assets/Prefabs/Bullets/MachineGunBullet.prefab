@@ -173,3 +173,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   hitEvent: {fileID: 11400000, guid: 647388f749b9b704cadd883998ca467a, type: 2}
+  timeForDisappear: 1

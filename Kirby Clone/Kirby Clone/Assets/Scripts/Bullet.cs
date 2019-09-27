@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using DG.Tweening;
 
 public class Bullet : MonoBehaviour
 {
-    public LayerMask targetLayerMask;
-    public GameEvent hitEvent;
+    [SerializeField] private LayerMask targetLayerMask;
+    [SerializeField] private GameEvent hitEvent;
+
+    [SerializeField] private float timeForDisappear = 0.5f;
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
@@ -18,7 +19,16 @@ public class Bullet : MonoBehaviour
             // we destroy this bullet
             Destroy(gameObject);
             SoundManager.instance.Play("BulletExplosion");
-        }       
+        } else {
+            SpriteRenderer sr = GetComponent<SpriteRenderer>();
+            if (sr != null) {        
+                sr.DOFade(0, timeForDisappear)
+                .OnComplete(() =>
+                    {
+                        Destroy(gameObject);                
+                    });
+            }
+        }
     }
 
     private bool CheckLayerMask(GameObject target)
