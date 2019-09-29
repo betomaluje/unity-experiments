@@ -74,6 +74,11 @@ public class PlayerStats : MonoBehaviour
 
         playerDeathEvent.Raise();
 
+        DoRespawnPlayer();
+    }
+
+    public void DoRespawnPlayer()
+    {
         StartCoroutine(RespawnPlayer());
     }
 

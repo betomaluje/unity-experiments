@@ -11,6 +11,7 @@ public class InputManager : MonoBehaviour, MainInputActions.IPlayerActions
     public GameEvent jumpEvent;
     public GameEvent absorbEvent;
     public GameEvent removeSkillEvent;
+    public GameEvent grabEvent;
 
     private MainInputActions mainInputActions;
     private Vector2 movement;
@@ -71,6 +72,7 @@ public class InputManager : MonoBehaviour, MainInputActions.IPlayerActions
             }
             else
             {
+                grabEvent.Raise();
                 absorbEvent.Raise();
             }
         }

@@ -428,8 +428,7 @@ public class RandomLevelGenerator : MonoBehaviour
         foreach (Transform pointTransform in allPositions)
         {
             transform.position = pointTransform.position;
-
-            //Collider2D collidingRoom = Physics2D.OverlapCircle(transform.position, collisionRadius, whatIsRoom);
+            
             if (!playerPath.ContainsKey(transform.position))
             {
                 // we need to spawn a random room here!

@@ -2,8 +2,10 @@
 using UnityEngine;
 
 public class RandomSpawner : MonoBehaviour
-{    
-    public List<WeightedObject> toSpawn;
+{
+    [SerializeField] private bool createAsChild = false;
+    [SerializeField] private List<WeightedObject> toSpawn;
+    [SerializeField] private Transform whereToSpawn;
 
     private Dictionary<GameObject, int> myDictionary;
 
@@ -17,7 +19,20 @@ public class RandomSpawner : MonoBehaviour
         }        
 
         GameObject objectToSpawn = WeightedRandomizer.From(myDictionary).TakeOne();
-        Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+
+        GameObject actualObject = null;
+        if (whereToSpawn != null)
+        {
+            actualObject = Instantiate(objectToSpawn, whereToSpawn.position, Quaternion.identity);
+        } else
+        {
+            actualObject = Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+        }
+        
+        if (createAsChild)
+        {
+            actualObject.transform.parent = transform;
+        }
     }
 }
 

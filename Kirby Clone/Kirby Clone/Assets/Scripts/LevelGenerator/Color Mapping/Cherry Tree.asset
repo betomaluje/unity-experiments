@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Cherry Tree
   m_EditorClassIdentifier: 
   color: {r: 0.90588236, g: 0.39607844, b: 0.47058824, a: 1}
-  prefab: {fileID: 4716797328946329485, guid: 7e367a6d5286d99489d212e4c3f7e739, type: 3}
+  prefab: {fileID: 2851806223586516328, guid: 4e5d80fa173c7a741aa0e1e1da4ab0b0, type: 3}
   orderInLayer: -1

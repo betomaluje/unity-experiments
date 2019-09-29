@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
 
 	private Rigidbody2D rb;
     private HealthBar healthBar;
+    private bool shouldMove = true;
 
     private void Start()
 	{
@@ -35,11 +36,10 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
 	{
-        if (enemy.speed <= 0)
+        if (enemy.speed <= 0 || !shouldMove)
         {
             return;
         }
-
 
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down, 0.8f, enemy.groundLayerMask);
         RaycastHit2D wallInfo = Physics2D.Raycast(groundDetection.position, Vector2.right, 0.8f, enemy.groundLayerMask);
@@ -81,7 +81,7 @@ public class EnemyController : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Player"))
+		if (CheckAttackLayerMask(other.gameObject))
 		{
 			StartCoroutine(PushPlayer(other.gameObject));
 
@@ -95,7 +95,12 @@ public class EnemyController : MonoBehaviour
 		}
 	}
 
-	private IEnumerator PushPlayer(GameObject player)
+    private bool CheckAttackLayerMask(GameObject target)
+    {
+        return (enemy.attackLayerMask & 1 << target.layer) == 1 << target.layer;
+    }
+
+    private IEnumerator PushPlayer(GameObject player)
 	{
 		var dir = player.transform.position - transform.position;
 		// normalize force vector to get direction only and trim magnitude
@@ -121,8 +126,7 @@ public class EnemyController : MonoBehaviour
         {
             return;
         }        
-
-		//healthBar.gameObject.SetActive(true);
+        
 		currentHealth -= attackEvent.damage;
 
 		if (currentHealth <= 0)
@@ -133,12 +137,15 @@ public class EnemyController : MonoBehaviour
 		}
 
 		healthBar.setHealth(currentHealth / maxHealth);
-		//StartCoroutine(HideHealthBar());
 	}
 
 	private IEnumerator HideHealthBar()
 	{
 		yield return new WaitForSeconds(1f);
-		//healthBar.gameObject.SetActive(false);
 	}
+
+    public void SetShouldMove(bool shouldIt)
+    {
+        shouldMove = shouldIt;
+    }
 }

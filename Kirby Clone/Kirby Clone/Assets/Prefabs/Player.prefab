@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 8012845928873163817}
   - component: {fileID: 1392765971}
   - component: {fileID: 7514671764700412713}
+  - component: {fileID: 4101098715350943966}
   - component: {fileID: 3418535469488039716}
   m_Layer: 10
   m_Name: Player
@@ -452,6 +453,7 @@ Transform:
   - {fileID: 495476685}
   - {fileID: 639962403}
   - {fileID: 3794234017871812231}
+  - {fileID: 1753562786071396888}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -544,6 +546,7 @@ MonoBehaviour:
   jumpEvent: {fileID: 11400000, guid: 5b408ab2da1986d4e96edc244f34a57c, type: 2}
   absorbEvent: {fileID: 11400000, guid: 2620808c733edd3428632dca4f450dc6, type: 2}
   removeSkillEvent: {fileID: 11400000, guid: 6bfb042674f87354f9747fc73765867d, type: 2}
+  grabEvent: {fileID: 11400000, guid: 4f32ab548b291104bafe66a9873f7319, type: 2}
 --- !u!114 &5209775327932575301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -652,6 +655,28 @@ MonoBehaviour:
   playerDeathEvent: {fileID: 11400000, guid: b6a6d4e9e8d7b41d8aa0fecdce9a9c16, type: 2}
   playerDamageParticles: {fileID: 521060649499949037, guid: f2ed8aea1b02e94469647d553c2d94a7,
     type: 3}
+--- !u!114 &4101098715350943966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2238098225927881839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c1a53beb4076e41b1b356398cbcf75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabbableLayer:
+    serializedVersion: 2
+    m_Bits: 8192
+  grabRadius: 1
+  grabOffset: {x: 0.7, y: 0}
+  targetColor: {r: 1, g: 0.37736028, b: 0, a: 1}
+  itemGameObjectPosition: {fileID: 1753562786071396888}
+  throwForce: 350
+  objectGrabbedEvent: {fileID: 11400000, guid: f92652671bc83884e8b4eb1a581b99fc, type: 2}
+  objectThrownEvent: {fileID: 11400000, guid: 1918a7ac3fb63ba40867569d56238be4, type: 2}
 --- !u!114 &3418535469488039716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +1010,86 @@ MonoBehaviour:
     responseWithAttackEvent:
       m_PersistentCalls:
         m_Calls: []
+  - name: Grab Object
+    gameEvent: {fileID: 11400000, guid: 4f32ab548b291104bafe66a9873f7319, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4101098715350943966}
+          m_MethodName: DoGrabOrThrow
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Player Sacrifice
+    gameEvent: {fileID: 11400000, guid: 59f7eee0e0f70274f84d5debb5bf34f6, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7514671764700412713}
+          m_MethodName: DoRespawnPlayer
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!1 &2238098226708556287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,6 +1150,36 @@ Transform:
   m_Father: {fileID: 2238098225927881837}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6197290776756592369
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1753562786071396888}
+  m_Layer: 10
+  m_Name: Above
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1753562786071396888
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6197290776756592369}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2238098225927881837}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8844538876871103101
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,6 +1217,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2238098225927881837}
     m_Modifications:
+    - target: {fileID: 5700131623865822187, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+        type: 3}
+      propertyPath: m_Name
+      value: HealthBar
+      objectReference: {fileID: 0}
     - target: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1152,22 +1292,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5700131623865822187, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
-        type: 3}
-      propertyPath: m_Name
-      value: HealthBar
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fc32bd9bf1ff7014d878a85ae3a2482c, type: 3}
---- !u!4 &3470589026081259812 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
-    type: 3}
-  m_PrefabInstance: {fileID: 9165086745775008464}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3470589026081259835 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5700131623865822187, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9165086745775008464}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3470589026081259812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5700131623865822196, guid: fc32bd9bf1ff7014d878a85ae3a2482c,
     type: 3}
   m_PrefabInstance: {fileID: 9165086745775008464}
   m_PrefabAsset: {fileID: 0}

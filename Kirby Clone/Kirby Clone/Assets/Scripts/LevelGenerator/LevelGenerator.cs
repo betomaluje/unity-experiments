@@ -1,5 +1,4 @@
 using UnityEngine;
-using Cinemachine;
 
 public class LevelGenerator : MonoBehaviour
 {
@@ -64,6 +63,9 @@ public class LevelGenerator : MonoBehaviour
                 if (doesIncludePlayer && theNewObject.CompareTag("Player")) {
                     PlayerFirstPosition script = GetComponent<PlayerFirstPosition>();
                     script.SetFollowCamera(theNewObject.transform);
+
+                    PlayerStats playerStats = theNewObject.GetComponent<PlayerStats>();
+                    playerStats.SetPlayersPosition(theNewObject.transform.position);
                 }
                 
                 break;

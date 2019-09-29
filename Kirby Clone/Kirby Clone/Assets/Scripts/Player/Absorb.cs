@@ -146,6 +146,7 @@ public class Absorb : MonoBehaviour
                 {
                     PutItemAsChild(item);
                     GrabSkill(item);
+                    SoundManager.instance.Play("Absorb");
                 });
         }
     }
@@ -181,8 +182,7 @@ public class Absorb : MonoBehaviour
 
         if (container != null)
         {
-            skillsManager.AddSkill(container.getSkill(), gameObject);
-            SoundManager.instance.Play("Absorb");
+            skillsManager.AddSkill(container.getSkill(), gameObject);            
         }
 
         item.SetActive(false);
