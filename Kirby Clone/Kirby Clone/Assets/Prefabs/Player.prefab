@@ -674,7 +674,7 @@ MonoBehaviour:
   grabOffset: {x: 0.7, y: 0}
   targetColor: {r: 1, g: 0.37736028, b: 0, a: 1}
   itemGameObjectPosition: {fileID: 1753562786071396888}
-  throwForce: 350
+  throwForce: 250
   objectGrabbedEvent: {fileID: 11400000, guid: f92652671bc83884e8b4eb1a581b99fc, type: 2}
   objectThrownEvent: {fileID: 11400000, guid: 1918a7ac3fb63ba40867569d56238be4, type: 2}
 --- !u!114 &3418535469488039716

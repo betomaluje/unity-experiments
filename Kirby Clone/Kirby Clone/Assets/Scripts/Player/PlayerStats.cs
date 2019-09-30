@@ -32,6 +32,7 @@ public class PlayerStats : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         ResetHealth();
+        initialPosition = transform.position;
     }
 
     private void ResetHealth()
