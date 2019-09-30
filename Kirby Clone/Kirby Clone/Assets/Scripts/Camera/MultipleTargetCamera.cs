@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 [RequireComponent(typeof (Camera))]
 public class MultipleTargetCamera : MonoBehaviour
@@ -14,12 +15,7 @@ public class MultipleTargetCamera : MonoBehaviour
     public float zoomLimiter = 50;
 
     private Vector3 velocity;
-    private Camera cam;
-
-    private void Start()
-    {
-        cam = GetComponent<Camera>();
-    }
+    [SerializeField] private CinemachineVirtualCamera virtualCamera;
 
     private void LateUpdate()
     {
@@ -33,7 +29,7 @@ public class MultipleTargetCamera : MonoBehaviour
     private void Zoom()
     {
         float newZoom = Mathf.Lerp(maxZoom, minZoom, GetGreatestDistance() / zoomLimiter);
-        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newZoom, Time.deltaTime);
+        virtualCamera.m_Lens.OrthographicSize = Mathf.Lerp(virtualCamera.m_Lens.OrthographicSize, newZoom, Time.deltaTime);
     }
 
     private void Move()
