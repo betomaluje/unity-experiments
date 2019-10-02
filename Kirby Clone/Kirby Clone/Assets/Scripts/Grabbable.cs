@@ -15,7 +15,7 @@ public class Grabbable : MonoBehaviour
     {
         if (rb != null)
         {
-            rb.gravityScale = 1;
+            rb.gravityScale = 2;
         }
     }
 

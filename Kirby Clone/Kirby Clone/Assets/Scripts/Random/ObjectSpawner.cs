@@ -41,7 +41,6 @@ public class ObjectSpawner : MonoBehaviour
     {
         if (currentItems >= maxItemsAtATime)
         {
-            Debug.LogWarning("Maximum capacity reached!");
             return;
         }
 

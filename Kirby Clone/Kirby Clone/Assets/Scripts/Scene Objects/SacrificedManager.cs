@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using TMPro;
 
 public class SacrificedManager : MonoBehaviour
@@ -16,6 +14,5 @@ public class SacrificedManager : MonoBehaviour
     public void AddSacrifice(GameObject go)
     {
         currentAmount++;
-        Debug.Log("Sacrifice: " + go);
     }
 }
