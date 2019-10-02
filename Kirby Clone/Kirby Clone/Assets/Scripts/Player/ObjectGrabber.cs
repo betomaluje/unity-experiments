@@ -1,5 +1,6 @@
 ﻿using DG.Tweening;
 using UnityEngine;
+using System.Collections;
 
 public class ObjectGrabber : MonoBehaviour
 {
@@ -28,11 +29,9 @@ public class ObjectGrabber : MonoBehaviour
 
     private Collider2D onGrabRight;
 
-    private bool canGrab = false;
     private bool objectGrabbed = false;
     private PlayerStats playerStats;
 
-    private GameObject grabbedObject;
     private GameObject targetObject;
     private Color originalTargetColor;
     private PlayerMovement playerMovement;
@@ -46,24 +45,21 @@ public class ObjectGrabber : MonoBehaviour
     }
 
     void Update()
-    {
+    {        
         direction = playerMovement.getDirection();
 
-        onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + grabOffset * direction, grabRadius, grabbableLayer);
+        if (targetObject != null) {
+            UpdateTargetPosition(targetObject);
+            return;
+        }
 
-        if (onGrabRight)
-        {
-            targetObject = onGrabRight.gameObject;
-            canGrab = true;
-            ChangeTargetColor(targetObject);
-        }
-        else
-        {
-            ChangeTargetColorOriginal(targetObject);
-            targetObject = null;
-            originalTargetColor = Color.white;
-            canGrab = false;
-        }
+        onGrabRight = Physics2D.OverlapCircle((Vector2)transform.position + grabOffset * direction, grabRadius, grabbableLayer);
+    }
+
+    private void UpdateTargetPosition(GameObject target) {
+        target.transform.position = itemGameObjectPosition.transform.position;
+        Quaternion rotation = Quaternion.Euler(0, itemGameObjectPosition.rotation.y, 0);
+        target.transform.rotation = rotation;
     }
 
     void OnDrawGizmos()
@@ -131,19 +127,20 @@ public class ObjectGrabber : MonoBehaviour
 
     public void DoGrab()
     {
-        if (!objectGrabbed && canGrab)
+        if (targetObject == null && !objectGrabbed && onGrabRight)
         {
-            grabbedObject = onGrabRight.gameObject;
+            targetObject = onGrabRight.gameObject;
+
             objectGrabbedEvent.Raise();
-            Debug.Log("We grab the item: " + grabbedObject.name);
+            
             SoundManager.instance.Play("StartAbsorb");
 
-            objectGrabbed = true;
+            StartCoroutine(ToggleGrab(true));
 
-            GameObject item = grabbedObject;
+            GameObject item = targetObject;
 
             DOTween.Sequence()
-                .Append(grabbedObject.transform.DOMove(itemGameObjectPosition.position, 0.25f, false))
+                .Append(item.transform.DOMove(itemGameObjectPosition.position, 0.25f, false))
                 .OnComplete(() =>
                 {                    
                     PutItemAsChild(item);
@@ -155,26 +152,32 @@ public class ObjectGrabber : MonoBehaviour
 
     public void DoThrow()
     {
-        if (grabbedObject != null && objectGrabbed)
+        if (targetObject != null && objectGrabbed)
         {
             objectThrownEvent.Raise();
-            objectGrabbed = false;
 
             skillsManager.RemoveSkill();
 
-            grabbedObject.transform.parent = null;
-
-            Rigidbody2D rb = grabbedObject.GetComponent<Rigidbody2D>();
+            Rigidbody2D rb = targetObject.GetComponent<Rigidbody2D>();
 
             if (rb != null)
             {
-                rb.AddForce(new Vector2(throwForce * direction, 0), ForceMode2D.Impulse);
+                rb.AddForce(new Vector2(throwForce * direction, 5), ForceMode2D.Impulse);
             }
+
+            targetObject.transform.parent = null;
 
             SoundManager.instance.Play("Throw");
 
             RemoveItems();
+
+            StartCoroutine(ToggleGrab(false));
         }
+    }
+
+    private IEnumerator ToggleGrab(bool grabbed) {
+        yield return new WaitForSeconds(0.5f);
+        objectGrabbed = grabbed;
     }
 
     private void GrabSkill(GameObject item)
@@ -199,7 +202,7 @@ public class ObjectGrabber : MonoBehaviour
 
     private void RemoveItems()
     {
-        grabbedObject = null;
+        targetObject = null;
 
         foreach (Transform child in itemGameObjectPosition)
         {

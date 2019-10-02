@@ -15,7 +15,7 @@ MonoBehaviour:
   name: Kirby
   health: 100
   lives: 3
-  deathParticles: {fileID: 521060649499949037, guid: 7080fe4a7e76cd047801e97e39940702,
+  deathParticles: {fileID: 3758947416884150258, guid: 07a56cbe0bd614f659ee92679e49ae71,
     type: 3}
   speed: 40
   jumpVelocity: 750

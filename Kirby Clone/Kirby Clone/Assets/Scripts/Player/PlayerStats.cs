@@ -62,7 +62,7 @@ public class PlayerStats : MonoBehaviour
         {
             return;
         }
-
+        
         Instantiate(player.deathParticles, transform.position, Quaternion.identity);
 
         rb.constraints = RigidbodyConstraints2D.FreezeAll;

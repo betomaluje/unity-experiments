@@ -20,7 +20,7 @@ public class DeathCollider : MonoBehaviour
     {
         if (other.gameObject.CompareTag("DeathCollider"))
         {
-            changeParticlesColor(Instantiate(particles, playerStats.gameObject.transform.position, Quaternion.identity));
+            //changeParticlesColor(Instantiate(particles, playerStats.gameObject.transform.position, Quaternion.identity));
 
             playerStats.Die();
         }
