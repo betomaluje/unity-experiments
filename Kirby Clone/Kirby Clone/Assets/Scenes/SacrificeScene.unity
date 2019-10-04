@@ -163,10 +163,10 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: 1.6442821, y: 9.856461}
-      - {x: -14.017672, y: 9.94487}
-      - {x: -14.156635, y: -8.107676}
-      - {x: 34.175785, y: -8.115991}
-      - {x: 34.093456, y: 10.218854}
+      - {x: -13.025797, y: 10.068288}
+      - {x: -13.020865, y: -8.231092}
+      - {x: 32.99327, y: -8.042157}
+      - {x: 33.05286, y: 10.000296}
 --- !u!4 &99996088
 Transform:
   m_ObjectHideFlags: 0
@@ -1069,18 +1069,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 689639622}
   m_CullTransparentMesh: 0
---- !u!114 &919148823 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8012845928873163817, guid: 5a33a344988ee5b47afd139453af0512,
-    type: 3}
-  m_PrefabInstance: {fileID: 1644639132}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03fd77333f4f14c48a8c87338836a698, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &935483260
 GameObject:
   m_ObjectHideFlags: 3
@@ -1135,11 +1123,11 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 10
-  m_DeadZoneWidth: 0
-  m_DeadZoneHeight: 0
+  m_DeadZoneWidth: 0.1
+  m_DeadZoneHeight: 0.1
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.95
+  m_SoftZoneWidth: 0.9
   m_SoftZoneHeight: 0.8
   m_BiasX: 0
   m_BiasY: 0
@@ -1365,7 +1353,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 17.594141
+  orthographic size: 12.483883
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1389,7 +1377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023402522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.173933, y: -7.649271, z: -10}
+  m_LocalPosition: {x: 9.165808, y: -2.415595, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6426,7 +6414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1319154198}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.946718, y: 3.6906414, z: -10}
+  m_LocalPosition: {x: 7.9467173, y: 3.6906414, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 935483261}
@@ -11389,7 +11377,7 @@ PrefabInstance:
         type: 3}
       propertyPath: eventAndResponses.Array.data[6].response.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 919148823}
+      objectReference: {fileID: 0}
     - target: {fileID: 3418535469488039716, guid: 5a33a344988ee5b47afd139453af0512,
         type: 3}
       propertyPath: eventAndResponses.Array.data[6].response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -11414,7 +11402,7 @@ PrefabInstance:
         type: 3}
       propertyPath: eventAndResponses.Array.data[6].response.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1715505052}
+      objectReference: {fileID: 0}
     - target: {fileID: 3418535469488039716, guid: 5a33a344988ee5b47afd139453af0512,
         type: 3}
       propertyPath: eventAndResponses.Array.data[6].response.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -11467,18 +11455,6 @@ Transform:
   m_Father: {fileID: 524124987}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1715505052 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4101098715350943966, guid: 5a33a344988ee5b47afd139453af0512,
-    type: 3}
-  m_PrefabInstance: {fileID: 1644639132}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c1a53beb4076e41b1b356398cbcf75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1777073226
 PrefabInstance:
   m_ObjectHideFlags: 0

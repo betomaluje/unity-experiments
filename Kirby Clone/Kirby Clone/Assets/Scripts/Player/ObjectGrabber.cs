@@ -5,22 +5,23 @@ using System.Collections;
 public class ObjectGrabber : MonoBehaviour
 {
     [Header("Layers")]
-    public LayerMask grabbableLayer;
+    [SerializeField] private LayerMask grabbableLayer;
 
     [Space]
     [Header("Collision")]
-    public float grabRadius = 0.25f;
-    public Vector2 grabOffset;
+    [SerializeField] private float grabRadius = 0.25f;
+    [SerializeField] private Vector2 grabOffset;
 
     [Space]
     [Header("Colors")]
-    public Color targetColor;
+    [SerializeField] private Color targetColor;
+    [SerializeField] private Color debugColor;
 
     [Space]
     [Header("Settings")]
     // the players item grab position
-    public Transform itemGameObjectPosition;
-    public float throwForce = 250f;
+    [SerializeField] private Transform itemGameObjectPosition;
+    [SerializeField] private float throwForce = 250f;
 
     [SerializeField] private GameEvent objectGrabbedEvent;
     [SerializeField] private GameEvent objectThrownEvent;
@@ -39,9 +40,9 @@ public class ObjectGrabber : MonoBehaviour
 
     private void Awake()
     {
-        playerStats = GetComponent<PlayerStats>();
-        playerMovement = GetComponent<PlayerMovement>();
-        skillsManager = GetComponent<SkillsManager>();
+        playerStats = GetComponentInParent<PlayerStats>();
+        playerMovement = GetComponentInParent<PlayerMovement>();
+        skillsManager = GetComponentInParent<SkillsManager>();
     }
 
     void Update()
@@ -64,7 +65,7 @@ public class ObjectGrabber : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = debugColor;
 
         Gizmos.DrawWireSphere((Vector2)transform.position + grabOffset * direction, grabRadius);
     }

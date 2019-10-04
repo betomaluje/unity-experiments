@@ -4,22 +4,23 @@ using UnityEngine;
 public class Absorb : MonoBehaviour
 {
     [Header("Layers")]
-    public LayerMask absorbableLayer;
+    [SerializeField] private LayerMask absorbableLayer;
 
     [Space]
     [Header("Collision")]
-    public float absorbRadius = 0.25f;
-    public Vector2 grabOffset;
+    [SerializeField] private float absorbRadius = 0.25f;
+    [SerializeField] private Vector2 grabOffset;
 
     [Space]
     [Header("Colors")]
-    public Color targetColor;
+    [SerializeField] private Color targetColor;
+    [SerializeField] private Color debugColor;
 
     [Space]
     [Header("Settings")]
     // the players item grab position
-    public Transform itemGameObjectPosition;
-    public float throwForce = 250f;
+    [SerializeField] private Transform itemGameObjectPosition;
+    [SerializeField] private float throwForce = 250f;
 
     private SkillsManager skillsManager;
 
@@ -37,9 +38,9 @@ public class Absorb : MonoBehaviour
 
     private void Awake()
     {
-        playerStats = GetComponent<PlayerStats>();
-        playerMovement = GetComponent<PlayerMovement>();
-        skillsManager = GetComponent<SkillsManager>();
+        playerStats = GetComponentInParent<PlayerStats>();
+        playerMovement = GetComponentInParent<PlayerMovement>();
+        skillsManager = GetComponentInParent<SkillsManager>();
     }
 
     void Update()
@@ -65,7 +66,7 @@ public class Absorb : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Gizmos.color = debugColor;
 
         Gizmos.DrawWireSphere((Vector2)transform.position + grabOffset * direction, absorbRadius);
     }
