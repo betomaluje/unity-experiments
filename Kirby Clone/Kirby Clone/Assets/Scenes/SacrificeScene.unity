@@ -438,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 5932310942514213247, guid: 2d35c4b41587bbf4eaf84446dfe99eb3,
         type: 3}
       propertyPath: colorMappings.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5932310942514213247, guid: 2d35c4b41587bbf4eaf84446dfe99eb3,
         type: 3}
@@ -478,6 +478,12 @@ PrefabInstance:
       propertyPath: colorMappings.Array.data[3]
       value: 
       objectReference: {fileID: 11400000, guid: 30de0598bf1954f599bc6c5753b8b929,
+        type: 2}
+    - target: {fileID: 5932310942514213247, guid: 2d35c4b41587bbf4eaf84446dfe99eb3,
+        type: 3}
+      propertyPath: colorMappings.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: db5bc4f6a9a587a4ba1b712e3efcc9c6,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d35c4b41587bbf4eaf84446dfe99eb3, type: 3}
@@ -1141,7 +1147,7 @@ MonoBehaviour:
   m_MaximumDistance: 5000
   m_MinimumFOV: 3
   m_MaximumFOV: 60
-  m_MinimumOrthoSize: 6
+  m_MinimumOrthoSize: 8
   m_MaximumOrthoSize: 5000
 --- !u!114 &935483264
 MonoBehaviour:
@@ -1353,7 +1359,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 12.483883
+  orthographic size: 12.474483
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1377,7 +1383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1023402522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.165808, y: -2.415595, z: -10}
+  m_LocalPosition: {x: 9.165808, y: -2.4061947, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -11356,6 +11362,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229555263504848347, guid: 5a33a344988ee5b47afd139453af0512,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387318279323264409, guid: 5a33a344988ee5b47afd139453af0512,
+        type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 131328
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387318279323264409, guid: 5a33a344988ee5b47afd139453af0512,
+        type: 3}
+      propertyPath: platformLayer.m_Bits
+      value: 131072
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a33a344988ee5b47afd139453af0512, type: 3}

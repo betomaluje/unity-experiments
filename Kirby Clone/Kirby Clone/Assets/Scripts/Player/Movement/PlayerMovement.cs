@@ -7,7 +7,8 @@ public class PlayerMovement : MonoBehaviour
 
     #region Public Variables
     [Header("Stats")]
-    public int maxJumps = 2;   
+    [SerializeField] private int maxJumps = 2;
+    [SerializeField] private float timeForGoingDown = 0.25f;
     #endregion
 
     #region Private Variables
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private RippleEffect rippleObject;
 
     private float moveX;
+    private bool isGoingDown = false;
 
     #endregion
 
@@ -77,7 +79,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void OnVerticalMove(float verticalMove) {
-
+        if (verticalMove == -1 && !isGoingDown && IsOnPlatform())
+        {
+            // deactivate ground
+            StartCoroutine(JumpDown());
+        }
     }
 
     public void OnJump()
@@ -87,9 +93,35 @@ public class PlayerMovement : MonoBehaviour
 
     #endregion
 
+    private IEnumerator JumpDown()
+    {
+        isGoingDown = true;
+
+        Collider2D[] colliders = GetComponents<Collider2D>();
+
+        foreach (var collider in colliders)
+        {
+            collider.enabled = false;
+        }
+        
+        yield return new WaitForSeconds(timeForGoingDown);
+
+        foreach (var collider in colliders)
+        {
+            collider.enabled = true;
+        }
+
+        isGoingDown = false;
+    }
+
     bool IsGrounded()
     {
         return coll.onGround;
+    }
+
+    bool IsOnPlatform()
+    {
+        return coll.onPlatform;
     }
 
     IEnumerator DisableMovement(float time)

@@ -3,10 +3,12 @@
 public class CollisionDetector : MonoBehaviour
 {
     [Header("Layers")]
-    public LayerMask groundLayer;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private LayerMask platformLayer;
 
-	//[HideInInspector]
+    //[HideInInspector]
     public bool onGround;
+    public bool onPlatform;
 
     [Space]
     [Header("Collision")]
@@ -18,6 +20,7 @@ public class CollisionDetector : MonoBehaviour
     void Update()
     {
         onGround = Physics2D.Raycast(groundDetection.position, Vector2.down, collisionRadius, groundLayer);
+        onPlatform = Physics2D.Raycast(groundDetection.position, Vector2.down, collisionRadius, platformLayer);
     }
 
     void OnDrawGizmos()
