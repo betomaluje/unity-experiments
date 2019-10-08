@@ -168,6 +168,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 451092233114021044, guid: 182e4d9e44d5c8d42a08a3384ca28da7,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 451092233114021044, guid: 182e4d9e44d5c8d42a08a3384ca28da7,
+        type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 451092233114021044, guid: 182e4d9e44d5c8d42a08a3384ca28da7,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 451092233114021044, guid: 182e4d9e44d5c8d42a08a3384ca28da7,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 451092233114021044, guid: 182e4d9e44d5c8d42a08a3384ca28da7,
+        type: 3}
+      propertyPath: NoiseModule.strength.scalar
+      value: 0.61
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 182e4d9e44d5c8d42a08a3384ca28da7, type: 3}
 --- !u!4 &6312810652877715850 stripped
