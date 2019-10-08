@@ -183,7 +183,7 @@ public class Absorb : MonoBehaviour
 
         if (container != null)
         {
-            skillsManager.AddSkill(container.getSkill(), gameObject);            
+            skillsManager.AddSkill(container.getSkill(), gameObject.transform.parent.gameObject.transform.parent.gameObject);            
         }
 
         item.SetActive(false);

@@ -11907,7 +11907,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deathLayer:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 270336
   sacrificedEvent: {fileID: 11400000, guid: 679f7625a1ac9824d83669fbda161a34, type: 2}
   playerDeathEvent: {fileID: 11400000, guid: 59f7eee0e0f70274f84d5debb5bf34f6, type: 2}
 --- !u!61 &1998950500

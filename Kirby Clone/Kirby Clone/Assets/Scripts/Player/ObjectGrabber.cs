@@ -24,9 +24,7 @@ public class ObjectGrabber : MonoBehaviour
     [SerializeField] private float throwForce = 250f;
 
     [SerializeField] private GameEvent objectGrabbedEvent;
-    [SerializeField] private GameEvent objectThrownEvent;
-
-    private SkillsManager skillsManager;
+    [SerializeField] private GameEvent objectThrownEvent;    
 
     private Collider2D onGrabRight;
 
@@ -42,7 +40,6 @@ public class ObjectGrabber : MonoBehaviour
     {
         playerStats = GetComponentInParent<PlayerStats>();
         playerMovement = GetComponentInParent<PlayerMovement>();
-        skillsManager = GetComponentInParent<SkillsManager>();
     }
 
     void Update()
@@ -107,22 +104,15 @@ public class ObjectGrabber : MonoBehaviour
 
     public void DoGrabOrThrow()
     {
-        if (skillsManager.hasSkill())
+        if (objectGrabbed)
         {
-            skillsManager.DoSkill(direction);
+            // we need to throw it
+            DoThrow();
         }
         else
         {
-            if (objectGrabbed)
-            {
-                // we need to throw it
-                DoThrow();
-            }
-            else
-            {
-                // we need to absorb
-                DoGrab();
-            }
+            // we need to absorb
+            DoGrab();
         }
     }
 
@@ -145,7 +135,6 @@ public class ObjectGrabber : MonoBehaviour
                 .OnComplete(() =>
                 {                    
                     PutItemAsChild(item);
-                    GrabSkill(item);
                     SoundManager.instance.Play("Absorb");                    
                 });
         }
@@ -155,9 +144,7 @@ public class ObjectGrabber : MonoBehaviour
     {
         if (targetObject != null && objectGrabbed)
         {
-            objectThrownEvent.Raise();
-
-            skillsManager.RemoveSkill();
+            objectThrownEvent.Raise();            
 
             Rigidbody2D rb = targetObject.GetComponent<Rigidbody2D>();
 
@@ -179,16 +166,6 @@ public class ObjectGrabber : MonoBehaviour
     private IEnumerator ToggleGrab(bool grabbed) {
         yield return new WaitForSeconds(0.5f);
         objectGrabbed = grabbed;
-    }
-
-    private void GrabSkill(GameObject item)
-    {
-        SkillContainer container = item.GetComponent<SkillContainer>();
-
-        if (container != null)
-        {
-            skillsManager.AddSkill(container.getSkill(), gameObject);           
-        }        
     }
 
     private void PutItemAsChild(GameObject item)

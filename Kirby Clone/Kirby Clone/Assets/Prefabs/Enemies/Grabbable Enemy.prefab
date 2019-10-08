@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7296589619378446437}
   - component: {fileID: 814248001}
   - component: {fileID: 3821954996429800628}
-  m_Layer: 13
+  m_Layer: 18
   m_Name: Grabbable Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -285,7 +285,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4632083033942381278}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: GroundDetection
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}

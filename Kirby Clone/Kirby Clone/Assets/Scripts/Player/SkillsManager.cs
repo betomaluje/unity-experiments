@@ -6,6 +6,8 @@ using UnityEngine;
  */ 
 public class SkillsManager : MonoBehaviour
 {
+    [SerializeField] private Transform shootingPosition;
+
     private Skill skill;
 
     public void AddSkill(Skill newSkill)
@@ -36,8 +38,8 @@ public class SkillsManager : MonoBehaviour
     {
         if (skill != null)
         {
-            Vector3 shootingPosition = transform.Find("Hands").gameObject.transform.position;
-            skill.setPosition(shootingPosition);
+            Debug.Log("do skill " + skill);
+            skill.setPosition(shootingPosition.position);
             skill.performSkill(direction);
             StartCoroutine(skill.performCorroutineSkill(direction));
         }
