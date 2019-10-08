@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd5cab94db16f6141993a680a9c5786c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createAsChild: 0
   toSpawn:
   - key: {fileID: 4986480442839799539, guid: 0493e80be432eba49b8559bfeb10cdda, type: 3}
     value: 1
@@ -51,6 +52,7 @@ MonoBehaviour:
   - key: {fileID: 4017784532258250920, guid: bf19996467175364da2d792a2afeb73d, type: 3}
     value: 1
   - key: {fileID: 7211686627563588890, guid: 716b34c7763357e4eb0d0e15ee3adcab, type: 3}
-    value: 1
+    value: 3
   - key: {fileID: 6874102059365337600, guid: 74e4cf844b6b62345ac0173bad8065ce, type: 3}
     value: 3
+  whereToSpawn: {fileID: 0}

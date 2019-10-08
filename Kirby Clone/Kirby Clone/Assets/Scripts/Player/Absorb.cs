@@ -22,6 +22,8 @@ public class Absorb : MonoBehaviour
     [SerializeField] private Transform itemGameObjectPosition;
     [SerializeField] private float throwForce = 250f;
 
+    [SerializeField] private ParticleSystem absorbParticles;
+
     private SkillsManager skillsManager;
 
     private Collider2D onGrabRight;
@@ -133,6 +135,9 @@ public class Absorb : MonoBehaviour
         {
             absorbObject = onGrabRight.gameObject;
 
+            absorbParticles.gameObject.SetActive(true);
+            absorbParticles.Play();
+
             Debug.Log("We absorb the item: " + absorbObject.name);
             SoundManager.instance.Play("StartAbsorb"); 
 
@@ -173,7 +178,7 @@ public class Absorb : MonoBehaviour
 
             SoundManager.instance.Play("Throw");
 
-            RemoveItems();            
+            RemoveItems();
         }
     }
 
@@ -205,7 +210,10 @@ public class Absorb : MonoBehaviour
 
         foreach (Transform child in itemGameObjectPosition)
         {
-            Destroy(child.gameObject);
+            if (child.GetComponent<ParticleSystem>() == null)
+            {
+                Destroy(child.gameObject);
+            }            
         }
     }
 }
