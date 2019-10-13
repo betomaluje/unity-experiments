@@ -5,6 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
+    private enum Direction
+    {
+        BOTH, HORIZONTAL, VERTICAL
+    }
+
+    [SerializeField] private Direction movementDirection;
     [SerializeField] private Camera cam;
     [SerializeField] private float speed = 5f;
 
@@ -24,6 +30,14 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movementDirection.Equals(Direction.HORIZONTAL))
+        {
+            movement.y = 0;
+        } else if (movementDirection.Equals(Direction.VERTICAL))
+        {
+            movement.x = 0;
+        }
 
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 

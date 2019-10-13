@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerGrabbing : MonoBehaviour
 {
@@ -18,11 +16,11 @@ public class PlayerGrabbing : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
 
-    public bool objectGrabbed = false;
-    public GameObject targetObject;
+    private bool objectGrabbed = false;
+    private GameObject targetObject;
 
     private Vector2 mousePos;
-    public Plane plane = new Plane(Vector3.forward, Vector3.zero);
+    private Plane plane = new Plane(Vector3.forward, Vector3.zero);
 
     void Start()
     {
@@ -97,6 +95,8 @@ public class PlayerGrabbing : MonoBehaviour
 
     public void DoThrow(Vector3 dir)
     {
+        if (targetObject == null) return;
+
         objectGrabbed = false;    
 
         Rigidbody2D targetRb = targetObject.GetComponent<Rigidbody2D>();
