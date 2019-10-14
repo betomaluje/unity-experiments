@@ -15,8 +15,8 @@ TagManager:
   - 
   - Human
   - Spikes
-  - 
-  - 
+  - Background
+  - Foreground
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2534080145
+    locked: 0
+  - name: Objects
+    uniqueID: 1173147123
+    locked: 0
+  - name: Spikes
+    uniqueID: 2095790975
+    locked: 0
+  - name: Foreground
+    uniqueID: 1363267649
     locked: 0
