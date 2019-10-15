@@ -11,14 +11,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     [SerializeField] private Direction movementDirection;
-    [SerializeField] private Camera cam;
     [SerializeField] private float speed = 5f;
+    [SerializeField] private float turnSpeed = 100f;
 
     private Rigidbody2D rb;
     private Animator anim;
 
     private Vector2 movement;
-    private Vector2 mousePos;
 
     private void Start()
     {
@@ -37,20 +36,24 @@ public class PlayerMovement : MonoBehaviour
         } else if (movementDirection.Equals(Direction.VERTICAL))
         {
             movement.x = 0;
-        }
-
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
+        }        
 
         anim.SetBool("isWalking", movement.x != 0 || movement.y != 0);
     }
 
     private void FixedUpdate()
     {
+        // movement
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
-        Vector2 lookDir = mousePos - rb.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg - 90f;
-        rb.rotation = angle;
+        // rotation
+        Vector3 realDirection = Camera.main.transform.TransformDirection(movement);
+        // this line checks whether the player is making inputs.
+        if (realDirection.magnitude > 0.1f)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(Vector3.forward, realDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * 10);
+        }
     }
 
 }

@@ -9,9 +9,7 @@ public class PlayerGrabbing : MonoBehaviour
     [Header("Settings")]
     // the players item grab position
     [SerializeField] private Transform itemGameObjectPosition;
-    [SerializeField] private float throwForce = 250f;
-
-    [SerializeField] private Camera cam;
+    [SerializeField] private float throwForce = 250f;    
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -19,7 +17,6 @@ public class PlayerGrabbing : MonoBehaviour
     private bool objectGrabbed = false;
     private GameObject targetObject;
 
-    private Vector2 mousePos;
     private Plane plane = new Plane(Vector3.forward, Vector3.zero);
 
     void Start()
@@ -30,9 +27,7 @@ public class PlayerGrabbing : MonoBehaviour
     
     void Update()
     {
-        mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
-
-        if (Input.GetMouseButton(0))
+        if (Input.GetButton("Fire1"))
         {
             anim.SetBool("isAttacking", true);
 
@@ -41,20 +36,10 @@ public class PlayerGrabbing : MonoBehaviour
                 DoGrab();
             }
 
-        } else if (Input.GetMouseButtonUp(0) && objectGrabbed)
+        } else if (Input.GetButtonUp("Fire1") && objectGrabbed)
         {
-            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            DoThrow(itemGameObjectPosition.position - gameObject.transform.position);
 
-            float enter;
-            if (plane.Raycast(ray, out enter))
-            {
-                var hitPoint = ray.GetPoint(enter);
-                var mouseDir = hitPoint - gameObject.transform.position;
-                mouseDir = mouseDir.normalized;
-
-                DoThrow(mouseDir);                
-            }
-            
         } else
         {
             anim.SetBool("isAttacking", false);
@@ -63,15 +48,16 @@ public class PlayerGrabbing : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (CheckLayerMask(hitInfo.gameObject))
+        if (CheckLayerMask(hitInfo.gameObject) && itemGameObjectPosition.childCount == 0)
         {
+            Debug.Log("can grab");
             targetObject = hitInfo.gameObject;
         }
     }
 
     private void OnTriggerExit2D(Collider2D hitInfo)
     {
-        if (CheckLayerMask(hitInfo.gameObject))
+        if (CheckLayerMask(hitInfo.gameObject) && hitInfo.gameObject.Equals(targetObject))
         {
             targetObject = null;
         }
@@ -106,6 +92,9 @@ public class PlayerGrabbing : MonoBehaviour
             targetRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
         }
 
+        Debug.Log("Throw");
+
+        targetObject.transform.parent = null;
         targetObject = null;
     }
 
