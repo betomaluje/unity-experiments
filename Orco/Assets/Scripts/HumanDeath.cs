@@ -8,12 +8,13 @@ public class HumanDeath : MonoBehaviour
 
     [SerializeField] private GameEvent humanDeath;
 
+    [SerializeField] private GameObject[] bloodSplatters;
     [SerializeField] private GameObject deathParticles;    
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if (CheckLayerMask(hitInfo.gameObject))
-        {
+        {            
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Die();
         }
@@ -40,6 +41,7 @@ public class HumanDeath : MonoBehaviour
 
     private void Die()
     {
+        Instantiate(bloodSplatters[Random.Range(0, bloodSplatters.Length)], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
         humanDeath.Raise();
         Destroy(gameObject);
     }

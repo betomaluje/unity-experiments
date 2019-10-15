@@ -232,6 +232,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   humanDeath: {fileID: 11400000, guid: d11eb85bbe808804b971086b846d1f25, type: 2}
+  bloodSplatters:
+  - {fileID: 4308134626046559138, guid: 7f9011e0171eee049a1d6ab879bfb41a, type: 3}
+  - {fileID: 1123902623028124738, guid: 5fefb5e1cfa20714183f6492bbe98f21, type: 3}
+  - {fileID: 2874494018043690498, guid: c5f70d0b115faeb44b372a0bbc86318b, type: 3}
   deathParticles: {fileID: 1991877933926451430, guid: b9f459f0396862840a9d3b5122e687cb,
     type: 3}
 --- !u!114 &587158479991808837

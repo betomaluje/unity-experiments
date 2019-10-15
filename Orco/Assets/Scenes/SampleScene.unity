@@ -830,9 +830,9 @@ Material:
     m_Floats:
     - _Contrast: 1
     - _Fade: 1
-    - _Shear: 2.25
-    - _Size: 8
-    - _Skew: 0.5
+    - _Shear: 0.58
+    - _Size: 10
+    - _Skew: 0.45
     - _Speed: 0.5
     m_Colors:
     - _Color1: {r: 0.9622642, g: 0.95352066, b: 0.6853863, a: 0.22352941}
@@ -4833,8 +4833,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905336629}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.205, y: -0.044, z: 10}
-  m_LocalScale: {x: 17.996834, y: 10.06348, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 18, y: 10, z: 0}
   m_Children: []
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
@@ -4854,9 +4854,9 @@ MonoBehaviour:
   color1: {r: 0.9622642, g: 0.95352066, b: 0.6853863, a: 0.22352941}
   color2: {r: 0, g: 0.46, b: 1, a: 0}
   speed: 0.5
-  size: 8
-  skew: 0.5
-  shear: 2.25
+  size: 10
+  skew: 0.45
+  shear: 0.58
   fade: 1
   contrast: 1
   sortingLayer: 1363267649
