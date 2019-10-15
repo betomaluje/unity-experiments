@@ -3676,7 +3676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 378687583637099314, guid: cc42cb7600bb36748a9ea04b114beafb, type: 3}
+  - {fileID: 6858229163082413582, guid: cc42cb7600bb36748a9ea04b114beafb, type: 3}
   spawnTime: 1
   maxItemsAtATime: 3
 --- !u!4 &954700058
@@ -3814,7 +3814,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementDirection: 0
-  cam: {fileID: 519420031}
   speed: 4
   turnSpeed: 150
 --- !u!50 &1056841794

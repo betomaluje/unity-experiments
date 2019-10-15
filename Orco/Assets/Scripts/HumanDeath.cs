@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HumanDeath : MonoBehaviour
@@ -9,7 +8,7 @@ public class HumanDeath : MonoBehaviour
 
     [SerializeField] private GameEvent humanDeath;
 
-    [SerializeField] private GameObject deathParticles;
+    [SerializeField] private GameObject deathParticles;    
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
@@ -18,6 +17,25 @@ public class HumanDeath : MonoBehaviour
             Instantiate(deathParticles, transform.position, Quaternion.identity);
             Die();
         }
+    }
+
+    public void TornApart()
+    {
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
+        Debug.Log("TornApart");
+
+        Animator anim = GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetBool("isDying", true);
+        }        
+        StartCoroutine(DelayDying());
+    }
+
+    private IEnumerator DelayDying()
+    {
+        yield return new WaitForSeconds(0.3f);
+        Die();
     }
 
     private void Die()

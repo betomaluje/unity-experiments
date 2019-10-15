@@ -9,7 +9,7 @@ public class HumanMovement : MonoBehaviour
     private Vector2 movement;
     private float timeLeft;
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rb;    
 
     private void Start()
     {

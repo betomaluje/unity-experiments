@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PlayerGrabbing : MonoBehaviour
 {
@@ -43,14 +44,18 @@ public class PlayerGrabbing : MonoBehaviour
         } else
         {
             anim.SetBool("isAttacking", false);
-        }     
+        } 
+        
+        if (Input.GetButtonDown("Fire2") && targetObject != null)
+        {
+            StartCoroutine(DoTorn());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if (CheckLayerMask(hitInfo.gameObject) && itemGameObjectPosition.childCount == 0)
         {
-            Debug.Log("can grab");
             targetObject = hitInfo.gameObject;
         }
     }
@@ -73,6 +78,25 @@ public class PlayerGrabbing : MonoBehaviour
         item.transform.rotation = rotation;
     }
 
+    private IEnumerator DoTorn()
+    {
+        anim.SetBool("isTorning", true);
+
+        HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
+        if (humanDeath != null)
+        {
+            humanDeath.TornApart();
+        }
+
+        objectGrabbed = false;
+
+        targetObject.transform.parent = null;
+        targetObject = null;
+
+        yield return new WaitForSeconds(0.3f);
+        anim.SetBool("isTorning", false);
+    }
+
     public void DoGrab()
     {
         objectGrabbed = true;
@@ -90,9 +114,7 @@ public class PlayerGrabbing : MonoBehaviour
         if (targetRb != null)
         {
             targetRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
-        }
-
-        Debug.Log("Throw");
+        }       
 
         targetObject.transform.parent = null;
         targetObject = null;
