@@ -5145,10 +5145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f3c18c523244bc0a03a8f4b7984d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 10
-  scale: 30
+  numberOfRooms: 15
+  scale: 20
   roomsObjects:
   - {fileID: 6777233072356157203, guid: 04e40efc07b074182a3be0230109679f, type: 3}
+  bridge: {fileID: 7965491217382055459, guid: 48bd3515e3ae70c4bbea6d067d6a5709, type: 3}
 --- !u!4 &2068351718
 Transform:
   m_ObjectHideFlags: 0
