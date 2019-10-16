@@ -17,8 +17,7 @@ public class PlayerGrabbing : MonoBehaviour
 
     private bool objectGrabbed = false;
     private GameObject targetObject;
-
-    private Plane plane = new Plane(Vector3.forward, Vector3.zero);
+    private bool isTorning = false;
 
     void Start()
     {
@@ -37,7 +36,7 @@ public class PlayerGrabbing : MonoBehaviour
                 DoGrab();
             }
 
-        } else if (Input.GetButtonUp("Fire1") && objectGrabbed)
+        } else if (Input.GetButtonUp("Fire1") && !isTorning && objectGrabbed)
         {
             DoThrow(itemGameObjectPosition.position - gameObject.transform.position);
 
@@ -48,6 +47,7 @@ public class PlayerGrabbing : MonoBehaviour
         
         if (Input.GetButtonDown("Fire2") && targetObject != null)
         {
+            isTorning = true;
             StartCoroutine(DoTorn());
         }
     }
@@ -95,6 +95,7 @@ public class PlayerGrabbing : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isTorning", false);
+        isTorning = false;
     }
 
     public void DoGrab()

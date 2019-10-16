@@ -15,34 +15,39 @@ public class HumanDeath : MonoBehaviour
     {
         if (CheckLayerMask(hitInfo.gameObject))
         {            
-            Instantiate(deathParticles, transform.position, Quaternion.identity);
+            ShowParticles();
+            humanDeath.Raise();
             Die();
         }
     }
 
     public void TornApart()
     {
-        Instantiate(deathParticles, transform.position, Quaternion.identity);
+        ShowParticles();
         Debug.Log("TornApart");
 
         Animator anim = GetComponent<Animator>();
         if (anim != null)
         {
             anim.SetBool("isDying", true);
-        }        
+        }
+        humanDeath.Raise();
         StartCoroutine(DelayDying());
+    }
+
+    private void ShowParticles() {
+        Instantiate(deathParticles, transform.position, Quaternion.identity);
+        Instantiate(bloodSplatters[Random.Range(0, bloodSplatters.Length)], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
     }
 
     private IEnumerator DelayDying()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.4f);
         Die();
     }
 
     private void Die()
-    {
-        Instantiate(bloodSplatters[Random.Range(0, bloodSplatters.Length)], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-        humanDeath.Raise();
+    {        
         Destroy(gameObject);
     }
 
