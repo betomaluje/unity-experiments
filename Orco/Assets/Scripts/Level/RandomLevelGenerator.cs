@@ -28,9 +28,7 @@ public class RandomLevelGenerator : MonoBehaviour
 
         // we instantiate first room
         Instantiate(getRoom(), transform.position, Quaternion.identity);        
-        roomPositions.Add(transform.position);
-
-        print("first " + transform.position);
+        roomPositions.Add(transform.position);        
 
         for (int i = 0; i < numberOfRooms - 1; i++)
         {
@@ -42,10 +40,17 @@ public class RandomLevelGenerator : MonoBehaviour
                 // we need to connect current room with next one                
                 Vector2 bridge2DPosition = direction * scale / 2;
                 Vector3 bridgePosition = new Vector3(bridge2DPosition.x, bridge2DPosition.y, 0) + transform.position;
-                Instantiate(bridge, bridgePosition, Quaternion.identity);
+                GameObject bridgeGo = Instantiate(bridge, bridgePosition, Quaternion.identity);
+
+                if(temp2DPosition.y != 0)
+                {
+                    bridgeGo.transform.Rotate(0, 0, 90f);
+                }
 
                 // we instantiate a room
-                Instantiate(getRoom(), nextPosition, Quaternion.identity);                
+                GameObject room = Instantiate(getRoom(), nextPosition, Quaternion.identity);
+                
+                bridgeGo.transform.parent = room.transform;
 
                 // we update the gameobjects position
                 transform.position = nextPosition;
