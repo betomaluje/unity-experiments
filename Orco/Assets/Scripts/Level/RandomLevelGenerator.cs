@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class RandomLevelGenerator : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class RandomLevelGenerator : MonoBehaviour
 
     private List<Vector2> directionsList;
     private List<Vector3> roomPositions;
-    
+    private List<GameObject> addedRooms;
+
     void Start()
     {
         directionsList = new List<Vector2>();
@@ -26,11 +28,13 @@ public class RandomLevelGenerator : MonoBehaviour
     }
 
     private IEnumerator GenerateMap() {
-        roomPositions = new List<Vector3>();    
+        roomPositions = new List<Vector3>();
+        addedRooms = new List<GameObject>();
 
         // we instantiate first room
-        Instantiate(getRoom(), transform.position, Quaternion.identity);        
+        GameObject firstRoom = Instantiate(getRoom(), transform.position, Quaternion.identity);        
         roomPositions.Add(transform.position);
+        addedRooms.Add(firstRoom);
 
         yield return new WaitForSeconds(timeBtwRooms);
 
@@ -64,11 +68,39 @@ public class RandomLevelGenerator : MonoBehaviour
                 transform.position = nextPosition;
 
                 roomPositions.Add(nextPosition);
+                addedRooms.Add(room);
 
                 yield return new WaitForSeconds(timeBtwRooms);
             } else {
                 i--;
             }       
+        }
+
+        // now we need to restore the walls
+        RestoreWalls();
+    }
+
+    private void RestoreWalls()
+    {
+        foreach (var room in addedRooms)
+        {
+            foreach (Transform pt in room.transform)
+            {
+                if (pt.gameObject.name.Equals("Grid"))
+                {
+                    foreach (Transform t in pt)
+                    {
+                        if (t.CompareTag("Optional Wall"))
+                        {
+                            CompositeCollider2D collider = t.GetComponentInChildren<CompositeCollider2D>();
+                            if (collider)
+                            {
+                                collider.isTrigger = false;
+                            }
+                        }
+                    }
+                }                             
+            }
         }
     }
 

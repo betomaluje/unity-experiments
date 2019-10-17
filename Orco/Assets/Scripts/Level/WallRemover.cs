@@ -9,7 +9,6 @@ public class WallRemover : MonoBehaviour
     {
         if (CheckLayerMask(hitInfo.gameObject))
         {
-            Debug.Log("We need to remove this!");
             Destroy(gameObject);
         }        
     }

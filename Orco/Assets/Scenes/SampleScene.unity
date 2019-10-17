@@ -3124,7 +3124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f3c18c523244bc0a03a8f4b7984d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBtwRooms: 1
+  timeBtwRooms: 0.1
   numberOfRooms: 8
   scale: 20
   roomsObjects:
