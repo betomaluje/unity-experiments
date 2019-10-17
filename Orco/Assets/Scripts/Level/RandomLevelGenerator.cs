@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class RandomLevelGenerator : MonoBehaviour
 {
+    [SerializeField] private float timeBtwRooms = 0;
     [SerializeField] private int numberOfRooms = 10;
     [SerializeField] private int scale;
     [SerializeField] private GameObject[] roomsObjects;
-    [SerializeField] private GameObject bridge;
-    
+    [SerializeField] private GameObject horizontalBridge;
+    [SerializeField] private GameObject verticalBridge;
+
     private List<Vector2> directionsList;
     private List<Vector3> roomPositions;
     
@@ -20,15 +22,17 @@ public class RandomLevelGenerator : MonoBehaviour
         directionsList.Add(new Vector2(1, 0)); // left
         directionsList.Add(new Vector2(-1, 0)); // right
 
-        GenerateMap();
+        StartCoroutine(GenerateMap());
     }
 
-    private void GenerateMap() {
+    private IEnumerator GenerateMap() {
         roomPositions = new List<Vector3>();    
 
         // we instantiate first room
         Instantiate(getRoom(), transform.position, Quaternion.identity);        
-        roomPositions.Add(transform.position);        
+        roomPositions.Add(transform.position);
+
+        yield return new WaitForSeconds(timeBtwRooms);
 
         for (int i = 0; i < numberOfRooms - 1; i++)
         {
@@ -40,11 +44,15 @@ public class RandomLevelGenerator : MonoBehaviour
                 // we need to connect current room with next one                
                 Vector2 bridge2DPosition = direction * scale / 2;
                 Vector3 bridgePosition = new Vector3(bridge2DPosition.x, bridge2DPosition.y, 0) + transform.position;
-                GameObject bridgeGo = Instantiate(bridge, bridgePosition, Quaternion.identity);
 
-                if(temp2DPosition.y != 0)
+                GameObject bridgeGo;
+
+                if (temp2DPosition.y != 0)
                 {
-                    bridgeGo.transform.Rotate(0, 0, 90f);
+                    bridgeGo = Instantiate(verticalBridge, bridgePosition, Quaternion.identity);
+                } else
+                {
+                    bridgeGo = Instantiate(horizontalBridge, bridgePosition, Quaternion.identity);
                 }
 
                 // we instantiate a room
@@ -55,7 +63,9 @@ public class RandomLevelGenerator : MonoBehaviour
                 // we update the gameobjects position
                 transform.position = nextPosition;
 
-                roomPositions.Add(nextPosition);               
+                roomPositions.Add(nextPosition);
+
+                yield return new WaitForSeconds(timeBtwRooms);
             } else {
                 i--;
             }       
