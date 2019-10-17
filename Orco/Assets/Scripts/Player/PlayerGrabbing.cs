@@ -10,7 +10,9 @@ public class PlayerGrabbing : MonoBehaviour
     [Header("Settings")]
     // the players item grab position
     [SerializeField] private Transform itemGameObjectPosition;
-    [SerializeField] private float throwForce = 250f;    
+    [SerializeField] private float throwForce = 250f;
+
+    [SerializeField] private float timeForLongPress = 0.5f;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -18,6 +20,7 @@ public class PlayerGrabbing : MonoBehaviour
     private bool objectGrabbed = false;
     private GameObject targetObject;
     private bool isTorning = false;
+    private float timePressing = 0f;
 
     void Start()
     {
@@ -32,23 +35,31 @@ public class PlayerGrabbing : MonoBehaviour
             anim.SetBool("isAttacking", true);
 
             if (targetObject != null)
-            {
-                DoGrab();
+            {                        
+                DoGrab();                             
             }
 
-        } else if (Input.GetButtonUp("Fire1") && !isTorning && objectGrabbed)
-        {
-            DoThrow(itemGameObjectPosition.position - gameObject.transform.position);
+            timePressing += Time.deltaTime;            
 
-        } else
+        } else if (Input.GetButtonUp("Fire1") && targetObject != null)
+        {
+            if (timePressing >= timeForLongPress && !isTorning)
+            {
+                Debug.Log("Long press!");
+                isTorning = true;
+                StartCoroutine(DoTorn());
+            }
+            else
+            {
+                Debug.Log("Normal press!");
+                DoThrow(itemGameObjectPosition.position - gameObject.transform.position);
+            }
+
+            timePressing = 0;
+        }
+        else
         {
             anim.SetBool("isAttacking", false);
-        } 
-        
-        if (Input.GetButtonDown("Fire2") && targetObject != null)
-        {
-            isTorning = true;
-            StartCoroutine(DoTorn());
         }
     }
 
@@ -80,6 +91,8 @@ public class PlayerGrabbing : MonoBehaviour
 
     private IEnumerator DoTorn()
     {
+        if (targetObject == null) yield return null;
+
         anim.SetBool("isTorning", true);
 
         HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();

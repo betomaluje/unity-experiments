@@ -1686,6 +1686,7 @@ MonoBehaviour:
     m_Bits: 256
   itemGameObjectPosition: {fileID: 235215615}
   throwForce: 20
+  timeForLongPress: 2
 --- !u!58 &1056841799
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2777,7 +2778,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25f3c18c523244bc0a03a8f4b7984d95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfRooms: 15
+  numberOfRooms: 5
   scale: 20
   roomsObjects:
   - {fileID: 6777233072356157203, guid: 04e40efc07b074182a3be0230109679f, type: 3}
