@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 6858229163082413586}
   - component: {fileID: 6858229163082413587}
   - component: {fileID: 6858229163082413589}
-  - component: {fileID: 587158479991808837}
   - component: {fileID: 3615743550177247509}
   - component: {fileID: 6515597397101806792}
   m_Layer: 8
@@ -112,7 +111,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6858229163082413582}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5953469, y: 0.50338954, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6515597396523553213}
@@ -238,19 +237,6 @@ MonoBehaviour:
   - {fileID: 2874494018043690498, guid: c5f70d0b115faeb44b372a0bbc86318b, type: 3}
   deathParticles: {fileID: 1991877933926451430, guid: b9f459f0396862840a9d3b5122e687cb,
     type: 3}
---- !u!114 &587158479991808837
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6858229163082413582}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1d2c5fa44b02a845bbd4d2f4177dd47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mCamera: {fileID: 0}
 --- !u!114 &3615743550177247509
 MonoBehaviour:
   m_ObjectHideFlags: 0
