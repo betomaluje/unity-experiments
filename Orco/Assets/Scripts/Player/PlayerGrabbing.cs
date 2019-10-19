@@ -18,9 +18,13 @@ public class PlayerGrabbing : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool objectGrabbed = false;
-    private GameObject targetObject;
-    private bool isTorning = false;
+    private GameObject targetObject;    
     private float timePressing = 0f;
+
+    // animations
+    private bool isTorning = false;
+    private bool buttonPressed = false;
+    private bool buttonUp = false;
 
     void Start()
     {
@@ -30,37 +34,46 @@ public class PlayerGrabbing : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        Animate();
+        CheckInput();        
+    }
+
+    private void CheckInput()
+    {
+        buttonPressed = Input.GetButton("Fire1");
+        buttonUp = Input.GetButtonUp("Fire1");
+
+        if (buttonPressed)
         {
-            anim.SetBool("isAttacking", true);
+            timePressing += Time.deltaTime;
 
             if (targetObject != null)
-            {                        
-                DoGrab();                             
+            {
+                DoGrab();
             }
+        }
 
-            timePressing += Time.deltaTime;            
-
-        } else if (Input.GetButtonUp("Fire1") && targetObject != null)
+        if (buttonUp && targetObject != null)
         {
             if (timePressing >= timeForLongPress && !isTorning)
             {
                 Debug.Log("Long press!");
                 isTorning = true;
-                StartCoroutine(DoTorn());
+                DoTorn();
             }
             else
             {
                 Debug.Log("Normal press!");
-                DoThrow(itemGameObjectPosition.position - gameObject.transform.position);
+                DoThrow(itemGameObjectPosition.position - transform.position);
             }
-
             timePressing = 0;
         }
-        else
-        {
-            anim.SetBool("isAttacking", false);
-        }
+    }
+
+    private void Animate()
+    {
+        anim.SetBool("isAttacking", buttonPressed);
+        anim.SetBool("isTorning", isTorning);
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
@@ -68,14 +81,6 @@ public class PlayerGrabbing : MonoBehaviour
         if (CheckLayerMask(hitInfo.gameObject) && itemGameObjectPosition.childCount == 0)
         {
             targetObject = hitInfo.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D hitInfo)
-    {
-        if (CheckLayerMask(hitInfo.gameObject) && hitInfo.gameObject.Equals(targetObject))
-        {
-            targetObject = null;
         }
     }
 
@@ -89,15 +94,18 @@ public class PlayerGrabbing : MonoBehaviour
         item.transform.rotation = rotation;
     }
 
-    private IEnumerator DoTorn()
+    private void DoTorn()
     {
-        if (targetObject == null) yield return null;
-
-        anim.SetBool("isTorning", true);
+        if (targetObject == null)
+        {
+            Debug.Log("Fail torning");
+            return;
+        }                
 
         HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
         if (humanDeath != null)
         {
+            Debug.Log("Torning human!");
             humanDeath.TornApart();
         }
 
@@ -105,9 +113,6 @@ public class PlayerGrabbing : MonoBehaviour
 
         targetObject.transform.parent = null;
         targetObject = null;
-
-        yield return new WaitForSeconds(0.3f);
-        anim.SetBool("isTorning", false);
         isTorning = false;
     }
 

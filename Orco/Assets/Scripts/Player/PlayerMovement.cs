@@ -27,8 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        CheckInput();
 
         if (movementDirection.Equals(Direction.HORIZONTAL))
         {
@@ -52,8 +51,14 @@ public class PlayerMovement : MonoBehaviour
         if (realDirection.magnitude > 0.1f)
         {
             Quaternion newRotation = Quaternion.LookRotation(Vector3.forward, realDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * 10);
+            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * turnSpeed);
         }
+    }
+
+    private void CheckInput()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
     }
 
 }

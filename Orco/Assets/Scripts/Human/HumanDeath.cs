@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HumanDeath : MonoBehaviour
 {
@@ -24,7 +23,6 @@ public class HumanDeath : MonoBehaviour
     public void TornApart()
     {
         ShowParticles();
-        Debug.Log("TornApart");
 
         Animator anim = GetComponent<Animator>();
         if (anim != null)
@@ -32,18 +30,11 @@ public class HumanDeath : MonoBehaviour
             anim.SetBool("isDying", true);
         }
         humanDeath.Raise();
-        StartCoroutine(DelayDying());
     }
 
     private void ShowParticles() {
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         Instantiate(bloodSplatters[Random.Range(0, bloodSplatters.Length)], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-    }
-
-    private IEnumerator DelayDying()
-    {
-        yield return new WaitForSeconds(0.4f);
-        Die();
     }
 
     private void Die()
