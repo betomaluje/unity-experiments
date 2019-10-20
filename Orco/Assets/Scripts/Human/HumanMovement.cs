@@ -1,13 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HumanMovement : MonoBehaviour
-{
+{    
     [SerializeField] private float accelerationTime = 2f;
     [SerializeField] private float maxSpeed = 5f;
+
     private Vector2 movement;
-    private float timeLeft;
+    private float timeLeft;    
 
     private Rigidbody2D rb;    
 
@@ -29,5 +28,5 @@ public class HumanMovement : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(movement * maxSpeed);
-    }
+    }    
 }

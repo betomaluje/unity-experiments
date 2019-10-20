@@ -12,7 +12,7 @@ public class HumanDeath : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (CheckLayerMask(hitInfo.gameObject))
+        if (TriggerUtils.CheckLayerMask(deathLayer, hitInfo.gameObject))
         {            
             ShowParticles();
             humanDeath.Raise();
@@ -40,10 +40,5 @@ public class HumanDeath : MonoBehaviour
     private void Die()
     {        
         Destroy(gameObject);
-    }
-
-    private bool CheckLayerMask(GameObject target)
-    {
-        return (deathLayer & 1 << target.layer) == 1 << target.layer;
-    }
+    }    
 }

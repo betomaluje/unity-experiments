@@ -78,7 +78,7 @@ public class PlayerGrabbing : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (CheckLayerMask(hitInfo.gameObject) && itemGameObjectPosition.childCount == 0)
+        if (TriggerUtils.CheckLayerMask(grabbableLayer, hitInfo.gameObject) && itemGameObjectPosition.childCount == 0)
         {
             targetObject = hitInfo.gameObject;
         }
@@ -137,10 +137,5 @@ public class PlayerGrabbing : MonoBehaviour
 
         targetObject.transform.parent = null;
         targetObject = null;
-    }
-
-    private bool CheckLayerMask(GameObject target)
-    {
-        return (grabbableLayer & 1 << target.layer) == 1 << target.layer;
-    }
+    }  
 }
