@@ -57,13 +57,11 @@ public class PlayerGrabbing : MonoBehaviour
         {
             if (timePressing >= timeForLongPress && !isTorning)
             {
-                Debug.Log("Long press!");
                 isTorning = true;
                 DoTorn();
             }
             else
             {
-                Debug.Log("Normal press!");
                 DoThrow(itemGameObjectPosition.position - transform.position);
             }
             timePressing = 0;
@@ -105,7 +103,6 @@ public class PlayerGrabbing : MonoBehaviour
         HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
         if (humanDeath != null)
         {
-            Debug.Log("Torning human!");
             humanDeath.TornApart();
         }
 

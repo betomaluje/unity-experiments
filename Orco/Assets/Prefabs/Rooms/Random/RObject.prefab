@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5711107134893924260}
   - component: {fileID: 9027306890666981524}
   m_Layer: 0
-  m_Name: RandomObject
+  m_Name: RObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,6 +45,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toSpawn:
   - key: {fileID: 6858229163082413582, guid: cc42cb7600bb36748a9ea04b114beafb, type: 3}
-    value: 90
+    value: 45
   - key: {fileID: 2874494018043690498, guid: c5f70d0b115faeb44b372a0bbc86318b, type: 3}
-    value: 5
+    value: 10

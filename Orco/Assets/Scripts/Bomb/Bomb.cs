@@ -9,6 +9,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private float explosionForce = 10;
     [SerializeField] private CircleCollider2D circleCollider;
     [SerializeField] private GameObject particles;
+    [SerializeField] private GameEvent explosionEvent;
 
     private Animator anim;
     private GameObject target;    
@@ -53,8 +54,11 @@ public class Bomb : MonoBehaviour
 
             if (rb != null)
             {
-                AddExplosionForce2(rb, explosionForce, transform.position, radius);
+                AddExplosionForce(rb, explosionForce, transform.position, radius*5);
             }
+
+            explosionEvent.sentFloat = Mathf.Ceil(proximity);
+            explosionEvent.Raise();
         }
 
         Instantiate(particles, transform.position, Quaternion.identity);

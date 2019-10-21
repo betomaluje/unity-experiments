@@ -7,7 +7,7 @@ public class PlayerScore : MonoBehaviour
     private int currentAmount = 0;
 
     private void Update()
-    {
+    {        
         mText.text = currentAmount.ToString();
     }
 
@@ -19,10 +19,18 @@ public class PlayerScore : MonoBehaviour
     public void Add(GameObject go)
     {
         currentAmount++;
+        Debug.Log("adding: " + currentAmount);
     }
 
-    public void Substract(GameObject go)
+    public void Substract(float amount)
     {
-        currentAmount--;
+        Debug.Log(currentAmount + " -> damage: " + Mathf.RoundToInt(amount));
+        currentAmount -= Mathf.RoundToInt(amount);
+        Debug.Log("currentAmount: " + currentAmount);
+
+        if (currentAmount < 0)
+        {
+            Reset();
+        }
     }
 }
