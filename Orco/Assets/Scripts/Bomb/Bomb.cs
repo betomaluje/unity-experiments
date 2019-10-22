@@ -12,9 +12,8 @@ public class Bomb : MonoBehaviour
     [SerializeField] private GameEvent explosionEvent;
 
     private Animator anim;
-    private GameObject target;    
 
-    private void Start()
+    private void Awake()
     {
         anim = GetComponent<Animator>();
         circleCollider.radius = radius;
@@ -26,31 +25,20 @@ public class Bomb : MonoBehaviour
         if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
         {
             anim.SetTrigger("Activate");
-            target = collision.gameObject;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
-        {
-            target = null;
         }
     }
 
     private void Explode()
     {
-        if (target == null) return;
-
         Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, playerLayer);
-        if (collider.gameObject.tag == "Player")
+        if (collider != null && collider.gameObject.tag == "Player")
         {
-            float proximity = (transform.position - target.transform.position).magnitude;
+            float proximity = (transform.position - collider.gameObject.transform.position).magnitude;
             float actualDamage = (damage * proximity);
             Debug.Log("proximity " + proximity);
             Debug.Log(collider.gameObject.name + " took " + actualDamage + "  damage");
 
-            Rigidbody2D rb = target.GetComponent<Rigidbody2D>();
+            Rigidbody2D rb = collider.gameObject.GetComponent<Rigidbody2D>();
 
             if (rb != null)
             {

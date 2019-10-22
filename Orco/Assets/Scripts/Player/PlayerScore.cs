@@ -4,7 +4,10 @@ using TMPro;
 public class PlayerScore : MonoBehaviour
 {
     [SerializeField] private TMP_Text mText;
+    [SerializeField] private GameEvent gameOverEvent;
+
     private int currentAmount = 0;
+    private int maxScore = 0;
 
     private void Update()
     {        
@@ -14,12 +17,19 @@ public class PlayerScore : MonoBehaviour
     public void Reset()
     {
         currentAmount = 0;
+        maxScore = 0;
     }
 
     public void Add(GameObject go)
     {
         currentAmount++;
         Debug.Log("adding: " + currentAmount);
+
+        if (currentAmount > maxScore)
+        {
+            maxScore = currentAmount;
+        }
+
     }
 
     public void Substract(float amount)
@@ -30,6 +40,8 @@ public class PlayerScore : MonoBehaviour
 
         if (currentAmount < 0)
         {
+            gameOverEvent.sentInt = maxScore;
+            gameOverEvent.Raise();
             Reset();
         }
     }
