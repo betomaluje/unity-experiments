@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     private enum Direction
     {
-        BOTH, HORIZONTAL, VERTICAL
+        BOTH, HORIZONTAL, VERTICAL, NONE
     }
 
     [SerializeField] private Direction movementDirection;
@@ -27,15 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        CheckInput();
-
-        if (movementDirection.Equals(Direction.HORIZONTAL))
-        {
-            movement.y = 0;
-        } else if (movementDirection.Equals(Direction.VERTICAL))
-        {
-            movement.x = 0;
-        }        
+        CheckInput();       
 
         anim.SetBool("isWalking", movement.x != 0 || movement.y != 0);
     }
@@ -57,8 +47,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckInput()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        switch (movementDirection)
+        {
+            case Direction.NONE:
+                break;
+            case Direction.HORIZONTAL:
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = 0;
+                break;
+            case Direction.VERTICAL:
+                movement.x = 0;
+                movement.y = Input.GetAxisRaw("Vertical");
+                break;
+            case Direction.BOTH:
+                movement.x = Input.GetAxisRaw("Horizontal");
+                movement.y = Input.GetAxisRaw("Vertical");
+                break;
+            default:
+                break;
+        }
     }
 
 }

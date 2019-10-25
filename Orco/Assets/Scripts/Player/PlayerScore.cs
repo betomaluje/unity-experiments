@@ -29,7 +29,6 @@ public class PlayerScore : MonoBehaviour
         {
             maxScore = currentAmount;
         }
-
     }
 
     public void Substract(float amount)
@@ -44,5 +43,10 @@ public class PlayerScore : MonoBehaviour
             gameOverEvent.Raise();
             Reset();
         }
+    }
+
+    public int GetPlayerScore() 
+    {
+        return currentAmount;
     }
 }

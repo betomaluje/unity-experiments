@@ -12,6 +12,8 @@ public class RandomLevelGenerator : MonoBehaviour
     [SerializeField] private GameObject horizontalBridge;
     [SerializeField] private GameObject verticalBridge;
 
+    [SerializeField] private GameObject winObject;
+
     private List<Vector2> directionsList;
     private List<Vector3> roomPositions;
     private List<GameObject> addedRooms;
@@ -78,6 +80,14 @@ public class RandomLevelGenerator : MonoBehaviour
 
         // now we need to restore the walls
         RestoreWalls();
+        PutEndObject();
+    }
+
+    private void PutEndObject() 
+    {
+        Vector3 lastRoom = roomPositions[roomPositions.Count - 1];
+
+        Instantiate(winObject, lastRoom, Quaternion.identity);
     }
 
     private void RestoreWalls()
