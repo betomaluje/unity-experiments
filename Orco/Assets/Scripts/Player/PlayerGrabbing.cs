@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 
-public class PlayerGrabbing : MonoBehaviour
+public class PlayerGrabbing : TargetDetection
 {
-    [Header("Layers")]
-    [SerializeField] private LayerMask grabbableLayer;
-
     [Space]
     [Header("Settings")]
     // the players item grab position
@@ -18,7 +15,7 @@ public class PlayerGrabbing : MonoBehaviour
 
     private bool objectGrabbed = false;
     private GameObject targetObject;    
-    private float timePressing = 0f;
+    private float timePressing = 0f;    
 
     // animations
     private bool isTorning = false;
@@ -30,12 +27,18 @@ public class PlayerGrabbing : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
-    
-    void Update()
+
+    public override void Update()
     {
+        base.Update();
+        if (onTargetDetected)
+        {
+            targetObject = onTargetDetected.gameObject;
+        }
+
         Animate();
         CheckInput();        
-    }
+    }    
 
     private void CheckInput()
     {
@@ -43,10 +46,11 @@ public class PlayerGrabbing : MonoBehaviour
         buttonUp = Input.GetButtonUp("Fire1");
 
         if (buttonPressed)
-        {            
+        {
+            timePressing += Time.deltaTime;
+
             if (targetObject != null)
-            {
-                timePressing += Time.deltaTime;
+            {                
                 DoGrab();
             }
         }
@@ -70,15 +74,7 @@ public class PlayerGrabbing : MonoBehaviour
     {
         anim.SetBool("isAttacking", buttonPressed);
         anim.SetBool("isTorning", isTorning);
-    }
-
-    private void OnTriggerEnter2D(Collider2D hitInfo)
-    {
-        if (TriggerUtils.CheckLayerMask(grabbableLayer, hitInfo.gameObject) && itemGameObjectPosition.childCount == 0)
-        {
-            targetObject = hitInfo.gameObject;
-        }
-    }
+    }  
 
     private void PutItemAsChild(GameObject item)
     {

@@ -173,8 +173,9 @@ GameObject:
   - component: {fileID: 5657964564429794949}
   - component: {fileID: 5657964564429794948}
   - component: {fileID: 5657964564429794955}
+  - component: {fileID: -4466779935494460359}
   - component: {fileID: 5657964564429794950}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,6 +233,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &-4466779935494460359
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5657964564429794954}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 2
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!114 &5657964564429794950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,11 +266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77103033bf2062843911cb3a66a51bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerLayer:
+  targetLayer:
     serializedVersion: 2
     m_Bits: 65536
   radius: 5
-  damage: 10
+  damage: 8
   explosionForce: 6
   circleCollider: {fileID: 5657964564429794948}
   particles: {fileID: 4402510901658541555, guid: eb40659c02496784cbbfe05138337cea,

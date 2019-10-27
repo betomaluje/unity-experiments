@@ -2,7 +2,7 @@
 
 public class Bomb : MonoBehaviour
 {
-    [SerializeField] private LayerMask playerLayer;
+    [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float radius = 4;
     [SerializeField] private float damage = 10;
     [Range(0, 10)]
@@ -22,7 +22,7 @@ public class Bomb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
+        if (TriggerUtils.CheckLayerMask(targetLayer, collision.gameObject))
         {
             anim.SetTrigger("Activate");
         }
@@ -30,8 +30,8 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
-        Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, playerLayer);
-        if (collider != null && collider.gameObject.tag == "Player")
+        Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, targetLayer);
+        if (collider != null)
         {
             float proximity = (transform.position - collider.gameObject.transform.position).magnitude;
             float actualDamage = (damage * proximity);
@@ -45,8 +45,11 @@ public class Bomb : MonoBehaviour
                 AddExplosionForce(rb, explosionForce, transform.position, radius*5);
             }
 
-            explosionEvent.sentFloat = Mathf.Ceil(proximity);
-            explosionEvent.Raise();
+            if (collider.gameObject.tag == "Player")
+            {
+                explosionEvent.sentFloat = Mathf.Ceil(proximity);
+                explosionEvent.Raise();
+            }            
         }
 
         Instantiate(particles, transform.position, Quaternion.identity);

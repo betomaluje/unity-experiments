@@ -3,17 +3,25 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    private enum Direction
+    private enum InputDirection
     {
         BOTH, HORIZONTAL, VERTICAL, NONE
     }
 
-    [SerializeField] private Direction movementDirection;
+    private enum Direction
+    {
+        UP, DOWN, LEFT, RIGHT, NONE
+    }
+
+    [SerializeField] private InputDirection movementDirection;
     [SerializeField] private float speed = 5f;
     [SerializeField] private float turnSpeed = 100f;
 
+    private Direction currentDirection;
+
     private Rigidbody2D rb;
     private Animator anim;
+    private Camera cam;
 
     private Vector2 movement;
 
@@ -21,6 +29,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        cam = Camera.main;
+        currentDirection = Direction.NONE;
     }
 
     void Update()
@@ -36,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
         // rotation
-        Vector3 realDirection = Camera.main.transform.TransformDirection(movement);
+        Vector3 realDirection = cam.transform.TransformDirection(movement);
         // this line checks whether the player is making inputs.
         if (realDirection.magnitude > 0.1f)
         {
@@ -49,17 +59,20 @@ public class PlayerMovement : MonoBehaviour
     {
         switch (movementDirection)
         {
-            case Direction.NONE:
+            case InputDirection.NONE:
+                currentDirection = Direction.NONE;
                 break;
-            case Direction.HORIZONTAL:
+            case InputDirection.HORIZONTAL:
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = 0;
+
+
                 break;
-            case Direction.VERTICAL:
+            case InputDirection.VERTICAL:
                 movement.x = 0;
                 movement.y = Input.GetAxisRaw("Vertical");
                 break;
-            case Direction.BOTH:
+            case InputDirection.BOTH:
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
                 break;
@@ -68,4 +81,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public Direction GetDirection()
+    {
+        return currentDirection;
+    }
 }

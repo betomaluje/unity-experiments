@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 126668265171530091}
   - component: {fileID: 9083028167116706099}
   - component: {fileID: 2648246619718922622}
+  - component: {fileID: 3538360615428954087}
+  - component: {fileID: -2972039597578022930}
   m_Layer: 9
   m_Name: Spikes
   m_TagString: Untagged
@@ -70,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 2095790975
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7794587344549300997, guid: c624c5535cfca4b42b7d6d59831c6492,
+  m_Sprite: {fileID: 5172423615034692419, guid: c624c5535cfca4b42b7d6d59831c6492,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -108,3 +110,40 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7379295, y: 0.79650307}
   m_EdgeRadius: 0
+--- !u!95 &3538360615428954087
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481128648079727206}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dd50442a821aa2341abece447f06a14a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-2972039597578022930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5481128648079727206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e182f348a2d12f94f8fa7cbc9531d5ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killableLayer:
+    serializedVersion: 2
+    m_Bits: 65792
+  targetRadius: 2
+  targetOffset: {x: 0, y: 0}
+  debugColor: {r: 1, g: 0.58695984, b: 0, a: 1}

@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class HumanMovement : MonoBehaviour
+public class HumanMovement : TargetDetection
 {
-    [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float accelerationTime = 2f;
     [SerializeField] private float maxSpeed = 5f;
 
@@ -22,13 +21,16 @@ public class HumanMovement : MonoBehaviour
         isPlayerNear = false;
     }
 
-    void Update()
+    public override void Update()
     {
+        base.Update();
+        isPlayerNear = onTargetDetected;
+
         if (!isPlayerNear || isGrabbed)
         {
             return;
         }
-
+       
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0)
         {
@@ -45,21 +47,5 @@ public class HumanMovement : MonoBehaviour
         }
 
         rb.AddForce(movement * maxSpeed);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
-        {
-            isPlayerNear = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
-        {
-            isPlayerNear = false;
-        }
     }
 }
