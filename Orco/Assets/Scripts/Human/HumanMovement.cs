@@ -1,22 +1,34 @@
 ﻿using UnityEngine;
 
 public class HumanMovement : MonoBehaviour
-{    
+{
+    [SerializeField] private LayerMask playerLayer;
     [SerializeField] private float accelerationTime = 2f;
     [SerializeField] private float maxSpeed = 5f;
 
+    [HideInInspector]
+    public bool isGrabbed = false;
+
     private Vector2 movement;
-    private float timeLeft;    
+    private float timeLeft;
+    private bool isPlayerNear = false;
 
-    private Rigidbody2D rb;    
+    private Rigidbody2D rb;
 
-    private void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        isGrabbed = false;
+        isPlayerNear = false;
     }
 
     void Update()
     {
+        if (!isPlayerNear || isGrabbed)
+        {
+            return;
+        }
+
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0)
         {
@@ -27,6 +39,27 @@ public class HumanMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isPlayerNear || isGrabbed)
+        {
+            return;
+        }
+
         rb.AddForce(movement * maxSpeed);
-    }    
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
+        {
+            isPlayerNear = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
+        {
+            isPlayerNear = false;
+        }
+    }
 }

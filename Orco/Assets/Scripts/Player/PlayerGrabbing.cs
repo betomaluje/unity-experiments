@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerGrabbing : MonoBehaviour
 {
@@ -44,11 +43,10 @@ public class PlayerGrabbing : MonoBehaviour
         buttonUp = Input.GetButtonUp("Fire1");
 
         if (buttonPressed)
-        {
-            timePressing += Time.deltaTime;
-
+        {            
             if (targetObject != null)
             {
+                timePressing += Time.deltaTime;
                 DoGrab();
             }
         }
@@ -117,6 +115,7 @@ public class PlayerGrabbing : MonoBehaviour
     {
         objectGrabbed = true;
         PutItemAsChild(targetObject);
+        ChangeHumanGrabbed(true);
     }
 
     public void DoThrow(Vector3 dir)
@@ -130,9 +129,20 @@ public class PlayerGrabbing : MonoBehaviour
         if (targetRb != null)
         {
             targetRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
-        }       
+        }
+
+        ChangeHumanGrabbed(false);
 
         targetObject.transform.parent = null;
         targetObject = null;
     }  
+
+    private void ChangeHumanGrabbed(bool grabbed)
+    {
+        HumanMovement humanMovement = targetObject.GetComponent<HumanMovement>();
+        if (humanMovement != null)
+        {            
+            humanMovement.isGrabbed = grabbed;
+        }
+    }
 }

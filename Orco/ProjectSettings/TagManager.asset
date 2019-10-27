@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Optional Wall
   - Player Score
+  - Bullet
+  - Human
   layers:
   - Default
   - TransparentFX
