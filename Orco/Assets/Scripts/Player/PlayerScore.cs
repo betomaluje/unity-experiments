@@ -23,7 +23,6 @@ public class PlayerScore : MonoBehaviour
     public void Add(GameObject go)
     {
         currentAmount++;
-        Debug.Log("adding: " + currentAmount);
 
         if (currentAmount > maxScore)
         {
@@ -33,9 +32,7 @@ public class PlayerScore : MonoBehaviour
 
     public void Substract(float amount)
     {
-        Debug.Log(currentAmount + " -> damage: " + Mathf.RoundToInt(amount));
         currentAmount -= Mathf.RoundToInt(amount);
-        Debug.Log("currentAmount: " + currentAmount);
 
         if (currentAmount < 0)
         {

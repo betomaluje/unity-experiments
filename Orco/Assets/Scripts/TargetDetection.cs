@@ -11,16 +11,30 @@ public class TargetDetection : MonoBehaviour
     [SerializeField] private Vector2 targetOffset;
     [SerializeField] private Color debugColor;
 
+    private Vector2 dir;
+
     protected Collider2D onTargetDetected;
 
     public virtual void Update()
     {
-        onTargetDetected = Physics2D.OverlapCircle((Vector2)transform.position + targetOffset, targetRadius, targetLayer);
+        onTargetDetected = Physics2D.OverlapCircle(GetTargetPosition(), targetRadius, targetLayer);
+    }
+
+    private Vector2 GetTargetPosition()
+    {
+        Vector2 pos = (Vector2)transform.position + targetOffset;
+        return pos * dir;
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = debugColor;
-        Gizmos.DrawWireSphere((Vector2)transform.position + targetOffset, targetRadius);
+        
+        Gizmos.DrawWireSphere(GetTargetPosition(), targetRadius);
     }
+
+    protected void SetDirection(Vector2 vector)
+    {
+        dir = vector;
+    }    
 }

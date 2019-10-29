@@ -1324,7 +1324,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &978509824
 GameObject:
@@ -3325,7 +3325,7 @@ RectTransform:
   m_Children:
   - {fileID: 1179132928}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3474,17 +3474,17 @@ PrefabInstance:
     - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
       propertyPath: debugColor.r
-      value: 0.72682184
+      value: 0.83137256
       objectReference: {fileID: 0}
     - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
       propertyPath: debugColor.g
-      value: 0.8301887
+      value: 0.058823522
       objectReference: {fileID: 0}
     - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
       propertyPath: debugColor.b
-      value: 0.05873976
+      value: 0.67596996
       objectReference: {fileID: 0}
     - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
