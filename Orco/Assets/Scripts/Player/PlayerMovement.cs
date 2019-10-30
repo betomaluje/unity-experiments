@@ -37,22 +37,15 @@ public class PlayerMovement : MonoBehaviour
     {
         CheckInput();       
 
-        anim.SetBool("isWalking", movement.x != 0 || movement.y != 0);
+        anim.SetFloat("Horizontal", movement.x);
+        anim.SetFloat("Vertical", movement.y);
+        anim.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     private void FixedUpdate()
     {
         // movement
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
-
-        // rotation
-        Vector3 realDirection = cam.transform.TransformDirection(movement);
-        // this line checks whether the player is making inputs.
-        if (realDirection.magnitude > 0.1f)
-        {
-            Quaternion newRotation = Quaternion.LookRotation(Vector3.forward, realDirection);
-            transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * turnSpeed);
-        }
     }
 
     private void CheckInput()

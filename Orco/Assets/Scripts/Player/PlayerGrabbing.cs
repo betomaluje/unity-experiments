@@ -35,22 +35,6 @@ public class PlayerGrabbing : TargetDetection
     {
         base.Update();
 
-        switch (playerMovement.GetDirection())
-        {
-            case PlayerMovement.Direction.LEFT:
-                SetDirection(Vector2.left);
-                break;
-            case PlayerMovement.Direction.RIGHT:
-                SetDirection(Vector2.right);
-                break;
-            case PlayerMovement.Direction.UP:
-                SetDirection(Vector2.up);
-                break;
-            case PlayerMovement.Direction.DOWN:
-                SetDirection(Vector2.down);
-                break;
-        }
-
         if (onTargetDetected)
         {
             targetObject = onTargetDetected.gameObject;

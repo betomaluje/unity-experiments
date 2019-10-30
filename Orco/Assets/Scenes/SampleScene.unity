@@ -3464,7 +3464,7 @@ PrefabInstance:
     - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
       propertyPath: targetOffset.y
-      value: 0.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
@@ -3491,5 +3491,16 @@ PrefabInstance:
       propertyPath: targetLayer.m_Bits
       value: 131328
       objectReference: {fileID: 0}
+    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
+        type: 3}
+      propertyPath: targetOffset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963183797687809560, guid: e62ca6eaf051cee43b3d8459b0412182,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7a43f9f7ad874a04cb462beeacb14e59,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e62ca6eaf051cee43b3d8459b0412182, type: 3}
