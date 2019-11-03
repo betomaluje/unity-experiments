@@ -3425,6 +3425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6963183797687809562, guid: e62ca6eaf051cee43b3d8459b0412182,
+        type: 3}
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6963183797687809567, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3478,46 +3483,6 @@ PrefabInstance:
     - target: {fileID: 6963183797687809567, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: targetRadius
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: targetOffset.y
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: debugColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: debugColor.r
-      value: 0.72682184
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: debugColor.g
-      value: 0.8301887
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: debugColor.b
-      value: 0.05873976
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: targetLayer.m_Bits
-      value: 131328
-      objectReference: {fileID: 0}
-    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
-        type: 3}
-      propertyPath: targetOffset.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

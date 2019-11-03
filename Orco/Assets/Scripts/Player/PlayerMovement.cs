@@ -1,21 +1,18 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
-{
-    private enum InputDirection
-    {
-        BOTH, HORIZONTAL, VERTICAL, NONE
-    }
-
+{  
     public enum Direction
     {
         UP, DOWN, LEFT, RIGHT, NONE
     }
-
-    [SerializeField] private InputDirection movementDirection;
+    
     [SerializeField] private float speed = 5f;
     [SerializeField] private float turnSpeed = 100f;
+
+    private PlayerInputActions inputActions;
 
     private Direction currentDirection;
 
@@ -23,7 +20,27 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private Camera cam;
 
+    // Input Actions
     private Vector2 movement;
+
+    #region Lifecycle methods
+    private void Awake()
+    {
+        inputActions = new PlayerInputActions();
+
+        inputActions.Player.Movement.performed += context => OnMovement(context.ReadValue<Vector2>());
+        inputActions.Player.ActionX.performed += context => OnActionX((float)context.ReadValueAsObject());
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
 
     private void Start()
     {
@@ -35,8 +52,6 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        CheckInput();       
-
         anim.SetBool("isWalking", movement.x != 0 || movement.y != 0);
     }
 
@@ -54,83 +69,48 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * turnSpeed);
         }
     }
+    #endregion
 
-    private void CheckInput()
+    public void OnMovement(Vector2 mov)
     {
-        switch (movementDirection)
+        movement = mov;
+
+        Debug.Log("movement: " + movement);
+
+        if (movement.y < 0)
         {
-            case InputDirection.NONE:
-                currentDirection = Direction.NONE;
-                break;
-            case InputDirection.HORIZONTAL:
-                movement.x = Input.GetAxisRaw("Horizontal");
-                movement.y = 0;
-
-                if (movement.x < 0)
-                {
-                    currentDirection = Direction.LEFT;
-                }
-                else if (movement.x > 0)
-                {
-                    currentDirection = Direction.RIGHT;
-                }
-                else
-                {
-                    currentDirection = Direction.NONE;
-                }
-
-                break;
-            case InputDirection.VERTICAL:
-                movement.x = 0;
-                movement.y = Input.GetAxisRaw("Vertical");
-
-                if (movement.y < 0)
-                {
-                    currentDirection = Direction.DOWN;
-                }
-                else if (movement.y > 0)
-                {
-                    currentDirection = Direction.UP;
-                }
-                else
-                {
-                    currentDirection = Direction.NONE;
-                }
-
-                break;
-            case InputDirection.BOTH:
-                movement.x = Input.GetAxisRaw("Horizontal");
-                movement.y = Input.GetAxisRaw("Vertical");
-
-                if (movement.y < 0)
-                {
-                    currentDirection = Direction.DOWN;
-                }
-                else if (movement.y > 0)
-                {
-                    currentDirection = Direction.UP;
-                }
-                else if (movement.x < 0)
-                {
-                    currentDirection = Direction.LEFT;
-                }
-                else if (movement.x > 0)
-                {
-                    currentDirection = Direction.RIGHT;
-                }
-                else
-                {
-                    currentDirection = Direction.NONE;
-                }
-
-                break;
-            default:
-                break;
+            currentDirection = Direction.DOWN;
+        }
+        else if (movement.y > 0)
+        {
+            currentDirection = Direction.UP;
+        }
+        else if (movement.x < 0)
+        {
+            currentDirection = Direction.LEFT;
+        }
+        else if (movement.x > 0)
+        {
+            currentDirection = Direction.RIGHT;
+        }
+        else
+        {
+            currentDirection = Direction.NONE;
         }
     }
+
+    public void OnActionX(float action)
+    {
+        Debug.Log("action: " + action);
+
+        if (action == 1)
+        {
+            //jumpEvent.Raise();
+        }
+    }    
 
     public Direction GetDirection()
     {
         return currentDirection;
-    }
+    }   
 }

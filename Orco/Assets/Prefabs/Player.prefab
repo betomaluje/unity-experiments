@@ -436,9 +436,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e0ea504a58b39f4b9cb86f4ac224aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabbableLayer:
+  targetLayer:
     serializedVersion: 2
     m_Bits: 131328
+  targetRadius: 0.5
+  targetOffset: {x: 0, y: 0.6}
+  debugColor: {r: 0.72682184, g: 0.8301887, b: 0.05873976, a: 1}
   itemGameObjectPosition: {fileID: 6963183796868140196}
   throwForce: 15
   timeForLongPress: 2
