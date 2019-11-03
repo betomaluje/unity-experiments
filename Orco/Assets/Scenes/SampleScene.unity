@@ -3491,5 +3491,10 @@ PrefabInstance:
       propertyPath: targetLayer.m_Bits
       value: 131328
       objectReference: {fileID: 0}
+    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
+        type: 3}
+      propertyPath: targetOffset.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e62ca6eaf051cee43b3d8459b0412182, type: 3}

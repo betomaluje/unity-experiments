@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
         BOTH, HORIZONTAL, VERTICAL, NONE
     }
 
-    private enum Direction
+    public enum Direction
     {
         UP, DOWN, LEFT, RIGHT, NONE
     }
@@ -66,15 +66,63 @@ public class PlayerMovement : MonoBehaviour
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = 0;
 
+                if (movement.x < 0)
+                {
+                    currentDirection = Direction.LEFT;
+                }
+                else if (movement.x > 0)
+                {
+                    currentDirection = Direction.RIGHT;
+                }
+                else
+                {
+                    currentDirection = Direction.NONE;
+                }
 
                 break;
             case InputDirection.VERTICAL:
                 movement.x = 0;
                 movement.y = Input.GetAxisRaw("Vertical");
+
+                if (movement.y < 0)
+                {
+                    currentDirection = Direction.DOWN;
+                }
+                else if (movement.y > 0)
+                {
+                    currentDirection = Direction.UP;
+                }
+                else
+                {
+                    currentDirection = Direction.NONE;
+                }
+
                 break;
             case InputDirection.BOTH:
                 movement.x = Input.GetAxisRaw("Horizontal");
                 movement.y = Input.GetAxisRaw("Vertical");
+
+                if (movement.y < 0)
+                {
+                    currentDirection = Direction.DOWN;
+                }
+                else if (movement.y > 0)
+                {
+                    currentDirection = Direction.UP;
+                }
+                else if (movement.x < 0)
+                {
+                    currentDirection = Direction.LEFT;
+                }
+                else if (movement.x > 0)
+                {
+                    currentDirection = Direction.RIGHT;
+                }
+                else
+                {
+                    currentDirection = Direction.NONE;
+                }
+
                 break;
             default:
                 break;

@@ -22,18 +22,41 @@ public class PlayerGrabbing : TargetDetection
     private bool buttonPressed = false;
     private bool buttonUp = false;
 
+    private PlayerMovement playerMovement;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     public override void Update()
     {
         base.Update();
+
+        switch (playerMovement.GetDirection())
+        {
+            case PlayerMovement.Direction.LEFT:
+                SetDirection(new Vector2(-0.5f, 0f));
+                break;
+            case PlayerMovement.Direction.RIGHT:
+                SetDirection(new Vector2(0.5f, 0f));
+                break;
+            case PlayerMovement.Direction.UP:
+                SetDirection(new Vector2(0f, 0.6f));
+                break;
+            case PlayerMovement.Direction.DOWN:
+                SetDirection(new Vector2(0f, -0.6f));
+                break;
+        }
+
         if (onTargetDetected)
         {
             targetObject = onTargetDetected.gameObject;
+        } else if (!objectGrabbed)
+        {
+            targetObject = null;
         }
 
         Animate();
