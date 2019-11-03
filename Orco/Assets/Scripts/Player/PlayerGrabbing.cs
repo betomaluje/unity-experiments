@@ -158,9 +158,15 @@ public class PlayerGrabbing : TargetDetection
 
     private void ChangeHumanGrabbed(bool grabbed)
     {
+        if (targetObject == null)
+        {
+            return;
+        }
+
         HumanMovement humanMovement = targetObject.GetComponent<HumanMovement>();
         if (humanMovement != null)
-        {            
+        {
+            Debug.Log("human is grabbed " + grabbed);
             humanMovement.isGrabbed = grabbed;
         }
     }

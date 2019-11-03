@@ -255,6 +255,7 @@ MonoBehaviour:
   accelerationTime: 2
   maxSpeed: 5
   isGrabbed: 0
+  isPlayerNear: 0
 --- !u!114 &1346919946403253466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,6 +275,7 @@ MonoBehaviour:
   - {fileID: 8063191615024358165, guid: e0cdf16ae2c06f14cb473dabd76c21b9, type: 3}
   - {fileID: 5657964564429794954, guid: d38dcb02237034a419490617c378d3e5, type: 3}
   timeBtwShoots: 2
+  shootingTime: 0
 --- !u!114 &6858229163082413589
 MonoBehaviour:
   m_ObjectHideFlags: 0

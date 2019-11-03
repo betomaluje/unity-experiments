@@ -7,10 +7,11 @@ public class HumanMovement : TargetDetection
 
     [HideInInspector]
     public bool isGrabbed = false;
+    [HideInInspector]
+    public bool isPlayerNear = false;
 
     private Vector2 movement;
-    private float timeLeft;
-    private bool isPlayerNear = false;
+    private float timeLeft;    
 
     private Rigidbody2D rb;
 
