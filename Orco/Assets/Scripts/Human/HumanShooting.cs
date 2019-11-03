@@ -37,7 +37,7 @@ public class HumanShooting : MonoBehaviour
         {
             Debug.Log("shooting " + whichWeapon + " to player");
             Instantiate(bulletPrefab[whichWeapon], transform.position, Quaternion.identity);
-            shootingTime += timeBtwShoots;
+            shootingTime = timeBtwShoots;
         }
     }    
 }

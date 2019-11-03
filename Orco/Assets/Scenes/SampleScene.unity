@@ -458,6 +458,42 @@ MonoBehaviour:
     pitch: 1.47
     loop: 0
     source: {fileID: 0}
+  - name: Orc Growl 1
+    clip: {fileID: 8300000, guid: 3a2c83a59c9d7be4eaa0aad1b5245c88, type: 3}
+    volume: 0.8
+    pitch: 1.47
+    loop: 0
+    source: {fileID: 0}
+  - name: Orc Growl 2
+    clip: {fileID: 8300000, guid: 327ca78ed94e17e40892d33417f91ffc, type: 3}
+    volume: 0.8
+    pitch: 1.47
+    loop: 0
+    source: {fileID: 0}
+  - name: Orc Growl 3
+    clip: {fileID: 8300000, guid: f4ab0bf91eff76243b304124d6118d0c, type: 3}
+    volume: 0.8
+    pitch: 1.47
+    loop: 0
+    source: {fileID: 0}
+  - name: Orc Growl 4
+    clip: {fileID: 8300000, guid: ebb3fbcf0bf9b7b47879f8f8ba9d377b, type: 3}
+    volume: 0.8
+    pitch: 1.47
+    loop: 0
+    source: {fileID: 0}
+  - name: Orc Torn 1
+    clip: {fileID: 8300000, guid: 170518d539166c24e872dac99ef172d3, type: 3}
+    volume: 0.8
+    pitch: 1.47
+    loop: 0
+    source: {fileID: 0}
+  - name: Orc Torn 2
+    clip: {fileID: 8300000, guid: 8b0199cf84eeed241bbafef4dddb9b23, type: 3}
+    volume: 0.8
+    pitch: 1.47
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &134223382
 Transform:
   m_ObjectHideFlags: 0
@@ -3430,6 +3466,11 @@ PrefabInstance:
       propertyPath: speed
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6963183797687809562, guid: e62ca6eaf051cee43b3d8459b0412182,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6963183797687809567, guid: e62ca6eaf051cee43b3d8459b0412182,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3484,6 +3525,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963183797687809565, guid: e62ca6eaf051cee43b3d8459b0412182,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6963183797687809564, guid: e62ca6eaf051cee43b3d8459b0412182,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e62ca6eaf051cee43b3d8459b0412182, type: 3}

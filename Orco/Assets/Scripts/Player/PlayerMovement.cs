@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
         inputActions = new PlayerInputActions();
 
         inputActions.Player.Movement.performed += context => OnMovement(context.ReadValue<Vector2>());
-        inputActions.Player.ActionX.performed += context => OnActionX((float)context.ReadValueAsObject());
     }
 
     private void OnEnable()
@@ -73,9 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMovement(Vector2 mov)
     {
-        movement = mov;
-
-        Debug.Log("movement: " + movement);
+        movement = mov;        
 
         if (movement.y < 0)
         {
@@ -96,18 +93,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             currentDirection = Direction.NONE;
-        }
-    }
-
-    public void OnActionX(float action)
-    {
-        Debug.Log("action: " + action);
-
-        if (action == 1)
-        {
-            //jumpEvent.Raise();
-        }
-    }    
+        }        
+    }      
 
     public Direction GetDirection()
     {

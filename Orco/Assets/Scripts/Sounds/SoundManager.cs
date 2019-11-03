@@ -68,7 +68,6 @@ public class SoundManager : MonoBehaviour
         }
 
         int random = UnityEngine.Random.Range(0, s.Length);
-
         s[random].source.Play();
     }
 }

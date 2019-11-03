@@ -79,15 +79,59 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "",
-                    "id": "22859336-1632-4b98-ba5d-6bfde36621f2",
-                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick",
+                    "name": "2D GamePad",
+                    "id": "02b016d8-7e4e-4735-94fa-cacdd151e7ae",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Movement",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "a949e6e5-f2a6-45c0-96c3-c46ccff12360",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/up",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Movement",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "8d69f188-870b-423c-99bf-367457deb139",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "cee821a3-046b-41b5-8a59-d987416f41ce",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "203392ae-989e-402e-bf85-f82ea6d0cbef",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Movement",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -104,7 +148,7 @@
                     "name": "",
                     "id": "adfb75fd-6abf-4972-9a56-720962086459",
                     "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3",
-                    "interactions": "Press",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ActionX",
