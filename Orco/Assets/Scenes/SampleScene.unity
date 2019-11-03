@@ -433,7 +433,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8d3b93c67aea3408ba392961f61756, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
+  sounds:
+  - name: Human Death
+    clip: {fileID: 8300000, guid: 37ab556d1568917489e6618ca228d4ac, type: 3}
+    volume: 0.8
+    pitch: 1.6
+    loop: 0
+    source: {fileID: 0}
+  - name: Human Death 2
+    clip: {fileID: 8300000, guid: 49069e78c5b2eb04abdef9d8afaf4ae7, type: 3}
+    volume: 0.8
+    pitch: 1.83
+    loop: 0
+    source: {fileID: 0}
+  - name: Human Death 3
+    clip: {fileID: 8300000, guid: 9ee6a28fa932f79489b6eb625b63e73d, type: 3}
+    volume: 0.8
+    pitch: 1.51
+    loop: 0
+    source: {fileID: 0}
+  - name: Human Death 4
+    clip: {fileID: 8300000, guid: 99da972ae336ff14cb793f3bd1c83af7, type: 3}
+    volume: 0.8
+    pitch: 1.47
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &134223382
 Transform:
   m_ObjectHideFlags: 0

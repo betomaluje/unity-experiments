@@ -57,4 +57,18 @@ public class SoundManager : MonoBehaviour
 
         s.source.Play();
     }
+
+    public void PlayRandom(string startsWith)
+    {
+        Sound[] s = Array.FindAll(sounds, sound => sound.name.StartsWith(startsWith));
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + startsWith + " not found");
+            return;
+        }
+
+        int random = UnityEngine.Random.Range(0, s.Length);
+
+        s[random].source.Play();
+    }
 }

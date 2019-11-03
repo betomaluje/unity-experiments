@@ -16,6 +16,7 @@ public class HumanDeath : MonoBehaviour
         {            
             ShowParticles();
             humanDeath.Raise();
+            SoundManager.instance.PlayRandom("Human Death");
             Die();
         }
     }
@@ -23,6 +24,7 @@ public class HumanDeath : MonoBehaviour
     public void TornApart()
     {
         ShowParticles();
+        SoundManager.instance.PlayRandom("Human Death");
 
         Animator anim = GetComponent<Animator>();
         if (anim != null)
