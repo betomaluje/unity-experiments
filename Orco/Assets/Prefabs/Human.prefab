@@ -275,7 +275,6 @@ MonoBehaviour:
   - {fileID: 8063191615024358165, guid: e0cdf16ae2c06f14cb473dabd76c21b9, type: 3}
   - {fileID: 5657964564429794954, guid: d38dcb02237034a419490617c378d3e5, type: 3}
   timeBtwShoots: 2
-  shootingTime: 0
 --- !u!114 &6858229163082413589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,6 +290,9 @@ MonoBehaviour:
   deathLayer:
     serializedVersion: 2
     m_Bits: 512
+  throwableDeathLayer:
+    serializedVersion: 2
+    m_Bits: 131328
   humanDeath: {fileID: 11400000, guid: d11eb85bbe808804b971086b846d1f25, type: 2}
   bloodSplatters:
   - {fileID: 4308134626046559138, guid: 7f9011e0171eee049a1d6ab879bfb41a, type: 3}
@@ -298,3 +300,5 @@ MonoBehaviour:
   - {fileID: 2874494018043690498, guid: c5f70d0b115faeb44b372a0bbc86318b, type: 3}
   deathParticles: {fileID: 1991877933926451430, guid: b9f459f0396862840a9d3b5122e687cb,
     type: 3}
+  timeToResetThrow: 0.5
+  isBeingThrown: 0

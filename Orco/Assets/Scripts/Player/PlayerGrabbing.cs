@@ -165,6 +165,12 @@ public class PlayerGrabbing : TargetDetection
             targetRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
         }
 
+        HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
+        if (humanDeath != null)
+        {
+            humanDeath.Throw();
+        }
+
         ReleaseTarget();
     }  
 
@@ -193,6 +199,7 @@ public class PlayerGrabbing : TargetDetection
         if (targetRb != null)
         {
             targetRb.isKinematic = grabbed;
+            targetRb.bodyType = grabbed ? RigidbodyType2D.Kinematic : RigidbodyType2D.Dynamic;
             targetRb.velocity = grabbed ? Vector2.zero : targetRb.velocity;
         }
     }

@@ -3,12 +3,12 @@
 public class HumanMovement : TargetDetection
 {
     [SerializeField] private float accelerationTime = 2f;
-    [SerializeField] private float maxSpeed = 5f;
+    [SerializeField] private float maxSpeed = 5f;    
 
-    [HideInInspector]
+    //[HideInInspector]
     public bool isGrabbed = false;
     [HideInInspector]
-    public bool isPlayerNear = false;
+    public bool isPlayerNear = false;    
 
     private Vector2 movement;
     private float timeLeft;    
@@ -29,6 +29,7 @@ public class HumanMovement : TargetDetection
 
         if (!isPlayerNear || isGrabbed)
         {
+            movement = Vector2.zero;
             return;
         }
        
@@ -47,6 +48,7 @@ public class HumanMovement : TargetDetection
             return;
         }
 
-        rb.AddForce(movement * maxSpeed);
-    }
+        rb.AddForce(movement * maxSpeed * Time.fixedDeltaTime);
+    }    
+
 }
