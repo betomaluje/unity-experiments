@@ -105,7 +105,7 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""a949e6e5-f2a6-45c0-96c3-c46ccff12360"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/up"",
+                    ""path"": ""<Joystick>/stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -116,7 +116,7 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""8d69f188-870b-423c-99bf-367457deb139"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/down"",
+                    ""path"": ""<Joystick>/stick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -127,7 +127,7 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""cee821a3-046b-41b5-8a59-d987416f41ce"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/left"",
+                    ""path"": ""<Joystick>/stick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -138,7 +138,7 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""203392ae-989e-402e-bf85-f82ea6d0cbef"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/right"",
+                    ""path"": ""<Joystick>/stick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
@@ -150,7 +150,7 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""e78851ee-91e5-4769-acc5-aff9367d3c4d"",
                     ""path"": ""<Keyboard>/g"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""ActionX"",

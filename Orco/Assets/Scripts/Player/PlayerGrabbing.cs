@@ -84,13 +84,16 @@ public class PlayerGrabbing : TargetDetection
     {        
         if (buttonPressed)
         {            
-            if (onTargetDetected && targetObject == null)
+            timePressing += Time.deltaTime;
+
+            if (onTargetDetected && !objectGrabbed)
             {
-                timePressing += Time.deltaTime;
                 SoundManager.instance.PlayRandom("Orc Growl");
                 DoGrab();
-            }
-        } else if (buttonUp && targetObject != null)
+            }            
+        }
+        
+        if (buttonUp && objectGrabbed)
         {
             if (timePressing >= timeForLongPress && !isTorning)
             {
@@ -102,6 +105,8 @@ public class PlayerGrabbing : TargetDetection
                 DoThrow(itemGameObjectPosition.position - transform.position);
             }
             timePressing = 0;
+
+            buttonUp = false;
         }
     }
 
@@ -110,16 +115,6 @@ public class PlayerGrabbing : TargetDetection
         anim.SetBool("isAttacking", buttonPressed);
         anim.SetBool("isTorning", isTorning);
     }  
-
-    private void PutItemAsChild(GameObject item)
-    {        
-        item.transform.parent = null;
-        item.transform.parent = itemGameObjectPosition;
-        item.transform.localPosition = Vector3.zero;
-
-        Quaternion rotation = Quaternion.Euler(0, itemGameObjectPosition.rotation.y, 0);
-        item.transform.rotation = rotation;
-    }
 
     private void DoTorn()
     {
@@ -136,10 +131,8 @@ public class PlayerGrabbing : TargetDetection
             humanDeath.TornApart();
         }
 
-        objectGrabbed = false;
+        ReleaseTarget();
 
-        targetObject.transform.parent = null;
-        targetObject = null;
         isTorning = false;
     }
 
@@ -147,7 +140,14 @@ public class PlayerGrabbing : TargetDetection
     {        
         objectGrabbed = true;
         targetObject = onTargetDetected.gameObject;
-        PutItemAsChild(targetObject);
+
+        targetObject.transform.parent = null;
+        targetObject.transform.parent = itemGameObjectPosition;
+        targetObject.transform.localPosition = Vector3.zero;
+
+        Quaternion rotation = Quaternion.Euler(0, itemGameObjectPosition.rotation.y, 0);
+        targetObject.transform.rotation = rotation;
+
         ChangeHumanGrabbed(true);
     }
 
@@ -156,21 +156,25 @@ public class PlayerGrabbing : TargetDetection
         if (targetObject == null) return;
 
         SoundManager.instance.PlayRandom("Orc Growl");
-
-        objectGrabbed = false;    
+        
+        ChangeHumanGrabbed(false);
 
         Rigidbody2D targetRb = targetObject.GetComponent<Rigidbody2D>();
-
         if (targetRb != null)
         {
             targetRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
         }
 
-        ChangeHumanGrabbed(false);
+        ReleaseTarget();
+    }  
+
+    private void ReleaseTarget()
+    {
+        objectGrabbed = false;
 
         targetObject.transform.parent = null;
         targetObject = null;
-    }  
+    }
 
     private void ChangeHumanGrabbed(bool grabbed)
     {
@@ -183,6 +187,13 @@ public class PlayerGrabbing : TargetDetection
         if (humanMovement != null)
         {
             humanMovement.isGrabbed = grabbed;
+        }
+
+        Rigidbody2D targetRb = targetObject.GetComponent<Rigidbody2D>();
+        if (targetRb != null)
+        {
+            targetRb.isKinematic = grabbed;
+            targetRb.velocity = grabbed ? Vector2.zero : targetRb.velocity;
         }
     }
 }
