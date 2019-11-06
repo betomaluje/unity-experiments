@@ -29,7 +29,6 @@ public class Bullet : MonoBehaviour
     {
         if (TriggerUtils.CheckLayerMask(playerLayer, collision.gameObject))
         {
-            Debug.Log("boom!");
             Instantiate(particles, transform.position, Quaternion.identity);
 
             damageEvent.sentFloat = 1f;

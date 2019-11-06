@@ -1,21 +1,14 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class HumanDeath : MonoBehaviour
+public class HumanDeath : IThrowableAction, IThrowableAction.IThrownCollision
 {
     [Header("Layers")]
     [SerializeField] private LayerMask deathLayer;
-    [SerializeField] private LayerMask throwableDeathLayer;
 
     [SerializeField] private GameEvent humanDeath;
 
     [SerializeField] private GameObject[] bloodSplatters;
     [SerializeField] private GameObject deathParticles;
-
-    [SerializeField] private float timeToResetThrow = 1f;
-
-    [HideInInspector]
-    public bool isBeingThrown = false;
 
     private HumanMovement humanMovement;
     private BoxCollider2D boxCollider;
@@ -24,6 +17,7 @@ public class HumanDeath : MonoBehaviour
     {
         boxCollider = GetComponent<BoxCollider2D>();
         humanMovement = GetComponent<HumanMovement>();
+        onCollisionListener = this;
     }
 
     private void OnTriggerEnter2D(Collider2D hitInfo)
@@ -34,18 +28,17 @@ public class HumanDeath : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnThrownCollision(GameObject collisionObject)
     {
-        if (isBeingThrown && TriggerUtils.CheckLayerMask(throwableDeathLayer, collision.gameObject))
-        {
-            PerformDie();
+        Debug.Log("human collision with " + collisionObject.gameObject);
 
-            HumanDeath otherHumanDeath = collision.gameObject.GetComponent<HumanDeath>();
-            if (otherHumanDeath != null)
-            {
-                otherHumanDeath.PerformDie();
-            }
-        }    
+        PerformDie();
+
+        HumanDeath otherHumanDeath = collisionObject.GetComponent<HumanDeath>();
+        if (otherHumanDeath != null)
+        {
+            otherHumanDeath.PerformDie();
+        }
     }
 
     public void PerformDie()
@@ -75,20 +68,10 @@ public class HumanDeath : MonoBehaviour
         Instantiate(bloodSplatters[Random.Range(0, bloodSplatters.Length)], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
     }
 
-    public void Throw()
-    {
-        StartCoroutine(ToggleThrowTimer());
-    }
-
-    private IEnumerator ToggleThrowTimer()
-    {
-        isBeingThrown = true;
-        yield return new WaitForSeconds(timeToResetThrow);        
-        isBeingThrown = false;
-    }
+    
 
     private void Die()
     {        
         Destroy(gameObject);
-    }    
+    }
 }

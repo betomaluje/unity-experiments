@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : IThrowableAction, IThrowableAction.IThrownCollision
 {
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float radius = 4;
@@ -18,6 +18,7 @@ public class Bomb : MonoBehaviour
         anim = GetComponent<Animator>();
         circleCollider.radius = radius;
         explosionForce *= 10000;
+        onCollisionListener = this;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,6 +29,12 @@ public class Bomb : MonoBehaviour
         }
     }
 
+    public void OnThrownCollision(GameObject collisionObject)
+    {
+        Debug.Log("bomb collision with " + collisionObject.gameObject);
+        targetLayer |= (1 << collisionObject.layer);
+        Explode();
+    }
     private void Explode()
     {
         Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, targetLayer);

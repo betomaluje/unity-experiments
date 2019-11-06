@@ -283,12 +283,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77103033bf2062843911cb3a66a51bd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwableDeathLayer:
+    serializedVersion: 2
+    m_Bits: 131328
+  timeToResetThrow: 0.5
   targetLayer:
     serializedVersion: 2
     m_Bits: 65536
-  radius: 5
+  radius: 3
   damage: 8
-  explosionForce: 6
+  explosionForce: 3
   circleCollider: {fileID: 5657964564429794948}
   particles: {fileID: 4402510901658541555, guid: eb40659c02496784cbbfe05138337cea,
     type: 3}

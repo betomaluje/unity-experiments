@@ -165,10 +165,10 @@ public class PlayerGrabbing : TargetDetection
             targetRb.AddForce(dir * throwForce, ForceMode2D.Impulse);
         }
 
-        HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
-        if (humanDeath != null)
+        IThrowableAction throwableAction = targetObject.GetComponent<IThrowableAction>();
+        if (throwableAction != null)
         {
-            humanDeath.Throw();
+            throwableAction.Throw();
         }
 
         ReleaseTarget();
