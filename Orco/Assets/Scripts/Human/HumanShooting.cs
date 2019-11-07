@@ -15,9 +15,7 @@ public class HumanShooting : MonoBehaviour
     void Start()
     {
         humanMovement = GetComponent<HumanMovement>();
-
         shootingTime = 0;
-
         whichWeapon = Random.Range(0, bulletPrefab.Length);
     }
     

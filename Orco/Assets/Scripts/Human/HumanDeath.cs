@@ -37,6 +37,7 @@ public class HumanDeath : IThrowableAction, IThrowableAction.IThrownCollision
         HumanDeath otherHumanDeath = collisionObject.GetComponent<HumanDeath>();
         if (otherHumanDeath != null)
         {
+            Debug.Log("other human Die");
             otherHumanDeath.PerformDie();
         }
     }
@@ -67,8 +68,6 @@ public class HumanDeath : IThrowableAction, IThrowableAction.IThrownCollision
         Instantiate(deathParticles, transform.position, Quaternion.identity);
         Instantiate(bloodSplatters[Random.Range(0, bloodSplatters.Length)], transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
     }
-
-    
 
     private void Die()
     {        
