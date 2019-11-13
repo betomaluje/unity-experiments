@@ -90,7 +90,7 @@ public class PlayerGrabbing : TargetDetection
         {
             timePressing += Time.deltaTime;
 
-            if (!objectGrabbed && onTargetDetected)
+            if (!objectGrabbed && onTargetDetected != null)
             {                
                 SoundManager.instance.PlayRandom("Orc Growl");
                 targetObject = onTargetDetected.gameObject;
@@ -113,7 +113,7 @@ public class PlayerGrabbing : TargetDetection
                 {
                     DoThrow(itemGameObjectPosition.position - transform.position);
                 }                
-            }
+            }            
 
             timePressing = 0;
         }

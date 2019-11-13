@@ -35,7 +35,7 @@ public class HumanMovement : TargetDetection
        
         timeLeft -= Time.deltaTime;
         if (timeLeft <= 0)
-        {
+        {            
             movement = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
             timeLeft += accelerationTime;
         }
@@ -48,7 +48,8 @@ public class HumanMovement : TargetDetection
             return;
         }
 
-        rb.AddForce(movement * maxSpeed * Time.fixedDeltaTime);
+        //rb.MovePosition(rb.position + movement * maxSpeed * Time.fixedDeltaTime);
+        rb.AddForce(movement * maxSpeed * Time.fixedDeltaTime, ForceMode2D.Force);
     }    
 
 }

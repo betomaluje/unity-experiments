@@ -252,8 +252,8 @@ MonoBehaviour:
   targetRadius: 2.5
   targetOffset: {x: 0, y: 0}
   debugColor: {r: 0.7735849, g: 0.20799215, b: 0.20799215, a: 1}
-  accelerationTime: 2
-  maxSpeed: 5
+  accelerationTime: 1
+  maxSpeed: 200
   isGrabbed: 0
   isPlayerNear: 0
 --- !u!114 &1346919946403253466
@@ -287,12 +287,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ac1fcfbb4384243a5b149b7a8badd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathLayer:
-    serializedVersion: 2
-    m_Bits: 512
   throwableDeathLayer:
     serializedVersion: 2
     m_Bits: 131328
+  timeToResetThrow: 0.5
+  deathLayer:
+    serializedVersion: 2
+    m_Bits: 512
   humanDeath: {fileID: 11400000, guid: d11eb85bbe808804b971086b846d1f25, type: 2}
   bloodSplatters:
   - {fileID: 4308134626046559138, guid: 7f9011e0171eee049a1d6ab879bfb41a, type: 3}
@@ -300,5 +301,3 @@ MonoBehaviour:
   - {fileID: 2874494018043690498, guid: c5f70d0b115faeb44b372a0bbc86318b, type: 3}
   deathParticles: {fileID: 1991877933926451430, guid: b9f459f0396862840a9d3b5122e687cb,
     type: 3}
-  timeToResetThrow: 0.5
-  isBeingThrown: 0

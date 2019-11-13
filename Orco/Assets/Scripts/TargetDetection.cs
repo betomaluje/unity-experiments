@@ -8,17 +8,11 @@ public class TargetDetection : MonoBehaviour
     [Space]
     [Header("Grab")]
     [SerializeField] private float targetRadius = 0.25f;
-    [SerializeField] private Vector2 targetOffset;
     [SerializeField] private Color debugColor;
 
-    protected Collider2D onTargetDetected;
+    public Collider2D onTargetDetected;
 
     private Vector2 dir;
-
-    private void Start()
-    {
-        dir = targetOffset;
-    }
 
     public virtual void Update()
     {
@@ -27,7 +21,7 @@ public class TargetDetection : MonoBehaviour
 
     private Vector2 GetTargetPosition()
     {
-        return (Vector2)transform.position + dir;
+        return (Vector2) transform.position + dir;
     }
 
     void OnDrawGizmos()

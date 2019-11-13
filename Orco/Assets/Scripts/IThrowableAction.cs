@@ -19,8 +19,6 @@ public abstract class IThrowableAction: MonoBehaviour
 
     private IThrownCollision OnCollisionListener { get => onCollisionListener; set => onCollisionListener = value; }
 
-
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isBeingThrown && TriggerUtils.CheckLayerMask(throwableDeathLayer, collision.gameObject))

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6963183796868140196}
-  - component: {fileID: 6963183796868140379}
   m_Layer: 0
   m_Name: Hands
   m_TagString: Untagged
@@ -31,22 +30,6 @@ Transform:
   m_Father: {fileID: 6963183797687809567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &6963183796868140379
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6963183796868140197}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1 &6963183796957307349
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,8 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8693cbd5bd94ea4d8d46a21e632d9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDirection: 0
-  speed: 6
+  speed: 10
   turnSpeed: 30
 --- !u!114 &6963183797687809565
 MonoBehaviour:
@@ -440,8 +422,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 131328
   targetRadius: 0.5
-  targetOffset: {x: 0, y: 0.6}
   debugColor: {r: 0.72682184, g: 0.8301887, b: 0.05873976, a: 1}
+  onTargetDetected: {fileID: 0}
   itemGameObjectPosition: {fileID: 6963183796868140196}
   throwForce: 15
   timeForLongPress: 2
