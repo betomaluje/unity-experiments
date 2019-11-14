@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Map Toggle",
+                    "type": "Button",
+                    "id": "b5b5552a-6a66-4891-aab8-2ddbc61172cc",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -152,6 +160,17 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "ActionX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d05d27e8-8f9b-4d2b-841a-c657f754d59f",
+                    "path": "<Keyboard>/t",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Map Toggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

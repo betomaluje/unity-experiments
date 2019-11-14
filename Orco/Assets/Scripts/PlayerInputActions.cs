@@ -6,10 +6,10 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class PlayerInputActions : IInputActionCollection, IDisposable
+public class @PlayerInputActions : IInputActionCollection, IDisposable
 {
     private InputActionAsset asset;
-    public PlayerInputActions()
+    public @PlayerInputActions()
     {
         asset = InputActionAsset.FromJson(@"{
     ""name"": ""PlayerInputActions"",
@@ -31,6 +31,14 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""fa2deb5c-0186-4701-8a48-acdfd4400771"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Map Toggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5b5552a-6a66-4891-aab8-2ddbc61172cc"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -167,6 +175,17 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""ActionX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d05d27e8-8f9b-4d2b-841a-c657f754d59f"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Map Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -200,6 +219,7 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_ActionX = m_Player.FindAction("ActionX", throwIfNotFound: true);
+        m_Player_MapToggle = m_Player.FindAction("Map Toggle", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -251,12 +271,14 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_ActionX;
+    private readonly InputAction m_Player_MapToggle;
     public struct PlayerActions
     {
-        private PlayerInputActions m_Wrapper;
-        public PlayerActions(PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        private @PlayerInputActions m_Wrapper;
+        public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @ActionX => m_Wrapper.m_Player_ActionX;
+        public InputAction @MapToggle => m_Wrapper.m_Player_MapToggle;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -266,22 +288,28 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
             {
-                Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
-                ActionX.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionX;
-                ActionX.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionX;
-                ActionX.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionX;
+                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @ActionX.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionX;
+                @ActionX.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionX;
+                @ActionX.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnActionX;
+                @MapToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
+                @MapToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
+                @MapToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                Movement.started += instance.OnMovement;
-                Movement.performed += instance.OnMovement;
-                Movement.canceled += instance.OnMovement;
-                ActionX.started += instance.OnActionX;
-                ActionX.performed += instance.OnActionX;
-                ActionX.canceled += instance.OnActionX;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @ActionX.started += instance.OnActionX;
+                @ActionX.performed += instance.OnActionX;
+                @ActionX.canceled += instance.OnActionX;
+                @MapToggle.started += instance.OnMapToggle;
+                @MapToggle.performed += instance.OnMapToggle;
+                @MapToggle.canceled += instance.OnMapToggle;
             }
         }
     }
@@ -308,5 +336,6 @@ public class PlayerInputActions : IInputActionCollection, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnActionX(InputAction.CallbackContext context);
+        void OnMapToggle(InputAction.CallbackContext context);
     }
 }
