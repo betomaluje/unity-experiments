@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 public class RandomLevelGenerator : MonoBehaviour
 {
@@ -48,8 +47,10 @@ public class RandomLevelGenerator : MonoBehaviour
 
             if (!roomPositions.Contains(nextPosition)) {
                 // we need to connect current room with next one                
-                Vector2 bridge2DPosition = direction * scale / 2;
+                Vector2 bridge2DPosition = direction * (scale / 2);
                 Vector3 bridgePosition = new Vector3(bridge2DPosition.x, bridge2DPosition.y, 0) + transform.position;
+                // when is going down it has 1 square spare on the top.
+                // up is fine
 
                 GameObject bridgeGo;
 
@@ -104,7 +105,7 @@ public class RandomLevelGenerator : MonoBehaviour
                         {
                             CompositeCollider2D collider = t.GetComponentInChildren<CompositeCollider2D>();
                             if (collider)
-                            {
+                            {                                
                                 collider.isTrigger = false;
                             }
                         }

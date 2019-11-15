@@ -1636,7 +1636,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6963183796633065051}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214858437}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8693cbd5bd94ea4d8d46a21e632d9de, type: 3}
@@ -1654,7 +1654,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 6963183796633065051}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214858437}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e0ea504a58b39f4b9cb86f4ac224aa4, type: 3}
@@ -2183,25 +2183,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1214858437 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6963183797687809563, guid: e62ca6eaf051cee43b3d8459b0412182,
-    type: 3}
-  m_PrefabInstance: {fileID: 6963183796633065051}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1214858442
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1214858437}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce2c450a3944c084595cce0893925206, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  miniMap: {fileID: 2005146950}
 --- !u!1 &1305095815
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,7 +3350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2005146951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3481,12 +3462,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBtwRooms: 0
   numberOfRooms: 5
-  scale: 20
+  scale: 23
   roomsObjects:
   - {fileID: 6777233072356157203, guid: a5469b9794567f74aab27bd486437cda, type: 3}
   - {fileID: 6777233072356157203, guid: 6d9d160288c018c4bb7813c5f516219d, type: 3}
-  - {fileID: 6777233072356157203, guid: 1252ed55a75e03243ac8abde2f509900, type: 3}
-  - {fileID: 6777233072356157203, guid: c4e197eee4454e94ea94415ba5d0747d, type: 3}
   horizontalBridge: {fileID: 7965491217382055459, guid: 48bd3515e3ae70c4bbea6d067d6a5709,
     type: 3}
   verticalBridge: {fileID: 7965491217382055459, guid: 57296759fcf3d02489bd0956ddf87ff4,
@@ -3574,5 +3553,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1214858442, guid: e62ca6eaf051cee43b3d8459b0412182, type: 3}
+      propertyPath: miniMap
+      value: 
+      objectReference: {fileID: 2005146950}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e62ca6eaf051cee43b3d8459b0412182, type: 3}
