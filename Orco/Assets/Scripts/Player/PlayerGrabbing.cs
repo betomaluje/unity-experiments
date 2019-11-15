@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerGrabbing : TargetDetection
 {
@@ -23,30 +24,11 @@ public class PlayerGrabbing : TargetDetection
 
     private PlayerMovement playerMovement;
 
-    private PlayerInputActions inputActions;
-
-    private void Awake()
-    {
-        inputActions = new PlayerInputActions();
-        
-        inputActions.Player.ActionX.performed += context => OnActionX((float)context.ReadValueAsObject());
-    }
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         playerMovement = GetComponent<PlayerMovement>();
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
     }
 
     public override void Update()
@@ -79,9 +61,9 @@ public class PlayerGrabbing : TargetDetection
         }     
     }
 
-    public void OnActionX(float action)
+    public void OnActionX(InputValue value)
     {
-        buttonPressed = action == 1;
+        buttonPressed = value.Get<float>() == 1;
     }
 
     private void CheckInput()
