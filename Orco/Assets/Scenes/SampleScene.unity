@@ -3253,6 +3253,14 @@ MonoBehaviour:
         m_Groups: 
         m_Action: Action
         m_Flags: 0
+      - m_Name: 
+        m_Id: 5394bef2-bfe8-478f-ac19-054a8b585050
+        m_Path: <Keyboard>/enter
+        m_Interactions: 
+        m_Processors: 
+        m_Groups: 
+        m_Action: Action
+        m_Flags: 0
     m_Reference: {fileID: 823094698519995661, guid: 1b48154747c6c6848b720c04e89a336f,
       type: 3}
   m_PlayerPrefab: {fileID: 6963183797687809563, guid: e62ca6eaf051cee43b3d8459b0412182,
