@@ -3236,7 +3236,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_JoinAction:
-    m_UseReference: 1
+    m_UseReference: 0
     m_Action:
       m_Name: Action
       m_Type: 1
@@ -3248,14 +3248,6 @@ MonoBehaviour:
       - m_Name: 
         m_Id: dc3379bf-ab70-4e1e-a63b-7f031691d2f3
         m_Path: <HID::DragonRise Inc.   Generic   USB  Joystick  >/button10
-        m_Interactions: 
-        m_Processors: 
-        m_Groups: 
-        m_Action: Action
-        m_Flags: 0
-      - m_Name: 
-        m_Id: 2998a6e3-77e4-4b67-911b-d0db50b0b484
-        m_Path: <Keyboard>/enter
         m_Interactions: 
         m_Processors: 
         m_Groups: 
