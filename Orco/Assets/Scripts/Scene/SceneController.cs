@@ -18,16 +18,32 @@ public class SceneController : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         gameOverMaxScoreObject.SetText("Max score: " + maxScore);
-        playerMovement.enabled = false;
-        playerGrabbing.enabled = false;
+        TogglePlayers(false);
     }
 
     public void YouWin(int maxScore) 
     {
         youWinPanel.SetActive(true);
         youWinMaxScoreObject.SetText("Max score: " + maxScore);
-        playerMovement.enabled = false;
-        playerGrabbing.enabled = false;
+        TogglePlayers(false);
+    }
+
+    private void TogglePlayers(bool enable)
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in players)
+        {
+            PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+            {
+                playerMovement.enabled = enable;
+            }
+            PlayerGrabbing playerGrabbing = player.GetComponent<PlayerGrabbing>();
+            if (playerGrabbing != null)
+            {
+                playerGrabbing.enabled = enable;
+            }
+        }
     }
 
     public void ResetScene()

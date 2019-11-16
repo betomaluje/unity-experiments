@@ -484,8 +484,29 @@ MonoBehaviour:
   m_DeviceRegainedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 589d5c90-9e08-4ab7-b5e7-79312b4e587c
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DragonRise
+      Inc.   Generic   USB  Joystick  /stick/up,/DragonRise Inc.   Generic   USB 
+      Joystick  /stick/down,/DragonRise Inc.   Generic   USB  Joystick  /stick/left,/DragonRise
+      Inc.   Generic   USB  Joystick  /stick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fa2deb5c-0186-4701-8a48-acdfd4400771
+    m_ActionName: Player/ActionX[/Keyboard/g,/DragonRise Inc.   Generic   USB  Joystick 
+      /button3]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b5b5552a-6a66-4891-aab8-2ddbc61172cc
+    m_ActionName: Player/Map Toggle[/Keyboard/t,/DragonRise Inc.   Generic   USB 
+      Joystick  /button8]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f6f6bd6-b958-4f4c-8dd7-33c73578e726
+    m_ActionName: Player/Start[/DragonRise Inc.   Generic   USB  Joystick  /button10,/Keyboard/enter]
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1

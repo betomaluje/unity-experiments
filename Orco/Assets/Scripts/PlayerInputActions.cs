@@ -20,7 +20,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""589d5c90-9e08-4ab7-b5e7-79312b4e587c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -32,12 +32,20 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""fa2deb5c-0186-4701-8a48-acdfd4400771"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""Map Toggle"",
                     ""type"": ""Button"",
                     ""id"": ""b5b5552a-6a66-4891-aab8-2ddbc61172cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f6f6bd6-b958-4f4c-8dd7-33c73578e726"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -158,7 +166,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""e78851ee-91e5-4769-acc5-aff9367d3c4d"",
                     ""path"": ""<Keyboard>/g"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""ActionX"",
@@ -169,7 +177,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""adfb75fd-6abf-4972-9a56-720962086459"",
                     ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""ActionX"",
@@ -180,10 +188,43 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""name"": """",
                     ""id"": ""d05d27e8-8f9b-4d2b-841a-c657f754d59f"",
                     ""path"": ""<Keyboard>/t"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Map Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7d96e3a9-057e-4353-acc5-88b1a4aa782a"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Map Toggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ac31fdb8-1889-44c1-b735-92dcf6154daf"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27b43495-2d8f-4cf1-ad0e-07df81f13e9a"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Start"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -220,6 +261,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_ActionX = m_Player.FindAction("ActionX", throwIfNotFound: true);
         m_Player_MapToggle = m_Player.FindAction("Map Toggle", throwIfNotFound: true);
+        m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,6 +314,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_ActionX;
     private readonly InputAction m_Player_MapToggle;
+    private readonly InputAction m_Player_Start;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -279,6 +322,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @ActionX => m_Wrapper.m_Player_ActionX;
         public InputAction @MapToggle => m_Wrapper.m_Player_MapToggle;
+        public InputAction @Start => m_Wrapper.m_Player_Start;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,6 +341,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @MapToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
                 @MapToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
                 @MapToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
+                @Start.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -310,6 +357,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @MapToggle.started += instance.OnMapToggle;
                 @MapToggle.performed += instance.OnMapToggle;
                 @MapToggle.canceled += instance.OnMapToggle;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
             }
         }
     }
@@ -337,5 +387,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnActionX(InputAction.CallbackContext context);
         void OnMapToggle(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }
