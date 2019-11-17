@@ -9,10 +9,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject youWinPanel;
 
     [SerializeField] private TextMeshProUGUI gameOverMaxScoreObject;
-    [SerializeField] private TextMeshProUGUI youWinMaxScoreObject;
-
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private PlayerGrabbing playerGrabbing;
+    [SerializeField] private TextMeshProUGUI youWinMaxScoreObject;    
 
     public void GameOver(int maxScore)
     {
