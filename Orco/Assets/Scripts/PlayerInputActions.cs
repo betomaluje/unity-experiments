@@ -187,7 +187,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d05d27e8-8f9b-4d2b-841a-c657f754d59f"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button8"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button6"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",

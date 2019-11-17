@@ -22,7 +22,7 @@
                     "interactions": "Press(behavior=2)"
                 },
                 {
-                    "name": "Map Toggle",
+                    "name": "MapToggle",
                     "type": "Button",
                     "id": "b5b5552a-6a66-4891-aab8-2ddbc61172cc",
                     "expectedControlType": "",
@@ -174,11 +174,11 @@
                 {
                     "name": "",
                     "id": "d05d27e8-8f9b-4d2b-841a-c657f754d59f",
-                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button8",
+                    "path": "<HID::DragonRise Inc.   Generic   USB  Joystick  >/button6",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Map Toggle",
+                    "action": "MapToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -189,7 +189,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Map Toggle",
+                    "action": "MapToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

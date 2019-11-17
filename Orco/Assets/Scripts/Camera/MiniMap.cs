@@ -1,20 +1,14 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MiniMap : MonoBehaviour
 {
-    private Transform[] players;
+    private List<Transform> players;
 
-    private void Start() {
-        GameObject[] ps = GameObject.FindGameObjectsWithTag("Player");
-
-        players = new Transform[ps.Length];
-
-        int i = 0;
-        foreach (var p in ps)
-        {
-            players[i] = p.transform;
-            i++;
-        }
+    private void Start()
+    {
+        players = new List<Transform>();
     }
 
     private void LateUpdate()
@@ -25,5 +19,15 @@ public class MiniMap : MonoBehaviour
             newPosition.z = transform.position.z;
             transform.position = newPosition;
         }
+    }
+
+    public void AddPlayerToMiniMap(PlayerInput player)
+    {
+        players.Add(player.transform);
+    }
+
+    public void RemovePlayerToMiniMap(PlayerInput player)
+    {
+        players.Remove(player.transform);
     }
 }

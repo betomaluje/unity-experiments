@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMovement(InputValue value)
     {
-        movement = value.Get<Vector2>();        
+        movement = value.Get<Vector2>();
 
         if (movement.y < 0)
         {
