@@ -37,10 +37,9 @@ public class PlayerScore : MonoBehaviour
         }
     }
 
-    public void Add()
-    {
+    public void AddScore()
+    {       
         currentAmount++;
-        Debug.Log("adding: " + currentAmount);
 
         if (currentAmount > maxScore)
         {
@@ -49,9 +48,8 @@ public class PlayerScore : MonoBehaviour
     }
 
     public void PlayerDamage()
-    {
+    { 
         currentLives--;
-        Debug.Log("current lives: " + currentLives);
 
         images[currentLives].sprite = damageSprite;
 

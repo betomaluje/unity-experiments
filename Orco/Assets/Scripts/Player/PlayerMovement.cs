@@ -21,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
     // Input Actions
     private Vector2 movement;
 
+    [HideInInspector]
+    public bool canMove = true;
+
     #region Lifecycle methods
 
     private void Start()
@@ -33,11 +36,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         anim.SetBool("isWalking", movement.x != 0 || movement.y != 0);
     }
 
     private void FixedUpdate()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         // movement
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 

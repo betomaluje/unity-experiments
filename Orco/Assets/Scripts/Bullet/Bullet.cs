@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
         {
             Instantiate(particles, transform.position, Quaternion.identity);
 
-            damageEvent.sentFloat = 1f;
+            damageEvent.sentAttackEvent = new AttackEvent(collision.gameObject, 1f);
             damageEvent.Raise();
         }
 

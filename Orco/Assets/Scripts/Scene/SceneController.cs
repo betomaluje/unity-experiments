@@ -1,31 +1,32 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class SceneController : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverPanel;
 
-    [SerializeField] private GameObject youWinPanel;
+    [SerializeField] private GameObject youWinPanel;    
 
     [SerializeField] private TextMeshProUGUI gameOverMaxScoreObject;
-    [SerializeField] private TextMeshProUGUI youWinMaxScoreObject;    
-
+    [SerializeField] private TextMeshProUGUI youWinMaxScoreObject;
+ 
     public void GameOver(int maxScore)
     {
         gameOverPanel.SetActive(true);
         gameOverMaxScoreObject.SetText("Max score: " + maxScore);
-        TogglePlayers(false);
+        TogglePlayersActive(false);
     }
 
     public void YouWin(int maxScore) 
     {
         youWinPanel.SetActive(true);
         youWinMaxScoreObject.SetText("Max score: " + maxScore);
-        TogglePlayers(false);
+        TogglePlayersActive(false);
     }
 
-    private void TogglePlayers(bool enable)
+    private void TogglePlayersActive(bool enable)
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var player in players)
@@ -46,5 +47,5 @@ public class SceneController : MonoBehaviour
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    }    
 }

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class PlayerGrabbing : TargetDetection
 {
@@ -10,6 +11,8 @@ public class PlayerGrabbing : TargetDetection
     [SerializeField] private float throwForce = 250f;
 
     [SerializeField] private float timeForLongPress = 0.5f;
+
+    [SerializeField] private float timeForHumanReset = 2f;
 
     private Animator anim;
     private Rigidbody2D rb;
@@ -52,13 +55,16 @@ public class PlayerGrabbing : TargetDetection
         }
 
         Animate();
-        CheckInput();
+        CheckInput();             
+    }
 
+    private void LateUpdate()
+    {
         if (objectGrabbed && targetObject != null)
         {
             targetObject.transform.parent = itemGameObjectPosition;
             targetObject.transform.localPosition = Vector3.zero;
-        }     
+        }
     }
 
     public void OnActionX(InputValue value)
@@ -72,13 +78,14 @@ public class PlayerGrabbing : TargetDetection
         {
             timePressing += Time.deltaTime;
 
-            if (!objectGrabbed && onTargetDetected != null)
+            if (!objectGrabbed && onTargetDetected != null && onTargetDetected.gameObject != gameObject)
             {                
                 SoundManager.instance.PlayRandom("Orc Growl");
                 targetObject = onTargetDetected.gameObject;
 
                 objectGrabbed = true;
                 ChangeHumanGrabbed(true);
+                ChangePlayerGrabbed(true);
             }            
         } else
         {
@@ -119,7 +126,7 @@ public class PlayerGrabbing : TargetDetection
         HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
         if (humanDeath != null)
         {
-            humanDeath.TornApart();
+            humanDeath.TornApart(gameObject);
         }
 
         ReleaseTarget();
@@ -133,9 +140,10 @@ public class PlayerGrabbing : TargetDetection
 
         SoundManager.instance.PlayRandom("Orc Growl");
         
-        ChangeHumanGrabbed(false);        
+        ChangeHumanGrabbed(false);
+        ChangePlayerGrabbed(false);
 
-        IThrowableAction throwableAction = targetObject.GetComponent<IThrowableAction>();
+        ThrowableAction throwableAction = targetObject.GetComponent<ThrowableAction>();
         if (throwableAction != null)
         {
             throwableAction.Throw(dir, throwForce);
@@ -167,6 +175,33 @@ public class PlayerGrabbing : TargetDetection
         if (humanMovement != null)
         {
             humanMovement.isGrabbed = grabbed;
-        }        
+        }
+
+        HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
+        if (humanDeath && !grabbed)
+        {
+            humanDeath.attacker = gameObject;
+            StartCoroutine(ResetHumanGrabbed(humanDeath));
+        }
+    }
+
+    private void ChangePlayerGrabbed(bool grabbed)
+    {
+        if (targetObject == null)
+        {
+            return;
+        }
+
+        PlayerMovement playerMovement = targetObject.GetComponent<PlayerMovement>();
+        if (playerMovement != null)
+        {
+            playerMovement.canMove = !grabbed;
+        }
+    }
+
+    private IEnumerator ResetHumanGrabbed(HumanDeath humanDeath)
+    {
+        yield return new WaitForSeconds(timeForHumanReset);
+        humanDeath.attacker = null;
     }
 }

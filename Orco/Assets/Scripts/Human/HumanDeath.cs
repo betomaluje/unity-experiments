@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
 
-public class HumanDeath : IThrowableAction, IThrowableAction.IThrownCollision
+public class HumanDeath : ThrowableAction, ThrowableAction.IThrownCollision
 {
     [Header("Layers")]
     [SerializeField] private LayerMask deathLayer;
 
-    [SerializeField] private GameEvent humanDeath;
+    [Space]
+    [Header("Settings")]    
+    [SerializeField] private GameEvent humanDeath;    
 
+    [Space]
+    [Header("FX")]
     [SerializeField] private GameObject[] bloodSplatters;
     [SerializeField] private GameObject deathParticles;
+
+    public GameObject attacker;
 
     private HumanMovement humanMovement;
     private BoxCollider2D boxCollider;
@@ -24,7 +30,17 @@ public class HumanDeath : IThrowableAction, IThrowableAction.IThrownCollision
     {
         if (TriggerUtils.CheckLayerMask(deathLayer, hitInfo.gameObject))
         {
+            RaiseDeathEvent();
             PerformDie();
+        }
+    }
+
+    private void RaiseDeathEvent()
+    {
+        if (attacker != null)
+        {
+            humanDeath.sentAttackEvent = new AttackEvent(attacker, 1f);
+            humanDeath.Raise();
         }
     }
 
@@ -32,26 +48,29 @@ public class HumanDeath : IThrowableAction, IThrowableAction.IThrownCollision
     {
         Debug.Log("human collision with " + collisionObject.gameObject);
 
+        RaiseDeathEvent();
         PerformDie();
 
         HumanDeath otherHumanDeath = collisionObject.GetComponent<HumanDeath>();
         if (otherHumanDeath != null)
         {
             Debug.Log("other human Die");
+            RaiseDeathEvent();
             otherHumanDeath.PerformDie();
         }
     }
 
     public void PerformDie()
     {
-        ShowParticles();
-        humanDeath.Raise();
+        ShowParticles();        
         SoundManager.instance.PlayRandom("Human Death");
         Die();
     }
 
-    public void TornApart()
+    public void TornApart(GameObject attacker)
     {
+        this.attacker = attacker;
+
         ShowParticles();
         SoundManager.instance.PlayRandom("Human Death");
         boxCollider.enabled = false;
@@ -61,7 +80,7 @@ public class HumanDeath : IThrowableAction, IThrowableAction.IThrownCollision
         {
             anim.SetBool("isDying", true);
         }
-        humanDeath.Raise();
+        RaiseDeathEvent();
     }
 
     private void ShowParticles() {
