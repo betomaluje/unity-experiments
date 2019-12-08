@@ -1,29 +1,45 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class PlayerScore : MonoBehaviour
 {
-    [SerializeField] private TMP_Text mText;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private int lives = 3;
     [SerializeField] private GameEvent gameOverEvent;
+    [SerializeField] private Image[] images;
+    [SerializeField] private Sprite damageSprite;
+    [SerializeField] private Sprite normalSprite;
 
     private int currentAmount = 0;
     private int maxScore = 0;
+    private int currentLives = 0;
+
+    void Start()
+    {
+        currentLives = lives;
+    }
 
     private void Update()
     {        
-        mText.text = currentAmount.ToString();
+        scoreText.text = currentAmount.ToString();
     }
 
     public void Reset()
     {
         currentAmount = 0;
         maxScore = 0;
+        currentLives = lives;
+
+        foreach (var image in images)
+        {
+            image.sprite = normalSprite;
+        }
     }
 
-    public void Add(GameObject go)
-    {
+    public void AddScore()
+    {       
         currentAmount++;
-        Debug.Log("adding: " + currentAmount);
 
         if (currentAmount > maxScore)
         {
@@ -31,18 +47,32 @@ public class PlayerScore : MonoBehaviour
         }
     }
 
-    public void Substract(float amount)
-    {
-        Debug.Log(currentAmount + " -> damage: " + Mathf.RoundToInt(amount));
-        currentAmount -= Mathf.RoundToInt(amount);
-        Debug.Log("currentAmount: " + currentAmount);
+    public void PlayerDamage()
+    { 
+        currentLives--;
 
-        if (currentAmount < 0)
+        images[currentLives].sprite = damageSprite;
+
+        if (currentLives <= 0)
         {
             gameOverEvent.sentInt = maxScore;
-            gameOverEvent.Raise();
-            Reset();
+            gameOverEvent.Raise();            
         }
+    }
+
+    public void PlayerHealth()
+    {
+        currentLives++;
+
+        if (currentLives >= lives)
+        {
+            currentLives = lives;
+        }
+
+        for (int i = 0; i < currentLives; i++)
+        {
+            images[i].sprite = normalSprite;
+        }       
     }
 
     public int GetPlayerScore() 

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Bomb : IThrowableAction, IThrowableAction.IThrownCollision
+public class Bomb : ThrowableAction, ThrowableAction.IThrownCollision
 {
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float radius = 4;
@@ -42,8 +42,8 @@ public class Bomb : IThrowableAction, IThrowableAction.IThrownCollision
         {
             float proximity = (transform.position - collider.gameObject.transform.position).magnitude;
             float actualDamage = (damage * proximity);
-            Debug.Log("proximity " + proximity);
-            Debug.Log(collider.gameObject.name + " took " + actualDamage + "  damage");
+            //Debug.Log("proximity " + proximity);
+            //Debug.Log(collider.gameObject.name + " took " + actualDamage + "  damage");
 
             Rigidbody2D rb = collider.gameObject.GetComponent<Rigidbody2D>();
 
@@ -54,7 +54,7 @@ public class Bomb : IThrowableAction, IThrowableAction.IThrownCollision
 
             if (collider.gameObject.tag == "Player")
             {
-                explosionEvent.sentFloat = Mathf.Ceil(proximity);
+                explosionEvent.sentAttackEvent = new AttackEvent(collider.gameObject, Mathf.Ceil(proximity));
                 explosionEvent.Raise();
             }            
         }

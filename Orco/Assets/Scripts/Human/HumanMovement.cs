@@ -5,7 +5,7 @@ public class HumanMovement : TargetDetection
     [SerializeField] private float accelerationTime = 2f;
     [SerializeField] private float maxSpeed = 5f;    
 
-    //[HideInInspector]
+    [HideInInspector]
     public bool isGrabbed = false;
     [HideInInspector]
     public bool isPlayerNear = false;    

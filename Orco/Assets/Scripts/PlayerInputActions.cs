@@ -20,7 +20,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
             ""actions"": [
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Value"",
                     ""id"": ""589d5c90-9e08-4ab7-b5e7-79312b4e587c"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
@@ -32,12 +32,20 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""id"": ""fa2deb5c-0186-4701-8a48-acdfd4400771"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""MapToggle"",
+                    ""type"": ""Button"",
+                    ""id"": ""b5b5552a-6a66-4891-aab8-2ddbc61172cc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Map Toggle"",
+                    ""name"": ""Start"",
                     ""type"": ""Button"",
-                    ""id"": ""b5b5552a-6a66-4891-aab8-2ddbc61172cc"",
+                    ""id"": ""6f6f6bd6-b958-4f4c-8dd7-33c73578e726"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -45,7 +53,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Keyboard"",
+                    ""name"": ""2D GamePad"",
                     ""id"": ""1341d3bf-f14d-486c-9243-9de7daad2a86"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
@@ -58,7 +66,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""up"",
                     ""id"": ""5346f612-1529-4f97-98a8-cefe859e3592"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -69,7 +77,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""0904a86c-6cbd-4f0e-92d3-187de70ce004"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -80,7 +88,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""ab324bfe-d24f-4262-828e-1a525de374e3"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -91,7 +99,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""c5a0a728-8837-4a95-9ec8-75fd3d36a5a6"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -100,8 +108,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D GamePad"",
-                    ""id"": ""02b016d8-7e4e-4735-94fa-cacdd151e7ae"",
+                    ""name"": ""2D Keyboard"",
+                    ""id"": ""4cc887c8-a729-4add-9479-80273a89267d"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -112,44 +120,44 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""up"",
-                    ""id"": ""a949e6e5-f2a6-45c0-96c3-c46ccff12360"",
-                    ""path"": ""<Joystick>/stick/up"",
+                    ""id"": ""a4b3a4d2-516d-4820-91e9-929618a678fe"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""8d69f188-870b-423c-99bf-367457deb139"",
-                    ""path"": ""<Joystick>/stick/down"",
+                    ""id"": ""c03b5e93-5a2a-4762-bd18-5946d42b71b6"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""cee821a3-046b-41b5-8a59-d987416f41ce"",
-                    ""path"": ""<Joystick>/stick/left"",
+                    ""id"": ""57ea0608-9e1c-410f-a3bc-9fe9bc5e2a43"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""203392ae-989e-402e-bf85-f82ea6d0cbef"",
-                    ""path"": ""<Joystick>/stick/right"",
+                    ""id"": ""221b7162-5a3c-4274-a76a-c66706711726"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -157,8 +165,8 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e78851ee-91e5-4769-acc5-aff9367d3c4d"",
-                    ""path"": ""<Keyboard>/g"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""ActionX"",
@@ -167,11 +175,11 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""adfb75fd-6abf-4972-9a56-720962086459"",
-                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3"",
-                    ""interactions"": ""Press(behavior=2)"",
+                    ""id"": ""0e67522e-30fb-46ad-a2bc-cdb58468f861"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Gamepad"",
+                    ""groups"": """",
                     ""action"": ""ActionX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -179,47 +187,218 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d05d27e8-8f9b-4d2b-841a-c657f754d59f"",
-                    ""path"": ""<Keyboard>/t"",
-                    ""interactions"": ""Press"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button6"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Map Toggle"",
+                    ""action"": ""MapToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df777c0f-6df4-46c6-b60a-f1a8224749a6"",
+                    ""path"": ""<Keyboard>/t"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MapToggle"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""27b43495-2d8f-4cf1-ad0e-07df81f13e9a"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74b85a92-8ef5-4f5a-b271-d81d81329779"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""c5dcdc42-3755-4bde-a47b-6b21319f865c"",
+            ""actions"": [
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""33311e67-45c8-45f2-a7f7-89eb0b803ede"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ActionX"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f5e965e-c4b7-4b76-b6d3-1665f816b6f6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D GamePad"",
+                    ""id"": ""43077744-76e5-4acf-8a1e-378b4a16a5f4"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""f8d29577-df50-457c-89ae-a5212752da93"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""80eb6f50-f398-4a1b-9f6e-bdf2a257a3c0"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""426f3f90-c183-4819-9905-3f81c51eba45"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""91abcb6c-fa5f-4e5c-9879-611e267d80b4"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""2D Keyboard"",
+                    ""id"": ""544bcdc6-6adb-40d9-9026-9b8902389da1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""bf4c0056-47a8-4f9f-9b23-29b6aa207d1e"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""915860ea-b387-418c-9760-60f49a612db2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""9dc14038-c8b8-44f1-91a9-9df2ed84bbab"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""55f75093-a277-442b-9035-27f2914d16bd"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f40a3b1-ef13-4bc4-8547-683a274cd305"",
+                    ""path"": ""<HID::DragonRise Inc.   Generic   USB  Joystick  >/button3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ActionX"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0831bca-ec47-41d2-b870-cd3f0c7e8468"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ActionX"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
             ]
         }
     ],
-    ""controlSchemes"": [
-        {
-            ""name"": ""Keyboard"",
-            ""bindingGroup"": ""Keyboard"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Keyboard>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""Gamepad"",
-            ""bindingGroup"": ""Gamepad"",
-            ""devices"": [
-                {
-                    ""devicePath"": ""<Gamepad>"",
-                    ""isOptional"": false,
-                    ""isOR"": false
-                }
-            ]
-        }
-    ]
+    ""controlSchemes"": []
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         m_Player_ActionX = m_Player.FindAction("ActionX", throwIfNotFound: true);
-        m_Player_MapToggle = m_Player.FindAction("Map Toggle", throwIfNotFound: true);
+        m_Player_MapToggle = m_Player.FindAction("MapToggle", throwIfNotFound: true);
+        m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Movement = m_Menu.FindAction("Movement", throwIfNotFound: true);
+        m_Menu_ActionX = m_Menu.FindAction("ActionX", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,6 +451,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movement;
     private readonly InputAction m_Player_ActionX;
     private readonly InputAction m_Player_MapToggle;
+    private readonly InputAction m_Player_Start;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -279,6 +459,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputAction @ActionX => m_Wrapper.m_Player_ActionX;
         public InputAction @MapToggle => m_Wrapper.m_Player_MapToggle;
+        public InputAction @Start => m_Wrapper.m_Player_Start;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -297,6 +478,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @MapToggle.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
                 @MapToggle.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
                 @MapToggle.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMapToggle;
+                @Start.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -310,32 +494,64 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @MapToggle.started += instance.OnMapToggle;
                 @MapToggle.performed += instance.OnMapToggle;
                 @MapToggle.canceled += instance.OnMapToggle;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
             }
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
-    private int m_KeyboardSchemeIndex = -1;
-    public InputControlScheme KeyboardScheme
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private IMenuActions m_MenuActionsCallbackInterface;
+    private readonly InputAction m_Menu_Movement;
+    private readonly InputAction m_Menu_ActionX;
+    public struct MenuActions
     {
-        get
+        private @PlayerInputActions m_Wrapper;
+        public MenuActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Movement => m_Wrapper.m_Menu_Movement;
+        public InputAction @ActionX => m_Wrapper.m_Menu_ActionX;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void SetCallbacks(IMenuActions instance)
         {
-            if (m_KeyboardSchemeIndex == -1) m_KeyboardSchemeIndex = asset.FindControlSchemeIndex("Keyboard");
-            return asset.controlSchemes[m_KeyboardSchemeIndex];
+            if (m_Wrapper.m_MenuActionsCallbackInterface != null)
+            {
+                @Movement.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnMovement;
+                @ActionX.started -= m_Wrapper.m_MenuActionsCallbackInterface.OnActionX;
+                @ActionX.performed -= m_Wrapper.m_MenuActionsCallbackInterface.OnActionX;
+                @ActionX.canceled -= m_Wrapper.m_MenuActionsCallbackInterface.OnActionX;
+            }
+            m_Wrapper.m_MenuActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
+                @ActionX.started += instance.OnActionX;
+                @ActionX.performed += instance.OnActionX;
+                @ActionX.canceled += instance.OnActionX;
+            }
         }
     }
-    private int m_GamepadSchemeIndex = -1;
-    public InputControlScheme GamepadScheme
-    {
-        get
-        {
-            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
-            return asset.controlSchemes[m_GamepadSchemeIndex];
-        }
-    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnActionX(InputAction.CallbackContext context);
         void OnMapToggle(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnMovement(InputAction.CallbackContext context);
+        void OnActionX(InputAction.CallbackContext context);
     }
 }

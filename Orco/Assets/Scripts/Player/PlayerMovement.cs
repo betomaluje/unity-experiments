@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
@@ -11,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float turnSpeed = 100f;
 
-    private PlayerInputActions inputActions;
-
     private Direction currentDirection;
 
     private Rigidbody2D rb;
@@ -22,23 +21,10 @@ public class PlayerMovement : MonoBehaviour
     // Input Actions
     private Vector2 movement;
 
+    [HideInInspector]
+    public bool canMove = true;
+
     #region Lifecycle methods
-    private void Awake()
-    {
-        inputActions = new PlayerInputActions();
-
-        inputActions.Player.Movement.performed += context => OnMovement(context.ReadValue<Vector2>());
-    }
-
-    private void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    private void OnDisable()
-    {
-        inputActions.Disable();
-    }
 
     private void Start()
     {
@@ -50,11 +36,21 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         anim.SetBool("isWalking", movement.x != 0 || movement.y != 0);
     }
 
     private void FixedUpdate()
     {
+        if (!canMove)
+        {
+            return;
+        }
+
         // movement
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
@@ -69,9 +65,9 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    public void OnMovement(Vector2 mov)
+    public void OnMovement(InputValue value)
     {
-        movement = mov;        
+        movement = value.Get<Vector2>();
 
         if (movement.y < 0)
         {

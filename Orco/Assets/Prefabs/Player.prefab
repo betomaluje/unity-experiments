@@ -84,6 +84,8 @@ MonoBehaviour:
   m_UseNormalMap: 1
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 1
@@ -145,6 +147,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -226,6 +229,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -278,6 +282,7 @@ GameObject:
   - component: {fileID: 6963183797687809565}
   - component: {fileID: 6963183797687809564}
   - component: {fileID: 1214858442}
+  - component: {fileID: 3844559012476094398}
   m_Layer: 16
   m_Name: Player
   m_TagString: Player
@@ -317,6 +322,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -407,6 +413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   turnSpeed: 30
+  canMove: 1
 --- !u!114 &6963183797687809565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,13 +428,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLayer:
     serializedVersion: 2
-    m_Bits: 131328
-  targetRadius: 0.5
+    m_Bits: 196864
+  targetRadius: 0.7
   debugColor: {r: 0.72682184, g: 0.8301887, b: 0.05873976, a: 1}
   onTargetDetected: {fileID: 0}
   itemGameObjectPosition: {fileID: 6963183796868140196}
   throwForce: 15
   timeForLongPress: 2
+  timeForHumanReset: 1
 --- !u!58 &6963183797687809564
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -456,4 +464,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce2c450a3944c084595cce0893925206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  miniMap: {fileID: 0}
+--- !u!114 &3844559012476094398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6963183797687809563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 1b48154747c6c6848b720c04e89a336f,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 589d5c90-9e08-4ab7-b5e7-79312b4e587c
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/DragonRise
+      Inc.   Generic   USB  Joystick  /stick/up,/DragonRise Inc.   Generic   USB 
+      Joystick  /stick/down,/DragonRise Inc.   Generic   USB  Joystick  /stick/left,/DragonRise
+      Inc.   Generic   USB  Joystick  /stick/right]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fa2deb5c-0186-4701-8a48-acdfd4400771
+    m_ActionName: Player/ActionX[/Keyboard/g,/DragonRise Inc.   Generic   USB  Joystick 
+      /button3]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b5b5552a-6a66-4891-aab8-2ddbc61172cc
+    m_ActionName: Player/Map Toggle[/Keyboard/t,/DragonRise Inc.   Generic   USB 
+      Joystick  /button8]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6f6f6bd6-b958-4f4c-8dd7-33c73578e726
+    m_ActionName: Player/Start[/DragonRise Inc.   Generic   USB  Joystick  /button10,/Keyboard/enter]
+  m_NeverAutoSwitchControlSchemes: 1
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
