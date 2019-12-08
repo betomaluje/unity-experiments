@@ -13,9 +13,9 @@ public class PlayersManager : MonoBehaviour
     [Space]
     [Header("UI")]
     [SerializeField] private GameObject[] playerStatuses;
-
+    
     private List<CinemachineTargetGroup.Target> allTargets;
-    private List<Transform> players;    
+    private List<Transform> players;
 
     private void Start()
     {
@@ -34,7 +34,7 @@ public class PlayersManager : MonoBehaviour
     }
 
     public void OnPlayerJoined(PlayerInput player)
-    {
+    {        
         Debug.Log("player "+ player.playerIndex + " joined!");
 
         AddTargetToMainCamera(player);

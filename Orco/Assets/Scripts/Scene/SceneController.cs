@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI gameOverMaxScoreObject;
     [SerializeField] private TextMeshProUGUI youWinMaxScoreObject;
- 
+
     public void GameOver(int maxScore)
     {
         gameOverPanel.SetActive(true);
