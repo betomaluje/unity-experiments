@@ -1,20 +1,28 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class MenuPlayerSelected : MonoBehaviour
-{   
-    [SerializeField] private Button defaultButton;
+{
+    [SerializeField] private TMP_Text playersText;
 
-    private void Awake()
+    public static int numberOfPlayers = 0;   
+
+    private void LateUpdate()
     {
-        defaultButton.Select();
+        playersText.text = numberOfPlayers + " Players"; 
     }
 
-    public void SelectNumberOfPlayers(int players)
-    {
-        Debug.Log(players + " selected!");
-        MenuPlayerSettings.SaveNumberOfPlayers(players);
-        SceneManager.LoadScene(MenuConstants.SCENE_LEVEL_1, LoadSceneMode.Single);
+    public void OnPlayerJoined(PlayerInput player)
+    {        
+        numberOfPlayers++;
+        Debug.Log("player " + player.playerIndex + " joined! total: " + numberOfPlayers);        
     }
+
+    public void OnPlayerLeft(PlayerInput player)
+    {
+        numberOfPlayers--;
+        Debug.Log("player " + player.playerIndex + " left! total: " + numberOfPlayers);
+    }   
+
 }
