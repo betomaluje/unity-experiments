@@ -48,3 +48,5 @@ MonoBehaviour:
     value: 45
   - key: {fileID: 2874494018043690498, guid: c5f70d0b115faeb44b372a0bbc86318b, type: 3}
     value: 10
+  - key: {fileID: 5279352216966276607, guid: c8cdb6f8c3446054cb0f63f5446e1161, type: 3}
+    value: 35

@@ -8,9 +8,7 @@ public class Trophy : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
         if (TriggerUtils.CheckLayerMask(grabbableLayer, other.gameObject))
-        {        
-            int score = GameObject.FindGameObjectWithTag("Player Score").GetComponent<PlayerScore>().GetPlayerScore();
-            youWinEvent.sentInt = score;
+        {            
             youWinEvent.Raise();
         }
     }

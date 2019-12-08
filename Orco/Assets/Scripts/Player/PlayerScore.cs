@@ -60,6 +60,21 @@ public class PlayerScore : MonoBehaviour
         }
     }
 
+    public void PlayerHealth()
+    {
+        currentLives++;
+
+        if (currentLives >= lives)
+        {
+            currentLives = lives;
+        }
+
+        for (int i = 0; i < currentLives; i++)
+        {
+            images[i].sprite = normalSprite;
+        }       
+    }
+
     public int GetPlayerScore() 
     {
         return currentAmount;

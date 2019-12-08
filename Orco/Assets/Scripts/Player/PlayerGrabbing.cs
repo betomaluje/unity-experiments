@@ -178,10 +178,10 @@ public class PlayerGrabbing : TargetDetection
         }
 
         HumanDeath humanDeath = targetObject.GetComponent<HumanDeath>();
-        if (humanDeath && !grabbed)
+        if (humanDeath)
         {
             humanDeath.attacker = gameObject;
-            StartCoroutine(ResetHumanGrabbed(humanDeath));
+            //StartCoroutine(ResetHumanGrabbed(humanDeath));
         }
     }
 

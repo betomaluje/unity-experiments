@@ -130,5 +130,29 @@ public class PlayersManager : MonoBehaviour
             i++;
         }
     }
+
+    public void ApplyPlayerHealth(AttackEvent healthEvent)
+    {
+        Debug.Log("health searching for " + healthEvent.target.name);
+
+        int i = 0;
+        foreach (var t in players)
+        {
+            if (healthEvent.target == t.gameObject)
+            {
+                PlayerScore playerScore = playerStatuses[i].GetComponent<PlayerScore>();
+
+                if (playerScore != null)
+                {
+                    Debug.Log(healthEvent.target.name + " found!");
+                    playerScore.PlayerHealth();
+                }
+
+                return;
+            }
+
+            i++;
+        }
+    }
     #endregion
 }

@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -814,7 +814,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &152797121
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1412,8 +1412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1039289088}
   youWinPanel: {fileID: 1943393116}
-  gameOverMaxScoreObject: {fileID: 1087537131}
-  youWinMaxScoreObject: {fileID: 152797122}
 --- !u!114 &521044387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3943,6 +3941,46 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1877422042}
           m_MethodName: ApplyPlayerDamage
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - name: Health
+    gameEvent: {fileID: 11400000, guid: ec092352a6dd03c488e08cc99060f880, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentString:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentInt:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentFloat:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentBool:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector2:
+      m_PersistentCalls:
+        m_Calls: []
+    responseForSentVector3:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithGameObject:
+      m_PersistentCalls:
+        m_Calls: []
+    responseWithAttackEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1877422042}
+          m_MethodName: ApplyPlayerHealth
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
