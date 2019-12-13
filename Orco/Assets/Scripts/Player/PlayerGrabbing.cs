@@ -98,7 +98,7 @@ public class PlayerGrabbing : TargetDetection
                     isTorning = true;
                     DoTorn();
                 }
-                else
+                else if (!isTorning)
                 {
                     DoThrow(itemGameObjectPosition.position - transform.position);
                 }                
@@ -136,7 +136,10 @@ public class PlayerGrabbing : TargetDetection
 
     public void DoThrow(Vector3 dir)
     {
-        if (targetObject == null) return;
+        if (targetObject == null)
+        {
+            return;
+        }
 
         SoundManager.instance.PlayRandom("Orc Growl");
         

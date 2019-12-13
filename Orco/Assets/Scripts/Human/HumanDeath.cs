@@ -72,8 +72,7 @@ public class HumanDeath : ThrowableAction, ThrowableAction.IThrownCollision
         this.attacker = attacker;
 
         ShowParticles();
-        SoundManager.instance.PlayRandom("Human Death");
-        boxCollider.enabled = false;
+        SoundManager.instance.PlayRandom("Human Death");        
 
         Animator anim = GetComponent<Animator>();
         if (anim != null)
@@ -89,7 +88,18 @@ public class HumanDeath : ThrowableAction, ThrowableAction.IThrownCollision
     }
 
     private void Die()
-    {        
-        Destroy(gameObject);
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.bodyType = RigidbodyType2D.Static;
+
+        boxCollider.enabled = false;
+
+        HumanShooting humanShooting = GetComponent<HumanShooting>();
+        if (humanShooting)
+        {
+            humanShooting.enabled = false;
+        }
+
+        humanMovement.enabled = false;
     }
 }
