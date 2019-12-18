@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class EnemyCounter : MonoBehaviour
 {
@@ -17,11 +18,20 @@ public class EnemyCounter : MonoBehaviour
 
         float currentPercentage = totalHumans > 0 ? currentHumansKilled / totalHumans : 0f;
 
-        if (!trophyAppear && currentPercentage >= clearStagePercentage)
+        if (currentPercentage >= clearStagePercentage)
         {
-            trophyAppear = true;
-            appearTrophyEvent.Raise();
+            humanScoreText.color = Color.green;
+
+            if (!trophyAppear)
+            {
+                trophyAppear = true;
+                appearTrophyEvent.Raise();                
+            }
+        } else
+        {
+            humanScoreText.color = Color.red;
         }
+
     }
 
     public void AddTotalHumans()
@@ -32,5 +42,6 @@ public class EnemyCounter : MonoBehaviour
     public void AddKill()
     {
         currentHumansKilled += 1f;
+        humanScoreText.transform.DOShakeScale(0.5f);
     }
 }

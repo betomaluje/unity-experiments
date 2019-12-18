@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlayerScore : MonoBehaviour
 {
@@ -51,7 +52,10 @@ public class PlayerScore : MonoBehaviour
     { 
         currentLives--;
 
-        images[currentLives].sprite = damageSprite;
+        Image image = images[currentLives];
+
+        image.sprite = damageSprite;
+        image.transform.DOShakeScale(0.5f, 0.3f);
 
         if (currentLives <= 0)
         {
