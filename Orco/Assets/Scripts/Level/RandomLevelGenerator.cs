@@ -80,11 +80,10 @@ public class RandomLevelGenerator : MonoBehaviour
         }
 
         // now we need to restore the walls
-        RestoreWalls();
-        PutEndObject();
+        RestoreWalls();        
     }
 
-    private void PutEndObject() 
+    public void PutEndObject() 
     {
         Vector3 lastRoom = roomPositions[roomPositions.Count - 1];
 
