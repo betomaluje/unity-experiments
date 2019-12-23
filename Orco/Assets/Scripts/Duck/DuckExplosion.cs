@@ -1,32 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class Bomb : ThrowableAction, ThrowableAction.IThrownCollision
+public class DuckExplosion : ThrowableAction, ThrowableAction.IThrownCollision
 {
     [SerializeField] private LayerMask targetLayer;
     [SerializeField] private float radius = 4;
     [SerializeField] private float damage = 10;
     [Range(0, 10)]
-    [SerializeField] private float explosionForce = 10;
-    [SerializeField] private CircleCollider2D circleCollider;
+    [SerializeField] private float explosionForce = 10;   
     [SerializeField] private GameObject particles;
-    [SerializeField] private GameEvent explosionEvent;
-
-    private Animator anim;
+    [SerializeField] private GameEvent explosionEvent;    
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
-        circleCollider.radius = radius;
         explosionForce *= 10000;
         onCollisionListener = this;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (TriggerUtils.CheckLayerMask(targetLayer, collision.gameObject))
-        {
-            anim.SetTrigger("Activate");
-        }
     }
 
     public void OnThrownCollision(GameObject collisionObject)
@@ -35,7 +24,6 @@ public class Bomb : ThrowableAction, ThrowableAction.IThrownCollision
         targetLayer |= (1 << collisionObject.layer);
         Explode();
     }
-
     private void Explode()
     {
         Collider2D collider = Physics2D.OverlapCircle(transform.position, radius, targetLayer);
@@ -50,14 +38,14 @@ public class Bomb : ThrowableAction, ThrowableAction.IThrownCollision
 
             if (rb != null)
             {
-                AddExplosionForce(rb, explosionForce, transform.position, radius*5);
+                AddExplosionForce(rb, explosionForce, transform.position, radius * 5);
             }
 
             if (collider.gameObject.tag == "Player")
             {
                 explosionEvent.sentAttackEvent = new AttackEvent(collider.gameObject, Mathf.Ceil(proximity));
                 explosionEvent.Raise();
-            }            
+            }
         }
 
         Instantiate(particles, transform.position, Quaternion.identity);
@@ -89,11 +77,5 @@ public class Bomb : ThrowableAction, ThrowableAction.IThrownCollision
         }
 
         rb.AddForce(Mathf.Lerp(0, explosionForce, (1 - explosionDistance)) * explosionDir, mode);
-    }
-
-    private void OnDrawGizmos()
-    {
-        UnityEditor.Handles.color = Color.yellow;
-        UnityEditor.Handles.DrawWireDisc(circleCollider.transform.position, Vector3.back, radius);
-    }
+    }    
 }

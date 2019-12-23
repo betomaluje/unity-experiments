@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4000441765177946280
+--- !u!1 &6379665136403467155
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5711107134893924260}
-  - component: {fileID: 9027306890666981524}
+  - component: {fileID: 6379665136403467181}
+  - component: {fileID: 6379665136403467180}
   m_Layer: 0
-  m_Name: RSpikes
+  m_Name: RThrowable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5711107134893924260
+--- !u!4 &6379665136403467181
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4000441765177946280}
+  m_GameObject: {fileID: 6379665136403467155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,20 +31,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9027306890666981524
+--- !u!114 &6379665136403467180
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4000441765177946280}
+  m_GameObject: {fileID: 6379665136403467155}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f53a89498f555164b888e6ac74049313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   toSpawn:
-  - key: {fileID: 5481128648079727206, guid: cf5d29b7b3b58aa459f4eaa56269ed03, type: 3}
-    value: 80
+  - key: {fileID: 5657964564429794954, guid: d38dcb02237034a419490617c378d3e5, type: 3}
+    value: 40
+  - key: {fileID: 935728683275235167, guid: ad9611b6eb74fe940bf5ceb2c0de3920, type: 3}
+    value: 40
   - key: {fileID: 2847692156731090117, guid: 9e9ed9c448c7ce3449e74f346dfe4cc0, type: 3}
     value: 20

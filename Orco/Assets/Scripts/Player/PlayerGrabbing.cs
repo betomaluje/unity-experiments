@@ -55,16 +55,18 @@ public class PlayerGrabbing : TargetDetection
         }
 
         Animate();
-        CheckInput();             
-    }
+        CheckInput();
 
-    private void LateUpdate()
-    {
         if (objectGrabbed && targetObject != null)
         {
             targetObject.transform.parent = itemGameObjectPosition;
             targetObject.transform.localPosition = Vector3.zero;
         }
+    }
+
+    private void LateUpdate()
+    {
+        
     }
 
     public void OnActionX(InputValue value)
