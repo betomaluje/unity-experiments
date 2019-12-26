@@ -231,11 +231,11 @@
                 },
                 {
                     "name": "ActionX",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "6f5e965e-c4b7-4b76-b6d3-1665f816b6f6",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
