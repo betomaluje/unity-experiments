@@ -2,6 +2,8 @@
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 
 public class PlayersManager : MonoBehaviour
 {
@@ -154,5 +156,6 @@ public class PlayersManager : MonoBehaviour
             i++;
         }
     }
+
     #endregion
 }

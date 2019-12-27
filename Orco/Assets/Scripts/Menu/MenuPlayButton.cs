@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class MenuPlayButton : MonoBehaviour
 {
-    public void OnActionX()
+    public void OnSubmit()
     {
         if (MenuPlayerSelected.numberOfPlayers == 0)
         {

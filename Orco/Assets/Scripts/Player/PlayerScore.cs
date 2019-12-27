@@ -52,10 +52,13 @@ public class PlayerScore : MonoBehaviour
     { 
         currentLives--;
 
-        Image image = images[currentLives];
+        if (currentLives >= 0) 
+        {
+            Image image = images[currentLives];
 
-        image.sprite = damageSprite;
-        image.transform.DOShakeScale(0.5f, 0.3f);
+            image.sprite = damageSprite;
+            image.transform.DOShakeScale(0.5f, 0.3f);
+        }
 
         if (currentLives <= 0)
         {

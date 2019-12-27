@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 using UnityEngine.InputSystem;
 
 public class SceneController : MonoBehaviour
@@ -11,14 +10,14 @@ public class SceneController : MonoBehaviour
 
     public void GameOver(int maxScore)
     {
-        gameOverPanel.SetActive(true);
         TogglePlayersActive(false);
+        gameOverPanel.SetActive(true);
     }
 
     public void YouWin(int maxScore) 
     {
-        youWinPanel.SetActive(true);
         TogglePlayersActive(false);
+        youWinPanel.SetActive(true);
     }
 
     private void TogglePlayersActive(bool enable)
@@ -35,6 +34,11 @@ public class SceneController : MonoBehaviour
             if (playerGrabbing != null)
             {
                 playerGrabbing.enabled = enable;
+            }
+            PlayerInput playerInput = player.GetComponent<PlayerInput>();
+            if (playerInput != null) 
+            {
+                playerInput.enabled = enable;
             }
         }
     }
