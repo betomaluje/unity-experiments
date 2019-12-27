@@ -2,8 +2,6 @@
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem.UI;
 
 public class PlayersManager : MonoBehaviour
 {
@@ -39,19 +37,25 @@ public class PlayersManager : MonoBehaviour
     {        
         Debug.Log("player "+ player.playerIndex + " joined!");
 
-        AddTargetToMainCamera(player);
-        AddPlayerToMiniMap(player);
+        if (player.gameObject.CompareTag("Player")) 
+        {
+            AddTargetToMainCamera(player);
+            AddPlayerToMiniMap(player);
 
-        // we show the player panel on the UI
-        playerStatuses[player.playerIndex].SetActive(true);
+            // we show the player panel on the UI
+            playerStatuses[player.playerIndex].SetActive(true);
+        }
     }
 
     public void OnPlayerLeft(PlayerInput player)
     {
         Debug.Log("player " + player.playerIndex + " left!");
 
-        RemoveTargetFromMainCamera(player);
-        RemovePlayerToMiniMap(player);
+        if (player.gameObject.CompareTag("Player")) 
+        {
+            RemoveTargetFromMainCamera(player);
+            RemovePlayerToMiniMap(player);
+        }
     }
 
     #region Mini Map
@@ -70,7 +74,7 @@ public class PlayersManager : MonoBehaviour
     private void AddTargetToMainCamera(PlayerInput player)
     {
         CinemachineTargetGroup.Target target;
-        target.target = player.transform;
+        target.target = player.gameObject.transform;
         target.weight = cameraWeight;
         target.radius = 0;
 
