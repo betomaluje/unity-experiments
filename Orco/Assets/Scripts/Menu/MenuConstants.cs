@@ -3,6 +3,7 @@
     #region Scene
     public static string SCENE_MENU = "MenuScene";
     public static string SCENE_LEVEL_1 = "Level1";
+    public static string SCENE_LEVEL_2 = "Level2";
     #endregion
 
     #region Players

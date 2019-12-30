@@ -2,9 +2,14 @@
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayersManager : MonoBehaviour
 {
+    [Header("Level Settings")]
+    [SerializeField] private bool isDarkLevel = true;
+
+    [Space]
     [Header("Camera Settings")]
     [SerializeField] private CinemachineTargetGroup targetGroup;
     [SerializeField] private float cameraWeight;
@@ -41,6 +46,7 @@ public class PlayersManager : MonoBehaviour
         {
             AddTargetToMainCamera(player);
             AddPlayerToMiniMap(player);
+            ConfigureLevelLights(player);
 
             // we show the player panel on the UI
             playerStatuses[player.playerIndex].SetActive(true);
@@ -160,6 +166,15 @@ public class PlayersManager : MonoBehaviour
             i++;
         }
     }
+    #endregion
 
+    #region Level Settings
+    private void ConfigureLevelLights(PlayerInput player) {
+        Light2D lights = player.GetComponentInChildren<Light2D>();    
+        if (lights != null) 
+        {
+            lights.enabled = isDarkLevel;
+        }
+    }
     #endregion
 }

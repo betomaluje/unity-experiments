@@ -13,6 +13,6 @@ public class MenuPlayButton : MonoBehaviour
 
         Debug.Log("playing with " + MenuPlayerSelected.numberOfPlayers + " players");
         MenuPlayerSettings.SaveNumberOfPlayers(MenuPlayerSelected.numberOfPlayers);
-        SceneManager.LoadScene(MenuConstants.SCENE_LEVEL_1, LoadSceneMode.Single);
+        SceneManager.LoadScene(MenuConstants.SCENE_LEVEL_2, LoadSceneMode.Single);
     }
 }
