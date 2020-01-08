@@ -91,9 +91,4 @@ public class Bomb : ThrowableAction, ThrowableAction.IThrownCollision
         rb.AddForce(Mathf.Lerp(0, explosionForce, (1 - explosionDistance)) * explosionDir, mode);
     }
 
-    private void OnDrawGizmos()
-    {
-        UnityEditor.Handles.color = Color.yellow;
-        UnityEditor.Handles.DrawWireDisc(circleCollider.transform.position, Vector3.back, radius);
-    }
 }
