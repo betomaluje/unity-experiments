@@ -1274,7 +1274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneLoader: {fileID: 2031184377}
-  sceneToLoad: 2
+  sceneToLoad: 1
 --- !u!61 &984413174
 BoxCollider2D:
   m_ObjectHideFlags: 0
