@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8698391521839782256}
   - component: {fileID: 5405387724059878780}
   - component: {fileID: 4485255947153657279}
+  - component: {fileID: 8679395218412969870}
   m_Layer: 13
   m_Name: Foreground
   m_TagString: Untagged
@@ -316,7 +317,7 @@ CompositeCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -354,6 +355,22 @@ CompositeCollider2D:
       - {x: 0.0000058, y: -3}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.000005
+--- !u!114 &8679395218412969870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3215682465736438923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f09748875ea8e0459d900dd72a2e111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  removalLayer:
+    serializedVersion: 2
+    m_Bits: 16384
+  removeThis: 0
 --- !u!1 &4955323995019010784
 GameObject:
   m_ObjectHideFlags: 0

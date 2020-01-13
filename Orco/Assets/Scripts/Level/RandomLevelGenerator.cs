@@ -6,7 +6,7 @@ public class RandomLevelGenerator : MonoBehaviour
 {
     [SerializeField] private float timeBtwRooms = 0;
     [SerializeField] private int numberOfRooms = 10;
-    [SerializeField] private int scale;
+    [SerializeField] private float scale;
     [SerializeField] private GameObject[] roomsObjects;
     [SerializeField] private GameObject horizontalBridge;
     [SerializeField] private GameObject verticalBridge;
@@ -16,6 +16,27 @@ public class RandomLevelGenerator : MonoBehaviour
     private List<Vector2> directionsList;
     private List<Vector3> roomPositions;
     private List<GameObject> addedRooms;
+    private List<Bridge> bridges;
+
+    class Bridge
+    {
+        public enum Type
+        {
+            HORIZONTAL, VERTICAL
+        }
+
+        public Vector3 position;
+        public Type type;
+        public Transform parent;
+
+        public Bridge(Type t, Vector3 pos, Transform p)
+        {
+            type = t;
+            position = pos;
+            parent = p;
+        }
+
+    }
 
     void Start()
     {
@@ -31,6 +52,7 @@ public class RandomLevelGenerator : MonoBehaviour
     private IEnumerator GenerateMap() {
         roomPositions = new List<Vector3>();
         addedRooms = new List<GameObject>();
+        bridges = new List<Bridge>();
 
         // we instantiate first room
         GameObject firstRoom = Instantiate(getRoom(), transform.position, Quaternion.identity);        
@@ -46,26 +68,23 @@ public class RandomLevelGenerator : MonoBehaviour
             Vector3 nextPosition = new Vector3(temp2DPosition.x, temp2DPosition.y, 0) + transform.position;
 
             if (!roomPositions.Contains(nextPosition)) {
+
+                // we instantiate a room
+                GameObject room = Instantiate(getRoom(), nextPosition, Quaternion.identity);
+
                 // we need to connect current room with next one                
                 Vector2 bridge2DPosition = direction * (scale / 2);
                 Vector3 bridgePosition = new Vector3(bridge2DPosition.x, bridge2DPosition.y, 0) + transform.position;
                 // when is going down it has 1 square spare on the top.
-                // up is fine
-
-                GameObject bridgeGo;
+                // up is fine                                
 
                 if (temp2DPosition.y != 0)
                 {
-                    bridgeGo = Instantiate(verticalBridge, bridgePosition, Quaternion.identity);
+                    bridges.Add(new Bridge(Bridge.Type.VERTICAL, bridgePosition, room.transform));
                 } else
                 {
-                    bridgeGo = Instantiate(horizontalBridge, bridgePosition, Quaternion.identity);
-                }
-
-                // we instantiate a room
-                GameObject room = Instantiate(getRoom(), nextPosition, Quaternion.identity);
-                
-                bridgeGo.transform.parent = room.transform;
+                    bridges.Add(new Bridge(Bridge.Type.HORIZONTAL, bridgePosition, room.transform));
+                }                                               
 
                 // we update the gameobjects position
                 transform.position = nextPosition;
@@ -79,8 +98,29 @@ public class RandomLevelGenerator : MonoBehaviour
             }       
         }
 
+        StartCoroutine(PutBridges());
+
         // now we need to restore the walls
         RestoreWalls();        
+    }
+
+    private IEnumerator PutBridges()
+    {
+        foreach (var bridge in bridges)
+        {
+            GameObject bridgeGo;
+            if (bridge.type.Equals(Bridge.Type.VERTICAL))
+            {
+                bridgeGo = Instantiate(verticalBridge, bridge.position, Quaternion.identity);
+            } else
+            {
+                bridgeGo = Instantiate(horizontalBridge, bridge.position, Quaternion.identity);
+            }
+
+            bridgeGo.transform.parent = bridge.parent;
+
+            yield return new WaitForSeconds(timeBtwRooms);
+        }
     }
 
     public void PutEndObject() 

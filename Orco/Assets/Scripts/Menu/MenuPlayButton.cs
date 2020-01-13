@@ -10,9 +10,13 @@ public class MenuPlayButton : MonoBehaviour
             Debug.Log("Not enough players!");
             return;
         }
-
-        Debug.Log("playing with " + MenuPlayerSelected.numberOfPlayers + " players");
+        
         MenuPlayerSettings.SaveNumberOfPlayers(MenuPlayerSelected.numberOfPlayers);
-        SceneManager.LoadScene(MenuConstants.SCENE_LEVEL_2, LoadSceneMode.Single);
+
+        int randomScene = Random.Range(1, SceneManager.sceneCount - 1);
+
+        Debug.Log("playing with " + MenuPlayerSelected.numberOfPlayers + " players on Level " + randomScene);
+
+        SceneManager.LoadScene(randomScene, LoadSceneMode.Single);
     }
 }
