@@ -46,5 +46,10 @@ public class SceneController : MonoBehaviour
     public void ResetScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }    
+    }
+    
+    public void GoToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }

@@ -2,7 +2,7 @@
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
-using UnityEngine.Experimental.Rendering.Universal;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class PlayersManager : MonoBehaviour
 {
